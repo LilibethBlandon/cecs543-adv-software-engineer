@@ -163,24 +163,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_file_newActionPerformed
 
     private void file_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openActionPerformed
-        // TODO add your handling code here:
-        //inputPreviousLanguage();
         ArrayList<String> data = new ArrayList<>();
         String projectName = "";
         String creator = "";
         int numberOfPanes;
-        
-        
-        
+
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(new java.io.File("."));
         fc.setDialogTitle("Open Project");
         FileFilter filter = new FileNameExtensionFilter("*.ms", ".ms", "ms");
         fc.setFileFilter(filter);
-//        fc.addChoosableFileFilter(filter);
-//        fc.showOpenDialog(frame);
-//        //File file = fileChooser.getSelectedFile();
-        //fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         if(fc.showOpenDialog(file_open) == JFileChooser.APPROVE_OPTION) {
             // read content
             String filepath = fc.getSelectedFile().getAbsolutePath();
@@ -198,10 +190,6 @@ public class MainFrame extends javax.swing.JFrame {
                 System.out.println("Creator = " + creator);
                 System.out.println("Number of Panes = " + numberOfPanes);
                 
-//                String s1 = "";
-//                while((s1=br.readLine())!=null) {
-//                    
-//                }
                 ArrayList<String> nameOfPanes = new ArrayList<>(); //
                 ArrayList<String> languagesPerPane = new ArrayList<>(); //
                 ArrayList<String []> vafPerPane = new ArrayList<>(); //
@@ -216,32 +204,20 @@ public class MainFrame extends javax.swing.JFrame {
                     data.add(br.readLine());
                 }
                 br.close();
-//                System.out.println(data.get(0));
-//                System.out.println(data.get(1));
+
+                //Grab the information from each line
                 for(int i=0; i<data.size(); i++) {
                     String [] splitData = data.get(i).split("/");
                     nameOfPanes.add(splitData[0]);
-                    System.out.println("1");
                     languagesPerPane.add(splitData[1]);
-                    System.out.println("2");
                     vafPerPane.add(splitData[2].split(","));
-                    System.out.println("3");
                     sumOfVAFPerPane.add(splitData[3]);
-                    System.out.println("4");
                     functionDataPerPane.add(splitData[4].split(","));
-                    System.out.println("5");
                     functionDataResultsPerPane.add(splitData[5].split(","));
-                    System.out.println("6");
-                    
                     complexitiesPerPane.add(splitData[6].split(","));//
-                    System.out.println("7");//
-                    
                     functionPointsPerPane.add(splitData[7]);
-                    System.out.println("8");
                     codeSizePerPane.add(splitData[8]);
-                    System.out.println("9");
                     totalCountPerPane.add(splitData[9]);
-                    System.out.println("10");
                 }
                 
                 System.out.println("Name of Panes");
@@ -297,18 +273,10 @@ public class MainFrame extends javax.swing.JFrame {
                 System.out.println(totalCountPerPane.get(i));
                 }
                 
-                
-                
-                
-                
-//                for(int i=0; i<nameOfPanes.size(); i++) {
-//                    System.out.println(nameOfPanes.get(i));
-//                }
-
+                //Create project w/ information from textfile
                 createProject(projectName, "", creator, "");
                 //Name of Panes
                 for (int i=0; i<numberOfPanes; i++) {
-                    //String nameOfPane = 
                     String s = nameOfPanes.get(i);
                     FunctionPointsPane p = new FunctionPointsPane(s, "", this);
                     jTabbedPane1.addTab(s, p);
@@ -316,11 +284,6 @@ public class MainFrame extends javax.swing.JFrame {
                     project.addProjectPane(p);
                     p.setVisible(true);
                 }
-                
-//                for(int i=0; i<nameOfPanes.size(); i++) {
-//                    //project.getProjectPanes().get(i).setNameOfPane(nameOfPanes.get(i));
-//                    project.getProjectPanes().get(i).getNameOfPane();
-//                }
                 //Language
                 for(int i=0; i<numberOfPanes; i++) {
                     String language = languagesPerPane.get(i);
@@ -334,11 +297,9 @@ public class MainFrame extends javax.swing.JFrame {
                     for(int j=0; j<14; j++) {
                         vafArray[j] = Integer.parseInt(vafPerPane.get(i)[j]);
                     }
-//                    
                     project.getProjectPanes().get(i).setValueAdjustmentList(vafArray);
                     
                 }
-                //project.getProjectPanes().get(0).printValueAdjustmentList();
                 //SumOfVAFPerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     int sum = Integer.parseInt(sumOfVAFPerPane.get(i));
@@ -348,12 +309,6 @@ public class MainFrame extends javax.swing.JFrame {
                 //functionDataPerPane
                 int value = 0;
                 for(int i=0; i<numberOfPanes; i++) {
-//                    int [] fpArray = new int[5];
-//                    for(int j=0; j<5; j++) {
-//                        int value = Integer.parseInt(functionDataPerPane.get(i)[j]);
-//                        project.getProjectPanes().get(i).setExternalInput(value);
-//                        project.getProjectPanes().get(i).setEIData(Integer.toString(value));
-//                    }
                     value = Integer.parseInt(functionDataPerPane.get(i)[0]);
                     project.getProjectPanes().get(i).setExternalInput(value);
                     project.getProjectPanes().get(i).setEIsEdit(Integer.toString(value));
@@ -376,13 +331,6 @@ public class MainFrame extends javax.swing.JFrame {
                 }
                 
                 //functionDataResultsPerPane
-//                System.out.println("function data");
-////                for (int i=0; i<2; i++) {
-////                    for(int j=0; j<functionDataResultsPerPane.get(i).length; j++) {
-////                        System.out.print(functionDataResultsPerPane.get(i)[j] + ",");
-////                    }
-////                    
-////                }
                 int value2 = 0;
                 for(int i=0; i<numberOfPanes; i++) {
                     value2 = Integer.parseInt(functionDataResultsPerPane.get(i)[0]);
@@ -405,128 +353,10 @@ public class MainFrame extends javax.swing.JFrame {
                     project.getProjectPanes().get(i).setExternalInterfaceFilesResults(value2);
                     project.getProjectPanes().get(i).setEIFData(Integer.toString(value2));
                 }
-                
-//                for(int i=0; i<complexitiesPerPane.size();i++) {
-//                    for(int j=0; j<complexitiesPerPane.get(i)[j].length(); j++) {
-//                        System.out.print("complexity = " + complexitiesPerPane.get(i)[j] + ",");
-//                    }
-//                    System.out.println("");
-//                }
-
-//complexity redo
+                //complexity
                 for (int i=0; i<numberOfPanes; i++) {
                     project.getProjectPanes().get(i).complexities(complexitiesPerPane.get(i));
                 }
-
-                
-                //complexities
-//                String complexity = "";
-//                for(int i=0; i<numberOfPanes; i++) {
-//                    //EI
-//                    complexity = complexitiesPerPane.get(i)[0];
-//                    if(complexity.equals("simple")){
-//                        project.getProjectPanes().get(i).setEISimpleRadioButton(true);
-//                        project.getProjectPanes().get(i).setEIAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEI(3);
-//                    }
-//                    else if(complexity.equals("average")){
-//                        project.getProjectPanes().get(i).setEISimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIAverageRadioButton(true);
-//                        project.getProjectPanes().get(i).setEIComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEI(4);
-//                    }
-//                    else if(complexity.equals("complex")){
-//                        project.getProjectPanes().get(i).setEISimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIComplexRadioButton(true);
-//                        project.getProjectPanes().get(i).setWeightingFactorEI(6);
-//                    }
-//                    //EO
-//                    complexity = complexitiesPerPane.get(i)[1];
-//                    if(complexity.equals("simple")){
-//                        project.getProjectPanes().get(i).setEOSimpleRadioButton(true);
-//                        project.getProjectPanes().get(i).setEOAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEOComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEO(4);
-//                    }
-//                    else if(complexity.equals("average")){
-//                        project.getProjectPanes().get(i).setEOSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEOAverageRadioButton(true);
-//                        project.getProjectPanes().get(i).setEOComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEO(5);
-//                    }
-//                    else if(complexity.equals("complex")){
-//                        project.getProjectPanes().get(i).setEOSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEOAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEOComplexRadioButton(true);
-//                        project.getProjectPanes().get(i).setWeightingFactorEO(7);
-//                    }
-//                    //EInq
-//                    complexity = complexitiesPerPane.get(i)[2];
-//                    if(complexity.equals("simple")){
-//                        project.getProjectPanes().get(i).setEInqSimpleRadioButton(true);
-//                        project.getProjectPanes().get(i).setEInqAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEInqComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEInq(3);
-//                    }
-//                    else if(complexity.equals("average")){
-//                        project.getProjectPanes().get(i).setEInqSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEInqAverageRadioButton(true);
-//                        project.getProjectPanes().get(i).setEInqComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEInq(4);
-//                    }
-//                    else if(complexity.equals("complex")){
-//                        project.getProjectPanes().get(i).setEInqSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEInqAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEInqComplexRadioButton(true);
-//                        project.getProjectPanes().get(i).setWeightingFactorEInq(6);
-//                    }
-//                    //ILF
-//                    complexity = complexitiesPerPane.get(i)[3];
-//                    if(complexity.equals("simple")){
-//                        project.getProjectPanes().get(i).setILFSimpleRadioButton(true);
-//                        project.getProjectPanes().get(i).setILFAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setILFComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorILF(7);
-//                    }
-//                    else if(complexity.equals("average")){
-//                        project.getProjectPanes().get(i).setILFSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setILFAverageRadioButton(true);
-//                        project.getProjectPanes().get(i).setILFComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorILF(10);
-//                    }
-//                    else if(complexity.equals("complex")){
-//                        project.getProjectPanes().get(i).setILFSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setILFAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setILFComplexRadioButton(true);
-//                        project.getProjectPanes().get(i).setWeightingFactorILF(15);
-//                    }
-//                    //EIF
-//                    complexity = complexitiesPerPane.get(i)[4];
-//                    if(complexity.equals("simple")){
-//                        project.getProjectPanes().get(i).setEIFSimpleRadioButton(true);
-//                        project.getProjectPanes().get(i).setEIFAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIFComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEIF(5);
-//                    }
-//                    else if(complexity.equals("simple")){
-//                        project.getProjectPanes().get(i).setEIFSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIFAverageRadioButton(true);
-//                        project.getProjectPanes().get(i).setEIFComplexRadioButton(false);
-//                        project.getProjectPanes().get(i).setWeightingFactorEIF(7);
-//                    }
-//                    else if(complexity.equals("complex")){
-//                        project.getProjectPanes().get(i).setEIFSimpleRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIFAverageRadioButton(false);
-//                        project.getProjectPanes().get(i).setEIFComplexRadioButton(true);
-//                        project.getProjectPanes().get(i).setWeightingFactorEIF(10);
-//                    }
-//                    
-//                    
-//                }
-//                
-                
                 DecimalFormat df = new DecimalFormat("###,###,###.##");
                 
                 //functionPointsPerPane
@@ -537,14 +367,13 @@ public class MainFrame extends javax.swing.JFrame {
                     project.getProjectPanes().get(i).setComputeFPData(formattedFP);
                 }
                
-//                //codeSizePerPane
+                //codeSizePerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     double sum = Double.parseDouble(codeSizePerPane.get(i));
                     project.getProjectPanes().get(i).setCodeSize(sum);
                     String formattedFP = df.format(sum);
                     project.getProjectPanes().get(i).setComputeCodeSizeData(formattedFP);
-                }
-//                
+                }       
                 //totalCountPerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     int sum = Integer.parseInt(totalCountPerPane.get(i));
@@ -552,13 +381,7 @@ public class MainFrame extends javax.swing.JFrame {
                     //String formattedFP = df.format(sum);
                     project.getProjectPanes().get(i).setTotalCountData(Integer.toString(sum));
                 }
-
-
             } catch (Exception ex) {ex.printStackTrace();}
-            
-            
-            
-            //System.out.println("Read content");
         }
         else {
             System.out.println("Cancel");
@@ -567,14 +390,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_file_openActionPerformed
 
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
-        //String path = System.getProperty("user.dir");
-        //System.out.println("Working Directory = " + path);
-        
-        //JOptionPane.showMessageDialog(null, "path = "+ path, "", JOptionPane.INFORMATION_MESSAGE);
-        
-        //File outputFile = new File(path + "/" + project.getProjectName() + ".ms");
-        
-        
         JFileChooser fileChooser = new JFileChooser();
         int response = fileChooser.showSaveDialog(null);
         

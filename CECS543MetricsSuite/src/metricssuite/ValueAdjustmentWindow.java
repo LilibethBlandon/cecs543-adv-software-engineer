@@ -5,15 +5,9 @@
  */
 package metricssuite;
 
-/**
- *
- * @author school
- */
+//Cleanup Done
 public class ValueAdjustmentWindow extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ValueAdjustmentWindow
-     */
     private FunctionPointsPane p;
     private int [] values = new int[14];
     public ValueAdjustmentWindow() {
@@ -291,9 +285,7 @@ public class ValueAdjustmentWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneJButtonActionPerformed
-        // TODO add your handling code here:
-        //Add the code here to send the summation of all the VA values to the pane window.
-        //Also save the data from the va values. probably send an array w/ the values?
+        //Saved values for Value Adjustment Factors
         int sum = 0;
         values[0] = Integer.parseInt(jComboBox1.getSelectedItem().toString());
         values[1] = Integer.parseInt(jComboBox2.getSelectedItem().toString());
@@ -319,7 +311,6 @@ public class ValueAdjustmentWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_doneJButtonActionPerformed
 
     private void cancelJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelJButtonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_cancelJButtonActionPerformed
 

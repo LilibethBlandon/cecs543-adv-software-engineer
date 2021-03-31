@@ -6,17 +6,9 @@
 package metricssuite;
 
 import java.text.DecimalFormat;
-import javafx.scene.input.KeyCode;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-/**
- *
- * @author school
- */
+//Cleanup Done
 public class FunctionPointsPane extends javax.swing.JPanel {
 
     /**
@@ -58,7 +50,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.language = language;
         this.mainframe = mainframe;
         languageData.setText(language);
-        //languageData.setText(language);
     }
 
     /**
@@ -166,11 +157,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         jLabel2.setText("Simple   Average   Complex ");
 
         EIsEdit.setActionCommand("<Not Set>");
-        EIsEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EIsEditActionPerformed(evt);
-            }
-        });
         EIsEdit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 EIsEditKeyReleased(evt);
@@ -571,7 +557,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     private void EOAverageRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EOAverageRadioButtonActionPerformed
         weightingFactorEO = 5;
         complexities[1] = "average";
-        //System.out.println("My value is " + weightingFactorEO);
     }//GEN-LAST:event_EOAverageRadioButtonActionPerformed
 
     private void EOComplexRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EOComplexRadioButtonActionPerformed
@@ -625,7 +610,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     }//GEN-LAST:event_EIFComplexRadioButtonActionPerformed
 
     private void computeFPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeFPButtonActionPerformed
-        //get button group stuff
         //EI
         if(EISimpleRadioButton.isSelected()) {
             weightingFactorEI = 3;
@@ -708,36 +692,23 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         externalInterfaceFilesResults = externalInterfaceFiles * weightingFactorEIF;
         EIFData.setText(Integer.toString(externalInterfaceFilesResults));
         
+        //Sum of all EI, EO, ...
         totalCount = externalInputResults + externalOutputResults + externalInquiriesResults + internalLogicalFilesResults + externalInterfaceFilesResults;
         totalCountData.setText(Integer.toString(totalCount));
         
+        //Value adjustment sum
         valueAdjustmentSum = Integer.parseInt(valueAdjustmentData.getText());
         
+        //Compute FP w/ total count and valueadjustment
         computeFP = totalCount * (0.65 + (0.01 * valueAdjustmentSum));
-        //computeFP = Math.round(totalCount * (0.65 + (0.01 * valueAdjustmentSum)));
-        //System.out.println(computeFP);
-        
-        
-        //String computeFPString = Double.toString(computeFP);
-        //System.out.println(computeFPString);
         String formattedFP = df.format(computeFP);
-        //System.out.println(formattedFP);
-        
         computeFPData.setText(formattedFP);
-        //computeFPData.setText(Double.toString(computeFP));
     }//GEN-LAST:event_computeFPButtonActionPerformed
 
     private void EIsEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EIsEditKeyReleased
-        // TODO add your handling code here:
+        //Validate values are non-negative integers
         char character = evt.getKeyChar();
         int code = evt.getKeyCode();
-//        if(character == '-'){
-//            System.out.println("what character is this? " + character);
-//            EIsEdit.setText(Integer.toString(externalInput));
-//        }
-//        else{
-//            externalInput = Integer.parseInt(EIsEdit.getText());
-//        }
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
             externalInput = Integer.parseInt(EIsEdit.getText());
             //System.out.println("External Input" + externalInput);
@@ -749,7 +720,7 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     }//GEN-LAST:event_EIsEditKeyReleased
 
     private void EOsEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EOsEditKeyReleased
-        // TODO add your handling code here:
+        //Validate values are non-negative integers
         int code = evt.getKeyCode();
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
             externalOutput = Integer.parseInt(EOsEdit.getText());
@@ -762,7 +733,7 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     }//GEN-LAST:event_EOsEditKeyReleased
 
     private void EInqsEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EInqsEditKeyReleased
-        // TODO add your handling code here:
+        //Validate values are non-negative integers
         int code = evt.getKeyCode();
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
             externalInquiries = Integer.parseInt(EInqsEdit.getText());
@@ -775,7 +746,7 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     }//GEN-LAST:event_EInqsEditKeyReleased
 
     private void ILFsEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ILFsEditKeyReleased
-        // TODO add your handling code here:
+        //Validate values are non-negative integers
         int code = evt.getKeyCode();
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
             internalLogicalFiles = Integer.parseInt(ILFsEdit.getText());
@@ -788,7 +759,7 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     }//GEN-LAST:event_ILFsEditKeyReleased
 
     private void EIFsEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EIFsEditKeyReleased
-        // TODO add your handling code here:
+        //Validate values are non-negative integers
         int code = evt.getKeyCode();
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
             externalInterfaceFiles = Integer.parseInt(EIFsEdit.getText());
@@ -854,11 +825,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         computeCodeSizeData.setText(formattedCodeSize);
         //computeCodeSizeData.setText(Double.toString(codeSize));
     }//GEN-LAST:event_computeCodeSizeButtonActionPerformed
-
-    private void EIsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EIsEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EIsEditActionPerformed
-
     
     public void complexities(String [] arr) {
         if(arr[0].equals("simple")){
@@ -1116,22 +1082,12 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     public void setComplexities(String[] complexities) {
         this.complexities = complexities;
     }
-    
-    
-    
-//JBUTTONS
-    public JRadioButton getEIAverageRadioButton() {
-        return EIAverageRadioButton;
-    }
 
+    //
     public void setEIAverageRadioButton(boolean m) {
         this.EIAverageRadioButton.setSelected(m);
     }
-
-    public JRadioButton getEIComplexRadioButton() {
-        return EIComplexRadioButton;
-    }
-
+    
     public void setEIComplexRadioButton(boolean m) {
         this.EIComplexRadioButton.setSelected(m);
     }
@@ -1144,16 +1100,8 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.EIData.setText(EIData);
     }
 
-    public JRadioButton getEIFAverageRadioButton() {
-        return EIFAverageRadioButton;
-    }
-
     public void setEIFAverageRadioButton(boolean m) {
         this.EIFAverageRadioButton.setSelected(m);
-    }
-
-    public JRadioButton getEIFComplexRadioButton() {
-        return EIFComplexRadioButton;
     }
 
     public void setEIFComplexRadioButton(boolean m) {
@@ -1168,10 +1116,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.EIFData.setText(EIFData);
     }
 
-    public JRadioButton getEIFSimpleRadioButton() {
-        return EIFSimpleRadioButton;
-    }
-
     public void setEIFSimpleRadioButton(boolean m) {
         this.EIFSimpleRadioButton.setSelected(m);
     }
@@ -1184,24 +1128,12 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.EIFsEdit.setText(EIFsEdit);
     }
 
-    public JRadioButton getEISimpleRadioButton() {
-        return EISimpleRadioButton;
-    }
-
     public void setEISimpleRadioButton(boolean m) {
         this.EISimpleRadioButton.setSelected(m);
     }
 
-    public JRadioButton getEInqAverageRadioButton() {
-        return EInqAverageRadioButton;
-    }
-
     public void setEInqAverageRadioButton(boolean m) {
         this.EInqAverageRadioButton.setSelected(m);
-    }
-
-    public JRadioButton getEInqComplexRadioButton() {
-        return EInqComplexRadioButton;
     }
 
     public void setEInqComplexRadioButton(boolean m) {
@@ -1214,10 +1146,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
 
     public void setEInqData(String EInqData) {
         this.EInqData.setText(EInqData);
-    }
-
-    public JRadioButton getEInqSimpleRadioButton() {
-        return EInqSimpleRadioButton;
     }
 
     public void setEInqSimpleRadioButton(boolean m) {
@@ -1240,16 +1168,8 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.EIsEdit.setText(EIsEdit);
     }
 
-    public JRadioButton getEOAverageRadioButton() {
-        return EOAverageRadioButton;
-    }
-
     public void setEOAverageRadioButton(boolean m) {
         this.EOAverageRadioButton.setSelected(m);
-    }
-
-    public JRadioButton getEOComplexRadioButton() {
-        return EOComplexRadioButton;
     }
 
     public void setEOComplexRadioButton(boolean m) {
@@ -1264,10 +1184,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.EOData.setText(EOData);
     }
 
-    public JRadioButton getEOSimpleRadioButton() {
-        return EOSimpleRadioButton;
-    }
-
     public void setEOSimpleRadioButton(boolean m) {
         this.EOSimpleRadioButton.setSelected(m);
     }
@@ -1280,18 +1196,10 @@ public class FunctionPointsPane extends javax.swing.JPanel {
         this.EOsEdit.setText(EOsEdit);
     }
 
-    public JRadioButton getILFAverageRadioButton() {
-        return ILFAverageRadioButton;
-    }
-
     public void setILFAverageRadioButton(boolean m) {
         this.ILFAverageRadioButton.setSelected(m);
     }
-
-    public JRadioButton getILFComplexRadioButton() {
-        return ILFComplexRadioButton;
-    }
-
+    
     public void setILFComplexRadioButton(boolean m) {
         this.ILFComplexRadioButton.setSelected(m);
     }
@@ -1303,11 +1211,7 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     public void setILFData(String ILFData) {
         this.ILFData.setText(ILFData);
     }
-
-    public JRadioButton getILFSimpleRadioButton() {
-        return ILFSimpleRadioButton;
-    }
-
+    
     public void setILFSimpleRadioButton(boolean m) {
         this.ILFSimpleRadioButton.setSelected(m);
     }
@@ -1319,37 +1223,13 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     public void setILFsEdit(String ILFsEdit) {
         this.ILFsEdit.setText(ILFsEdit);
     }
-
-    public JButton getChangeLanguageButton() {
-        return changeLanguageButton;
-    }
-
-    public void setChangeLanguageButton(JButton changeLanguageButton) {
-        this.changeLanguageButton = changeLanguageButton;
-    }
-
-    public JButton getComputeCodeSizeButton() {
-        return computeCodeSizeButton;
-    }
-
-    public void setComputeCodeSizeButton(JButton computeCodeSizeButton) {
-        this.computeCodeSizeButton = computeCodeSizeButton;
-    }
-
+    
     public String getComputeCodeSizeData() {
         return computeCodeSizeData.getText();
     }
 
     public void setComputeCodeSizeData(String computeCodeSizeData) {
         this.computeCodeSizeData.setText(computeCodeSizeData);
-    }
-
-    public JButton getComputeFPButton() {
-        return computeFPButton;
-    }
-
-    public void setComputeFPButton(JButton computeFPButton) {
-        this.computeFPButton = computeFPButton;
     }
 
     public String getComputeFPData() {
@@ -1364,27 +1244,18 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     public String getLanguageData() {
         return languageData.getText();
     }
-
+    
     public void setLanguageData(String languageData) {
         //this.languageData = languageData;
         this.languageData.setText(languageData);
     }
     
-
     public String getTotalCountData() {
         return totalCountData.getText();
     }
 
     public void setTotalCountData(String totalCountData) {
         this.totalCountData.setText(totalCountData);
-    }
-
-    public JButton getValueAdjustmentButton() {
-        return valueAdjustmentButton;
-    }
-
-    public void setValueAdjustmentButton(JButton valueAdjustmentButton) {
-        this.valueAdjustmentButton = valueAdjustmentButton;
     }
 
     public String getValueAdjustmentData() {
@@ -1405,12 +1276,6 @@ public class FunctionPointsPane extends javax.swing.JPanel {
     public String toString() {
         return "Pane{" + "nameOfPane=" + nameOfPane + ", externalInput=" + externalInput + ", externalOutput=" + externalOutput + ", externalInquiries=" + externalInquiries + ", internalLogicalFiles=" + internalLogicalFiles + ", externalInterfaceFiles=" + externalInterfaceFiles + ", weightingFactorEI=" + weightingFactorEI + ", weightingFactorEO=" + weightingFactorEO + ", weightingFactorEInq=" + weightingFactorEInq + ", weightingFactorILF=" + weightingFactorILF + ", weightingFactorEIF=" + weightingFactorEIF + ", externalInputResults=" + externalInputResults + ", externalOutputResults=" + externalOutputResults + ", externalInquiriesResults=" + externalInquiriesResults + ", internalLogicalFilesResults=" + internalLogicalFilesResults + ", externalInterfaceFilesResults=" + externalInterfaceFilesResults + ", totalCount=" + totalCount + ", computeFP=" + computeFP + ", valueAdjustmentSum=" + valueAdjustmentSum + ", codeSize=" + codeSize + ", language=" + language + ", valueAdjustmentList=" + valueAdjustmentList.toString() + ", complexities=" + complexities + '}';
     }
-
-//    @Override
-//    public String toString() {
-//        return "FunctionPointsPane{" + "nameOfPane=" + nameOfPane + ", externalInput=" + externalInput + ", externalOutput=" + externalOutput + ", externalInquiries=" + externalInquiries + ", internalLogicalFiles=" + internalLogicalFiles + ", externalInterfaceFiles=" + externalInterfaceFiles + ", weightingFactorEI=" + weightingFactorEI + ", weightingFactorEO=" + weightingFactorEO + ", weightingFactorEInq=" + weightingFactorEInq + ", weightingFactorILF=" + weightingFactorILF + ", weightingFactorEIF=" + weightingFactorEIF + ", externalInputResults=" + externalInputResults + ", externalOutputResults=" + externalOutputResults + ", externalInquiriesResults=" + externalInquiriesResults + ", internalLogicalFilesResults=" + internalLogicalFilesResults + ", externalInterfaceFilesResults=" + externalInterfaceFilesResults + ", totalCount=" + totalCount + ", computeFP=" + computeFP + ", valueAdjustment=" + valueAdjustmentSum + ", codeSize=" + codeSize + ", language=" + language + '}';
-//    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton EIAverageRadioButton;

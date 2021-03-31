@@ -14,7 +14,6 @@ import javax.swing.JPanel;
  */
 public class Project {
     String projectName, productName, creator, comments;
-    //ArrayList<JPanel> jPanels = new ArrayList<>();
     String language = "";
     ArrayList<FunctionPointsPane> projectPanes = new ArrayList<>();
     
@@ -81,5 +80,4 @@ public class Project {
     public String toString() {
         return "Project{" + "projectName=" + projectName + ", productName=" + productName + ", creator=" + creator + ", comments=" + comments + ", language=" + language + '}';
     }
-    
 }
