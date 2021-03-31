@@ -477,29 +477,20 @@ public class MainFrame extends javax.swing.JFrame {
         }
         pWriter.close();
         }
-        
-        
-        
     }//GEN-LAST:event_file_saveActionPerformed
 
     private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
-        // TODO add your handling code here:
         this.dispose();
         System.exit(0);
     }//GEN-LAST:event_file_exitActionPerformed
 
     private void preferences_languageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferences_languageActionPerformed
-        // TODO add your handling code here:
         Language language = new Language(this);
         language.setVisible(true);
         language.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //project.setLanguage(currentLanguage);
-        //Have a text file that saves the language that should restart next time program opens
     }//GEN-LAST:event_preferences_languageActionPerformed
 
     private void metrics_fp_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metrics_fp_dataActionPerformed
-        // TODO add your handling code here:
-        //inputPreviousLanguage();
         if(project!= null) {
             String fpName = JOptionPane.showInputDialog("Name of this FP");
             
@@ -519,9 +510,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_fp_dataActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public void compilerHelp() {
         System.out.println("Language = " + currentLanguage);
 

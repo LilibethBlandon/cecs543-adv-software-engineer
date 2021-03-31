@@ -8,10 +8,7 @@ package metricssuite;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-/**
- *
- * @author school
- */
+//Cleanup Done
 public class Project {
     String projectName, productName, creator, comments;
     String language = "";

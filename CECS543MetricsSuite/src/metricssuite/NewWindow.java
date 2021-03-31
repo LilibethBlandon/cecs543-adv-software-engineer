@@ -44,8 +44,8 @@ public class NewWindow extends javax.swing.JFrame {
         creator_JTextFile = new javax.swing.JTextField();
         comments_JTextFile = new javax.swing.JTextField();
         projectName_JTextFile = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,41 +59,17 @@ public class NewWindow extends javax.swing.JFrame {
 
         jLabel5.setText("Comments:");
 
-        productName_JTextFile.addActionListener(new java.awt.event.ActionListener() {
+        okButton.setText("Ok");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productName_JTextFileActionPerformed(evt);
+                okButtonActionPerformed(evt);
             }
         });
 
-        creator_JTextFile.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creator_JTextFileActionPerformed(evt);
-            }
-        });
-
-        comments_JTextFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comments_JTextFileActionPerformed(evt);
-            }
-        });
-
-        projectName_JTextFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                projectName_JTextFileActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Ok");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -126,9 +102,9 @@ public class NewWindow extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(okButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
+                                .addComponent(cancelButton))
                             .addComponent(comments_JTextFile, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -155,35 +131,19 @@ public class NewWindow extends javax.swing.JFrame {
                 .addComponent(comments_JTextFile, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(okButton)
+                    .addComponent(cancelButton))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void productName_JTextFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productName_JTextFileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_productName_JTextFileActionPerformed
-
-    private void creator_JTextFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creator_JTextFileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creator_JTextFileActionPerformed
-
-    private void comments_JTextFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comments_JTextFileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comments_JTextFileActionPerformed
-
-    private void projectName_JTextFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectName_JTextFileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_projectName_JTextFileActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         String projName = projectName_JTextFile.getText();
         String prodName = productName_JTextFile.getText();
         String creator = creator_JTextFile.getText();
@@ -195,7 +155,7 @@ public class NewWindow extends javax.swing.JFrame {
             mainFrame.createProject(projName, prodName, creator, comments);
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,15 +193,15 @@ public class NewWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField comments_JTextFile;
     private javax.swing.JTextField creator_JTextFile;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton okButton;
     private javax.swing.JTextField productName_JTextFile;
     private javax.swing.JTextField projectName_JTextFile;
     // End of variables declaration//GEN-END:variables
