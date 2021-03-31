@@ -14,12 +14,12 @@ public class ValueAdjustmentWindow extends javax.swing.JFrame {
     /**
      * Creates new form ValueAdjustmentWindow
      */
-    private Pane p;
+    private FunctionPointsPane p;
     private int [] values = new int[14];
     public ValueAdjustmentWindow() {
         initComponents();
     }
-    public ValueAdjustmentWindow(Pane p, int [] values) {
+    public ValueAdjustmentWindow(FunctionPointsPane p, int [] values) {
         initComponents();
         this.p = p;
         this.values = values;

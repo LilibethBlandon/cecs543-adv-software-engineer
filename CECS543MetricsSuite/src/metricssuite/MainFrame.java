@@ -7,27 +7,16 @@ package metricssuite;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -171,7 +160,6 @@ public class MainFrame extends javax.swing.JFrame {
         NewWindow newWindow = new NewWindow(this, project);
         newWindow.setVisible(true);
         newWindow.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //inputPreviousLanguage();
     }//GEN-LAST:event_file_newActionPerformed
 
     private void file_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openActionPerformed
@@ -322,7 +310,7 @@ public class MainFrame extends javax.swing.JFrame {
                 for (int i=0; i<numberOfPanes; i++) {
                     //String nameOfPane = 
                     String s = nameOfPanes.get(i);
-                    Pane p = new Pane(s, "", this);
+                    FunctionPointsPane p = new FunctionPointsPane(s, "", this);
                     jTabbedPane1.addTab(s, p);
                     //jTabbedPane1.ind
                     project.addProjectPane(p);
@@ -339,7 +327,7 @@ public class MainFrame extends javax.swing.JFrame {
                     project.getProjectPanes().get(i).setLanguage(language);
                     project.getProjectPanes().get(i).setLanguageData(language);
                 }
-                //VAF Per Pane
+                //VAF Per FunctionPointsPane
                 for(int i=0; i<numberOfPanes; i++) {
                     //System.out.print(vafPerPane.get(1)[i] + ",");
                     int [] vafArray = new int[14];
@@ -672,18 +660,7 @@ public class MainFrame extends javax.swing.JFrame {
             pWriter.print(totalCount + "\n");
             //pWriter.print("---------------------------------------");
         }
-        //pWriter.print("\nEND");
-        
         pWriter.close();
-
-//        pWriter.print(f + "/");
-//        pWriter.print(l + "/");
-//        pWriter.print(u + "/");
-//        pWriter.print(p);
-//        pWriter.println("");
-        
-        //pWriter.close();
-       
         }
         
         
@@ -711,7 +688,7 @@ public class MainFrame extends javax.swing.JFrame {
         if(project!= null) {
             String fpName = JOptionPane.showInputDialog("Name of this FP");
             
-            Pane paneContent = new Pane(fpName, currentLanguage, this);
+            FunctionPointsPane paneContent = new FunctionPointsPane(fpName, currentLanguage, this);
             if(fpName.equals("")) {
                 jTabbedPane1.addTab("Untitled", paneContent);
             }
@@ -768,11 +745,9 @@ public class MainFrame extends javax.swing.JFrame {
 
        // Modified version using text file
        String homeDirectory = System.getProperty("user.home");
-        //System.out.println(homeDirectory);
           BufferedReader br = null; 
           String line = "";
         try {
-            //br = new BufferedReader(new FileReader(homeDirectory + "/src/Resources/language.txt"));
             br = new BufferedReader(new FileReader(homeDirectory + "/language.txt"));
             
             System.out.println("What is br?" + br);
@@ -786,51 +761,6 @@ public class MainFrame extends javax.swing.JFrame {
         {
             currentLanguage = "None";
         }
-        
-/****/
-
-//        String homeDirectory = System.getProperty("user.dir");
-//        System.out.println(homeDirectory);
-//          BufferedReader br = null; 
-//          String line = "";
-//        try {
-//            //br = new BufferedReader(new FileReader(homeDirectory + "/src/Resources/language.txt"));
-//            br = new BufferedReader(new FileReader("language.txt"));
-//            line = br.readLine();
-//            br.close();
-//        } catch (Exception ex) {ex.printStackTrace();}
-//          
-//        System.out.println("What is the programming language from text file? " + line);
-//          currentLanguage = line;
-        
-//        InputStream in = this.getClass().getResourceAsStream("Language.properties");
-//        Properties props = new Properties();
-//        props.load(in);
-//        in.close();
-
-
-//using properties
-//        Properties savedLanguage = new Properties();
-//        String l = "";
-//        Path PropertyFile = Paths.get("Language.Properties");
-//        try
-//        {
-//            //3.1 Load properties from File to Property
-//            // object
-//            Reader PropReader = Files.newBufferedReader(PropertyFile);
-//            savedLanguage.load(PropReader);
-//            //3.2 Read Property and Display it in Console
-//                l = savedLanguage.getProperty("Language");
-//            //3.3 Close the Reader File
-//            PropReader.close();
-//        }
-//        catch(IOException Ex)
-//        {
-//            System.out.println("IO Exception :" + Ex.getMessage());
-//        }        
-//        
-//        currentLanguage = l;
-
     }
     
     public static void main(String args[]) {

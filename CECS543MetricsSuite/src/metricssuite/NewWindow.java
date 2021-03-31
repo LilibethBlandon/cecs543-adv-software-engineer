@@ -8,10 +8,7 @@ package metricssuite;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author school
- */
+//Cleanup Done
 public class NewWindow extends javax.swing.JFrame {
 
     private MainFrame mainFrame;
@@ -187,7 +184,6 @@ public class NewWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         String projName = projectName_JTextFile.getText();
         String prodName = productName_JTextFile.getText();
         String creator = creator_JTextFile.getText();

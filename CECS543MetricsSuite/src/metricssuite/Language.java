@@ -9,24 +9,15 @@ package metricssuite;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author school
- */
+//Cleanup Done
 public class Language extends javax.swing.JFrame {
 
     private MainFrame m;
-    private Pane p;
+    private FunctionPointsPane p;
     private String languageSelected = "";
     private int window;
     /** Creates new form Language */
@@ -39,7 +30,7 @@ public class Language extends javax.swing.JFrame {
         this.m = m;
         window = 1;
     }
-    public Language(Pane p, MainFrame m) {
+    public Language(FunctionPointsPane p, MainFrame m) {
         initComponents();
         this.p = p;
         this.m = m;
@@ -84,11 +75,6 @@ public class Language extends javax.swing.JFrame {
 
         buttonGroup1.add(cplusplus);
         cplusplus.setText("C++");
-        cplusplus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cplusplusActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(csharp);
         csharp.setText("C#");
@@ -191,25 +177,9 @@ public class Language extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneJButtonActionPerformed
-        //m.setLanguage("Assembler");
         languageSelection();
         String currentDirectory = System.getProperty("user.home");
         if(window == 1) {
-            
-            //File outputFile = new File(currentDirectory + "/src/Resources/language.txt");
-//            File outputFile = new File("src/Recources/language.txt");
-//            FileWriter fWriter = null;	
-//            try {
-//                fWriter = new FileWriter(outputFile);
-//            } catch (IOException ex) {
-//            Logger.getLogger(Language.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            PrintWriter pWriter = new PrintWriter(fWriter);
-//            pWriter.print(languageSelected);
-//            pWriter.close();
-
-
-//Modified version using textfile
             File outputFile = new File(currentDirectory + "/language.txt");
             //File outputFile = new File("src/Recources/language.txt");
             FileWriter fWriter = null;	
@@ -221,28 +191,6 @@ public class Language extends javax.swing.JFrame {
             PrintWriter pWriter = new PrintWriter(fWriter);
             pWriter.print(languageSelected);
             pWriter.close();
-
-
-
-/******/
-
-//Help from: https://owlcation.com/stem/Java-Examples-Application-Properties-Persisted-as-Simple-Text-File
-//            Properties savedLanguage = new Properties();
-//            savedLanguage.setProperty("Language", languageSelected);
-//            
-//            Path PropertyFile = Paths.get("Language.Properties");
-//            try
-//            {
-//                Writer PropWriter = Files.newBufferedWriter(PropertyFile);
-//                savedLanguage.store(PropWriter, "Language Properties");
-//                PropWriter.close();
-//            }
-//            catch(IOException Ex) {
-//                System.out.println("IO Exception :" + Ex.getMessage());
-//            }
-//            
-            
-            
         }
         else {
             m.setLanguage(languageSelected);
@@ -252,10 +200,6 @@ public class Language extends javax.swing.JFrame {
         }
         this.dispose();
     }//GEN-LAST:event_doneJButtonActionPerformed
-
-    private void cplusplusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cplusplusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cplusplusActionPerformed
 
     //a function depending which window was called (pane or mainframe)
     public void languageSelection() {

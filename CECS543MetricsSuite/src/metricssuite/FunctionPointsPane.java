@@ -17,10 +17,10 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  *
  * @author school
  */
-public class Pane extends javax.swing.JPanel {
+public class FunctionPointsPane extends javax.swing.JPanel {
 
     /**
-     * Creates new form Pane
+     * Creates new form FunctionPointsPane
      */
     private String nameOfPane = "";
     private int externalInput = 0;
@@ -48,11 +48,11 @@ public class Pane extends javax.swing.JPanel {
     private DecimalFormat df = new DecimalFormat("###,###,###.##");
     private MainFrame mainframe;
     
-    public Pane() {
+    public FunctionPointsPane() {
         initComponents();
     }
     
-    public Pane(String nameOfPane, String language, MainFrame mainframe) {
+    public FunctionPointsPane(String nameOfPane, String language, MainFrame mainframe) {
         initComponents();
         this.nameOfPane = nameOfPane;
         this.language = language;
@@ -806,7 +806,6 @@ public class Pane extends javax.swing.JPanel {
     }//GEN-LAST:event_valueAdjustmentButtonActionPerformed
 
     private void changeLanguageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeLanguageButtonActionPerformed
-        // TODO add your handling code here:
         //open language dialogue window
         Language language = new Language(this, mainframe);
         language.setVisible(true);
@@ -1409,7 +1408,7 @@ public class Pane extends javax.swing.JPanel {
 
 //    @Override
 //    public String toString() {
-//        return "Pane{" + "nameOfPane=" + nameOfPane + ", externalInput=" + externalInput + ", externalOutput=" + externalOutput + ", externalInquiries=" + externalInquiries + ", internalLogicalFiles=" + internalLogicalFiles + ", externalInterfaceFiles=" + externalInterfaceFiles + ", weightingFactorEI=" + weightingFactorEI + ", weightingFactorEO=" + weightingFactorEO + ", weightingFactorEInq=" + weightingFactorEInq + ", weightingFactorILF=" + weightingFactorILF + ", weightingFactorEIF=" + weightingFactorEIF + ", externalInputResults=" + externalInputResults + ", externalOutputResults=" + externalOutputResults + ", externalInquiriesResults=" + externalInquiriesResults + ", internalLogicalFilesResults=" + internalLogicalFilesResults + ", externalInterfaceFilesResults=" + externalInterfaceFilesResults + ", totalCount=" + totalCount + ", computeFP=" + computeFP + ", valueAdjustment=" + valueAdjustmentSum + ", codeSize=" + codeSize + ", language=" + language + '}';
+//        return "FunctionPointsPane{" + "nameOfPane=" + nameOfPane + ", externalInput=" + externalInput + ", externalOutput=" + externalOutput + ", externalInquiries=" + externalInquiries + ", internalLogicalFiles=" + internalLogicalFiles + ", externalInterfaceFiles=" + externalInterfaceFiles + ", weightingFactorEI=" + weightingFactorEI + ", weightingFactorEO=" + weightingFactorEO + ", weightingFactorEInq=" + weightingFactorEInq + ", weightingFactorILF=" + weightingFactorILF + ", weightingFactorEIF=" + weightingFactorEIF + ", externalInputResults=" + externalInputResults + ", externalOutputResults=" + externalOutputResults + ", externalInquiriesResults=" + externalInquiriesResults + ", internalLogicalFilesResults=" + internalLogicalFilesResults + ", externalInterfaceFilesResults=" + externalInterfaceFilesResults + ", totalCount=" + totalCount + ", computeFP=" + computeFP + ", valueAdjustment=" + valueAdjustmentSum + ", codeSize=" + codeSize + ", language=" + language + '}';
 //    }
 
 

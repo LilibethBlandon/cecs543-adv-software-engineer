@@ -16,7 +16,7 @@ public class Project {
     String projectName, productName, creator, comments;
     //ArrayList<JPanel> jPanels = new ArrayList<>();
     String language = "";
-    ArrayList<Pane> projectPanes = new ArrayList<>();
+    ArrayList<FunctionPointsPane> projectPanes = new ArrayList<>();
     
     public Project(String projectName, String productName, String creator, String comments, String language){
         this.projectName = projectName;
@@ -57,15 +57,15 @@ public class Project {
         this.comments = comments;
     }
 
-    public ArrayList<Pane> getProjectPanes() {
+    public ArrayList<FunctionPointsPane> getProjectPanes() {
         return projectPanes;
     }
 
-    public void setProjectPanes(ArrayList<Pane> projectPanes) {
+    public void setProjectPanes(ArrayList<FunctionPointsPane> projectPanes) {
         this.projectPanes = projectPanes;
     }
     
-    public void addProjectPane(Pane pane) {
+    public void addProjectPane(FunctionPointsPane pane) {
         projectPanes.add(pane);
     }
 
@@ -81,10 +81,5 @@ public class Project {
     public String toString() {
         return "Project{" + "projectName=" + projectName + ", productName=" + productName + ", creator=" + creator + ", comments=" + comments + ", language=" + language + '}';
     }
-    
-
-    
-    
-    
     
 }
