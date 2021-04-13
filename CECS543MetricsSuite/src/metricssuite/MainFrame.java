@@ -61,6 +61,7 @@ public class MainFrame extends javax.swing.JFrame {
         metrics_fp = new javax.swing.JMenu();
         metrics_fp_data = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
+        consoleHelp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CECS 543 Metrics Suite - Function Points");
@@ -133,6 +134,15 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(metrics);
 
         help.setText("Help");
+
+        consoleHelp.setText("Console Help");
+        consoleHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consoleHelpActionPerformed(evt);
+            }
+        });
+        help.add(consoleHelp);
+
         jMenuBar1.add(help);
 
         setJMenuBar(jMenuBar1);
@@ -390,7 +400,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_file_openActionPerformed
 
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
+      /* JFileChooser fileChooser = new JFileChooser();
         int response = fileChooser.showSaveDialog(null);
         
         File file2 = null;
@@ -409,8 +419,11 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*http://stackoverflow.com/questions/4269302/how-do-you-append-to-a-text-file-instead-of-overwriting-it-in-java
-        */
+        //http://stackoverflow.com/questions/4269302/how-do-you-append-to-a-text-file-instead-of-overwriting-it-in-java
+        
+      */
+      
+        /*
         PrintWriter pWriter = new PrintWriter(fWriter);
         pWriter.print(project.getProjectName() + "\n");
         pWriter.print(project.getCreator() + "\n");
@@ -477,6 +490,9 @@ public class MainFrame extends javax.swing.JFrame {
         }
         pWriter.close();
         }
+    */
+        //Hello
+        
     }//GEN-LAST:event_file_saveActionPerformed
 
     private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
@@ -509,6 +525,11 @@ public class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_metrics_fp_dataActionPerformed
+
+    private void consoleHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleHelpActionPerformed
+        //Console Help
+        System.out.println(System.getProperty("user.dir"));
+    }//GEN-LAST:event_consoleHelpActionPerformed
 
     public void compilerHelp() {
         System.out.println("Language = " + currentLanguage);
@@ -602,6 +623,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem consoleHelp;
     private javax.swing.JMenu edit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem file_exit;
