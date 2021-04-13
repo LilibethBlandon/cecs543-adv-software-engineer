@@ -491,8 +491,85 @@ public class MainFrame extends javax.swing.JFrame {
         pWriter.close();
         }
     */
-        //Hello
+        //Fixed the saving method of opening file browser
+        String filePath = System.getProperty("user.dir");
+        File outputFile = new File(filePath + "/" + project.getProjectName() + ".ms");
         
+        FileWriter fWriter = null;
+        try {
+            fWriter = new FileWriter(outputFile);
+        } catch (IOException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //http://stackoverflow.com/questions/4269302/how-do-you-append-to-a-text-file-instead-of-overwriting-it-in-java
+        
+
+        PrintWriter pWriter = new PrintWriter(fWriter);
+        pWriter.print(project.getProjectName() + "\n");
+        pWriter.print(project.getCreator() + "\n");
+        pWriter.print(project.getProjectPanes().size() + "\n");
+        for(int i=0; i<project.getProjectPanes().size(); i++) {
+            //pWriter.print("---------------------------------------" + "\n");
+            String nameOfPane = project.getProjectPanes().get(i).getNameOfPane();
+            String currentLanguage = project.getProjectPanes().get(i).getLanguage();
+            int [] valueAdjustment = project.getProjectPanes().get(i).getValueAdjustmentList();
+            String valueAdjustmentSum = Integer.toString(project.getProjectPanes().get(i).getValueAdjustmentSum());
+            String EI = Integer.toString(project.getProjectPanes().get(i).getExternalInput());
+            String EO = Integer.toString(project.getProjectPanes().get(i).getExternalOutput());
+            String EInq = Integer.toString(project.getProjectPanes().get(i).getExternalInquiries());
+            String ILF = Integer.toString(project.getProjectPanes().get(i).getInternalLogicalFiles());
+            String EIF = Integer.toString(project.getProjectPanes().get(i).getExternalInterfaceFiles());
+            
+            String EIResults = Integer.toString(project.getProjectPanes().get(i).getExternalInputResults());
+            String EOResults = Integer.toString(project.getProjectPanes().get(i).getExternalOutputResults());
+            String EInqResults = Integer.toString(project.getProjectPanes().get(i).getExternalInquiriesResults());
+            String ILFResults = Integer.toString(project.getProjectPanes().get(i).getInternalLogicalFilesResults());
+            String EIFResults = Integer.toString(project.getProjectPanes().get(i).getExternalInterfaceFilesResults());
+            
+            String [] complexities = project.getProjectPanes().get(i).getComplexities();
+            String fp = Double.toString(project.getProjectPanes().get(i).getComputeFP());
+            String codeSize = Double.toString(project.getProjectPanes().get(i).getCodeSize());
+            String totalCount = Integer.toString(project.getProjectPanes().get(i).getTotalCount());
+            //Write
+            pWriter.print(nameOfPane + "/");
+            pWriter.print(currentLanguage + "/");
+//            for(int value=0; value<valueAdjustment.length; value++) {
+//                pWriter.print(valueAdjustment[value] + ",");
+//            }
+            pWriter.print(valueAdjustment[0] + ",");
+            pWriter.print(valueAdjustment[1] + ",");
+            pWriter.print(valueAdjustment[2] + ",");
+            pWriter.print(valueAdjustment[3] + ",");
+            pWriter.print(valueAdjustment[4] + ",");
+            pWriter.print(valueAdjustment[5] + ",");
+            pWriter.print(valueAdjustment[6] + ",");
+            pWriter.print(valueAdjustment[7] + ",");
+            pWriter.print(valueAdjustment[8] + ",");
+            pWriter.print(valueAdjustment[9] + ",");
+            pWriter.print(valueAdjustment[10] + ",");
+            pWriter.print(valueAdjustment[11] + ",");
+            pWriter.print(valueAdjustment[12] + ",");
+            pWriter.print(valueAdjustment[13] + "/");
+            
+            pWriter.print(valueAdjustmentSum + "/");
+            pWriter.print(EI + "," + EO + "," + EInq + "," + ILF + "," + EIF + "/"); //MAYBE MAKE A LIST?
+            pWriter.print(EIResults + "," + EOResults + "," + EInqResults + "," + ILFResults + "," + EIFResults + "/");
+//            for(int c = 0; c<complexities.length; c++) {
+//                pWriter.print(complexitiesPerPane[c] + ",");
+//            }
+            pWriter.print(complexities[0] + ",");
+            pWriter.print(complexities[1] + ",");
+            pWriter.print(complexities[2] + ",");
+            pWriter.print(complexities[3] + ",");
+            pWriter.print(complexities[4] + "/");
+            
+            pWriter.print(fp + "/");
+            pWriter.print(codeSize + "/");
+            pWriter.print(totalCount + "\n");
+            //pWriter.print("---------------------------------------");
+        }
+        pWriter.close();
+
     }//GEN-LAST:event_file_saveActionPerformed
 
     private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
@@ -528,7 +605,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void consoleHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleHelpActionPerformed
         //Console Help
-        System.out.println(System.getProperty("user.dir"));
+        String filePath = System.getProperty("user.dir");
+        System.out.println(filePath + "/" + project.getProjectName() + ".ms");
     }//GEN-LAST:event_consoleHelpActionPerformed
 
     public void compilerHelp() {

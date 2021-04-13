@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 
 //Cleanup Done
 public class Project {
-    String projectName, productName, creator, comments;
-    String language = "";
-    ArrayList<FunctionPointsPane> projectPanes = new ArrayList<>();
+    private String projectName, productName, creator, comments;
+    private String language = "";
+    private ArrayList<FunctionPointsPane> projectPanes = new ArrayList<>();
     
     public Project(String projectName, String productName, String creator, String comments, String language){
         this.projectName = projectName;
