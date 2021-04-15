@@ -83,17 +83,17 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu1">
+            <Menu class="javax.swing.JMenu" name="metrics_ucp">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Use Case Points"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                <MenuItem class="javax.swing.JMenuItem" name="metrics_ucp_data">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="UCP Data"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="metrics_ucp_dataActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
