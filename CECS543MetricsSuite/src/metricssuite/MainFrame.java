@@ -60,6 +60,8 @@ public class MainFrame extends javax.swing.JFrame {
         metrics = new javax.swing.JMenu();
         metrics_fp = new javax.swing.JMenu();
         metrics_fp_data = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
         consoleHelp = new javax.swing.JMenuItem();
 
@@ -130,6 +132,18 @@ public class MainFrame extends javax.swing.JFrame {
         metrics_fp.add(metrics_fp_data);
 
         metrics.add(metrics_fp);
+
+        jMenu1.setText("Use Case Points");
+
+        jMenuItem1.setText("UCP Data");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        metrics.add(jMenu1);
 
         jMenuBar1.add(metrics);
 
@@ -532,6 +546,10 @@ public class MainFrame extends javax.swing.JFrame {
         compilerHelp();
     }//GEN-LAST:event_consoleHelpActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void compilerHelp() {
         System.out.println("Language = " + currentLanguage);
 
@@ -632,7 +650,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem file_open;
     private javax.swing.JMenuItem file_save;
     private javax.swing.JMenu help;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenu language;
     private javax.swing.JMenu metrics;
