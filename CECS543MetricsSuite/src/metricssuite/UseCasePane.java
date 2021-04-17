@@ -100,11 +100,17 @@ public class UseCasePane extends javax.swing.JPanel {
         jTextField11.setEditable(false);
         jTextField11.setBackground(new java.awt.Color(238, 238, 238));
 
+        jTextField12.setText("700");
+
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel10.setText("LOC/pm");
 
+        jTextField13.setText("20");
+
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setText("LOC/UCP");
+
+        jTextField14.setText("100");
 
         jTextField15.setBackground(new java.awt.Color(238, 238, 238));
 
