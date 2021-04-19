@@ -40,53 +40,55 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="ecf_Button" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ecf_total_textfield" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="ecf_total_textfield" min="-2" pref="124" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="tcf_Button" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="tcf_total_textfield" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="tcf_total_textfield" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ucp_button" min="-2" pref="113" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="ucp_textfield" min="-2" pref="81" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                              <Component id="estimatedHours_textfield" min="-2" pref="81" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="estimatedLOC_textfield" min="-2" pref="81" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                              <Component id="estimatedPM_textfield" min="-2" pref="81" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="estimatedHours_button" min="-2" pref="138" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                              <Component id="estimatedLOC_button" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="estimatedPM_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="ucp_button" pref="113" max="32767" attributes="0"/>
+                          <Component id="ucp_textfield" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="estimatedHours_button" min="-2" pref="138" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="estimatedHours_textfield" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="estimatedLOC_button" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="estimatedLOC_textfield" min="-2" pref="121" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="estimatedPM_button" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="jTextField18" min="-2" pref="116" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -109,7 +111,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      <Component id="uucw_complex" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="uucw_complex_textfield" min="-2" pref="80" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                       <Component id="uucw_total_textfield" min="-2" pref="121" max="-2" attributes="0"/>
                                   </Group>
@@ -118,45 +120,40 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="value_UUCP" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="uucw_simple_textfield" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                              <Component id="uucw_average_textfield" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="compute_UUCP" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                              <Component id="uaw_complex_textfield" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="uaw_total_textfield" min="-2" pref="121" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="uaw_simple_textfield" min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="uaw_average_textfield" min="-2" pref="80" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+              </Group>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="compute_UUCP" min="-2" pref="125" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="uucw_simple" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="uucw_average" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
-                                      <Component id="uaw_complex" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      <Component id="uaw_total_textfield" min="-2" pref="121" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="uaw_simple" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="uaw_average" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="value_UUCP" min="-2" pref="119" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -172,7 +169,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="uucw_complex" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="uucw_complex_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="uucw_total_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -185,8 +182,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="uucw_simple" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="uucw_average" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="uucw_simple_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="uucw_average_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -208,9 +205,9 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="uaw_average" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="uaw_simple" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="uaw_complex" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="uaw_average_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="uaw_simple_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="uaw_complex_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="uaw_total_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -243,12 +240,12 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ucp_textfield" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="estimatedPM_textfield" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="ucp_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="estimatedHours_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="estimatedLOC_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jTextField18" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
@@ -289,11 +286,14 @@
         <Property name="text" type="java.lang.String" value="Complex Use Cases"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="uucw_simple">
+    <Component class="javax.swing.JTextField" name="uucw_simple_textfield">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uucw_simple_textfieldKeyReleased"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="uucw_average">
+    <Component class="javax.swing.JTextField" name="uucw_average_textfield">
     </Component>
-    <Component class="javax.swing.JTextField" name="uucw_complex">
+    <Component class="javax.swing.JTextField" name="uucw_complex_textfield">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -318,11 +318,11 @@
         <Property name="text" type="java.lang.String" value="Complex Actors"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="uaw_simple">
+    <Component class="javax.swing.JTextField" name="uaw_simple_textfield">
     </Component>
-    <Component class="javax.swing.JTextField" name="uaw_average">
+    <Component class="javax.swing.JTextField" name="uaw_average_textfield">
     </Component>
-    <Component class="javax.swing.JTextField" name="uaw_complex">
+    <Component class="javax.swing.JTextField" name="uaw_complex_textfield">
     </Component>
     <Component class="javax.swing.JTextField" name="uucw_total_textfield">
       <Properties>
@@ -336,6 +336,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Compute UUCP"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compute_UUCPActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -413,7 +416,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="estimatedPM_textfield">
+    <Component class="javax.swing.JTextField" name="jTextField18">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ee" red="ee" type="rgb"/>

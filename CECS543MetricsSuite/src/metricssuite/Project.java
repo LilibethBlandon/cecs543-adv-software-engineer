@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 public class Project {
     private String projectName, productName, creator, comments;
     private String language = "";
-    private ArrayList<FunctionPointsPane> projectPanes = new ArrayList<>();
+    private ArrayList<FunctionPointsPane> functionPointPanes = new ArrayList<>();
+    
+    private ArrayList<UseCasePane> useCasePanes = new ArrayList<>();
     
     public Project(String projectName, String productName, String creator, String comments, String language){
         this.projectName = projectName;
@@ -53,16 +55,30 @@ public class Project {
         this.comments = comments;
     }
 
-    public ArrayList<FunctionPointsPane> getProjectPanes() {
-        return projectPanes;
+    //FP
+    public ArrayList<FunctionPointsPane> getFunctionPointsPanes() {
+        return functionPointPanes;
     }
 
-    public void setProjectPanes(ArrayList<FunctionPointsPane> projectPanes) {
-        this.projectPanes = projectPanes;
+    public void setFunctionPointPanes(ArrayList<FunctionPointsPane> functionPointPanes) {
+        this.functionPointPanes = functionPointPanes;
     }
     
-    public void addProjectPane(FunctionPointsPane pane) {
-        projectPanes.add(pane);
+    public void addFunctionPointPane(FunctionPointsPane pane) {
+        functionPointPanes.add(pane);
+    }
+    
+    //UCP
+    public ArrayList<UseCasePane> getUseCasePointsPanes() {
+        return useCasePanes;
+    }
+    
+    public void setUseCasePointPanes(ArrayList<UseCasePane> useCasePanes) {
+        this.useCasePanes = useCasePanes;
+    }
+    
+    public void addUseCasePointPane(UseCasePane pane) {
+        useCasePanes.add(pane);
     }
 
     public String getLanguage() {

@@ -305,14 +305,14 @@ public class MainFrame extends javax.swing.JFrame {
                     FunctionPointsPane p = new FunctionPointsPane(s, "", this);
                     jTabbedPane1.addTab(s, p);
                     //jTabbedPane1.ind
-                    project.addProjectPane(p);
+                    project.addFunctionPointPane(p);
                     p.setVisible(true);
                 }
                 //Language
                 for(int i=0; i<numberOfPanes; i++) {
                     String language = languagesPerPane.get(i);
-                    project.getProjectPanes().get(i).setLanguage(language);
-                    project.getProjectPanes().get(i).setLanguageData(language);
+                    project.getFunctionPointsPanes().get(i).setLanguage(language);
+                    project.getFunctionPointsPanes().get(i).setLanguageData(language);
                 }
                 //VAF Per FunctionPointsPane
                 for(int i=0; i<numberOfPanes; i++) {
@@ -321,89 +321,89 @@ public class MainFrame extends javax.swing.JFrame {
                     for(int j=0; j<14; j++) {
                         vafArray[j] = Integer.parseInt(vafPerPane.get(i)[j]);
                     }
-                    project.getProjectPanes().get(i).setValueAdjustmentList(vafArray);
+                    project.getFunctionPointsPanes().get(i).setValueAdjustmentList(vafArray);
                     
                 }
                 //SumOfVAFPerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     int sum = Integer.parseInt(sumOfVAFPerPane.get(i));
-                    project.getProjectPanes().get(i).setValueAdjustmentSum(sum);
-                    project.getProjectPanes().get(i).setValueAdjustmentData(Integer.toString(sum));
+                    project.getFunctionPointsPanes().get(i).setValueAdjustmentSum(sum);
+                    project.getFunctionPointsPanes().get(i).setValueAdjustmentData(Integer.toString(sum));
                 }
                 //functionDataPerPane
                 int value = 0;
                 for(int i=0; i<numberOfPanes; i++) {
                     value = Integer.parseInt(functionDataPerPane.get(i)[0]);
-                    project.getProjectPanes().get(i).setExternalInput(value);
-                    project.getProjectPanes().get(i).setEIsEdit(Integer.toString(value));
+                    project.getFunctionPointsPanes().get(i).setExternalInput(value);
+                    project.getFunctionPointsPanes().get(i).setEIsEdit(Integer.toString(value));
                     
                     value = Integer.parseInt(functionDataPerPane.get(i)[1]);
-                    project.getProjectPanes().get(i).setExternalOutput(value);
-                    project.getProjectPanes().get(i).setEOsEdit(Integer.toString(value));
+                    project.getFunctionPointsPanes().get(i).setExternalOutput(value);
+                    project.getFunctionPointsPanes().get(i).setEOsEdit(Integer.toString(value));
                     
                     value = Integer.parseInt(functionDataPerPane.get(i)[2]);
-                    project.getProjectPanes().get(i).setExternalInquiries(value);
-                    project.getProjectPanes().get(i).setEInqsEdit(Integer.toString(value));
+                    project.getFunctionPointsPanes().get(i).setExternalInquiries(value);
+                    project.getFunctionPointsPanes().get(i).setEInqsEdit(Integer.toString(value));
                     
                     value = Integer.parseInt(functionDataPerPane.get(i)[3]);
-                    project.getProjectPanes().get(i).setInternalLogicalFiles(value);
-                    project.getProjectPanes().get(i).setILFsEdit(Integer.toString(value));
+                    project.getFunctionPointsPanes().get(i).setInternalLogicalFiles(value);
+                    project.getFunctionPointsPanes().get(i).setILFsEdit(Integer.toString(value));
                     
                     value = Integer.parseInt(functionDataPerPane.get(i)[4]);
-                    project.getProjectPanes().get(i).setExternalInterfaceFiles(value);
-                    project.getProjectPanes().get(i).setEIFsEdit(Integer.toString(value));
+                    project.getFunctionPointsPanes().get(i).setExternalInterfaceFiles(value);
+                    project.getFunctionPointsPanes().get(i).setEIFsEdit(Integer.toString(value));
                 }
                 
                 //functionDataResultsPerPane
                 int value2 = 0;
                 for(int i=0; i<numberOfPanes; i++) {
                     value2 = Integer.parseInt(functionDataResultsPerPane.get(i)[0]);
-                    project.getProjectPanes().get(i).setExternalInputResults(value2);
-                    project.getProjectPanes().get(i).setEIData(Integer.toString(value2));
+                    project.getFunctionPointsPanes().get(i).setExternalInputResults(value2);
+                    project.getFunctionPointsPanes().get(i).setEIData(Integer.toString(value2));
                     
                     value2 = Integer.parseInt(functionDataResultsPerPane.get(i)[1]);
-                    project.getProjectPanes().get(i).setExternalOutputResults(value2);
-                    project.getProjectPanes().get(i).setEOData(Integer.toString(value2));
+                    project.getFunctionPointsPanes().get(i).setExternalOutputResults(value2);
+                    project.getFunctionPointsPanes().get(i).setEOData(Integer.toString(value2));
                     
                     value2 = Integer.parseInt(functionDataResultsPerPane.get(i)[2]);
-                    project.getProjectPanes().get(i).setExternalInquiriesResults(value2);
-                    project.getProjectPanes().get(i).setEInqData(Integer.toString(value2));
+                    project.getFunctionPointsPanes().get(i).setExternalInquiriesResults(value2);
+                    project.getFunctionPointsPanes().get(i).setEInqData(Integer.toString(value2));
                     
                     value2 = Integer.parseInt(functionDataResultsPerPane.get(i)[3]);
-                    project.getProjectPanes().get(i).setInternalLogicalFilesResults(value2);
-                    project.getProjectPanes().get(i).setILFData(Integer.toString(value2));
+                    project.getFunctionPointsPanes().get(i).setInternalLogicalFilesResults(value2);
+                    project.getFunctionPointsPanes().get(i).setILFData(Integer.toString(value2));
                     
                     value2 = Integer.parseInt(functionDataResultsPerPane.get(i)[4]);
-                    project.getProjectPanes().get(i).setExternalInterfaceFilesResults(value2);
-                    project.getProjectPanes().get(i).setEIFData(Integer.toString(value2));
+                    project.getFunctionPointsPanes().get(i).setExternalInterfaceFilesResults(value2);
+                    project.getFunctionPointsPanes().get(i).setEIFData(Integer.toString(value2));
                 }
                 //complexity
                 for (int i=0; i<numberOfPanes; i++) {
-                    project.getProjectPanes().get(i).complexities(complexitiesPerPane.get(i));
+                    project.getFunctionPointsPanes().get(i).complexities(complexitiesPerPane.get(i));
                 }
                 DecimalFormat df = new DecimalFormat("###,###,###.##");
                 
                 //functionPointsPerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     double sum = Double.parseDouble(functionPointsPerPane.get(i));
-                    project.getProjectPanes().get(i).setComputeFP(sum);
+                    project.getFunctionPointsPanes().get(i).setComputeFP(sum);
                     String formattedFP = df.format(sum);
-                    project.getProjectPanes().get(i).setComputeFPData(formattedFP);
+                    project.getFunctionPointsPanes().get(i).setComputeFPData(formattedFP);
                 }
                
                 //codeSizePerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     double sum = Double.parseDouble(codeSizePerPane.get(i));
-                    project.getProjectPanes().get(i).setCodeSize(sum);
+                    project.getFunctionPointsPanes().get(i).setCodeSize(sum);
                     String formattedFP = df.format(sum);
-                    project.getProjectPanes().get(i).setComputeCodeSizeData(formattedFP);
+                    project.getFunctionPointsPanes().get(i).setComputeCodeSizeData(formattedFP);
                 }       
                 //totalCountPerPane
                 for(int i=0; i<numberOfPanes; i++) {
                     int sum = Integer.parseInt(totalCountPerPane.get(i));
-                    project.getProjectPanes().get(i).setTotalCount(sum);
+                    project.getFunctionPointsPanes().get(i).setTotalCount(sum);
                     //String formattedFP = df.format(sum);
-                    project.getProjectPanes().get(i).setTotalCountData(Integer.toString(sum));
+                    project.getFunctionPointsPanes().get(i).setTotalCountData(Integer.toString(sum));
                 }
             } catch (Exception ex) {ex.printStackTrace();}
         }
@@ -441,29 +441,29 @@ public class MainFrame extends javax.swing.JFrame {
         PrintWriter pWriter = new PrintWriter(fWriter);
         pWriter.print(project.getProjectName() + "\n");
         pWriter.print(project.getCreator() + "\n");
-        pWriter.print(project.getProjectPanes().size() + "\n");
-        for(int i=0; i<project.getProjectPanes().size(); i++) {
+        pWriter.print(project.getFunctionPointsPanes().size() + "\n");
+        for(int i=0; i<project.getFunctionPointsPanes().size(); i++) {
             //pWriter.print("---------------------------------------" + "\n");
-            String nameOfPane = project.getProjectPanes().get(i).getNameOfPane();
-            String currentLanguage = project.getProjectPanes().get(i).getLanguage();
-            int [] valueAdjustment = project.getProjectPanes().get(i).getValueAdjustmentList();
-            String valueAdjustmentSum = Integer.toString(project.getProjectPanes().get(i).getValueAdjustmentSum());
-            String EI = Integer.toString(project.getProjectPanes().get(i).getExternalInput());
-            String EO = Integer.toString(project.getProjectPanes().get(i).getExternalOutput());
-            String EInq = Integer.toString(project.getProjectPanes().get(i).getExternalInquiries());
-            String ILF = Integer.toString(project.getProjectPanes().get(i).getInternalLogicalFiles());
-            String EIF = Integer.toString(project.getProjectPanes().get(i).getExternalInterfaceFiles());
+            String nameOfPane = project.getFunctionPointsPanes().get(i).getNameOfPane();
+            String currentLanguage = project.getFunctionPointsPanes().get(i).getLanguage();
+            int [] valueAdjustment = project.getFunctionPointsPanes().get(i).getValueAdjustmentList();
+            String valueAdjustmentSum = Integer.toString(project.getFunctionPointsPanes().get(i).getValueAdjustmentSum());
+            String EI = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInput());
+            String EO = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalOutput());
+            String EInq = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInquiries());
+            String ILF = Integer.toString(project.getFunctionPointsPanes().get(i).getInternalLogicalFiles());
+            String EIF = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInterfaceFiles());
             
-            String EIResults = Integer.toString(project.getProjectPanes().get(i).getExternalInputResults());
-            String EOResults = Integer.toString(project.getProjectPanes().get(i).getExternalOutputResults());
-            String EInqResults = Integer.toString(project.getProjectPanes().get(i).getExternalInquiriesResults());
-            String ILFResults = Integer.toString(project.getProjectPanes().get(i).getInternalLogicalFilesResults());
-            String EIFResults = Integer.toString(project.getProjectPanes().get(i).getExternalInterfaceFilesResults());
+            String EIResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInputResults());
+            String EOResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalOutputResults());
+            String EInqResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInquiriesResults());
+            String ILFResults = Integer.toString(project.getFunctionPointsPanes().get(i).getInternalLogicalFilesResults());
+            String EIFResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInterfaceFilesResults());
             
-            String [] complexities = project.getProjectPanes().get(i).getComplexities();
-            String fp = Double.toString(project.getProjectPanes().get(i).getComputeFP());
-            String codeSize = Double.toString(project.getProjectPanes().get(i).getCodeSize());
-            String totalCount = Integer.toString(project.getProjectPanes().get(i).getTotalCount());
+            String [] complexities = project.getFunctionPointsPanes().get(i).getComplexities();
+            String fp = Double.toString(project.getFunctionPointsPanes().get(i).getComputeFP());
+            String codeSize = Double.toString(project.getFunctionPointsPanes().get(i).getCodeSize());
+            String totalCount = Integer.toString(project.getFunctionPointsPanes().get(i).getTotalCount());
             //Write
             pWriter.print(nameOfPane + "/");
             pWriter.print(currentLanguage + "/");
@@ -531,7 +531,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jTabbedPane1.addTab(fpName, paneContent);
             }
             //contents.add(content);
-            project.addProjectPane(paneContent);
+            project.addFunctionPointPane(paneContent);
             paneContent.setVisible(true);
         }
         else {
@@ -548,6 +548,24 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void metrics_ucp_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metrics_ucp_dataActionPerformed
         // TODO add your handling code here:
+        
+        if(project!= null) {
+            String ucpName = JOptionPane.showInputDialog("Name of this UCP");
+
+            UseCasePane ucpContent = new UseCasePane();
+            if(ucpName.equals("")) {
+                jTabbedPane1.addTab("Untitled", ucpContent);
+            }
+            else {
+                jTabbedPane1.addTab(ucpName, ucpContent);
+            }
+            //contents.add(content);
+            project.addUseCasePointPane(ucpContent);
+            ucpContent.setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_metrics_ucp_dataActionPerformed
 
     public void compilerHelp() {
@@ -555,8 +573,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         System.out.println(project.toString());
         //System.out.println();
-        for(int i=0; i<project.getProjectPanes().size(); i++){
-            System.out.println(project.getProjectPanes().get(i).toString());
+        for(int i=0; i<project.getFunctionPointsPanes().size(); i++){
+            System.out.println(project.getFunctionPointsPanes().get(i).toString());
         }
     }
     
