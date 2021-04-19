@@ -153,7 +153,7 @@
                   <Component id="compute_UUCP" min="-2" pref="125" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="value_UUCP" min="-2" pref="119" max="-2" attributes="0"/>
+                      <Component id="value_UUCP_textfield" min="-2" pref="119" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -196,7 +196,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="value_UUCP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="value_UUCP_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -292,8 +292,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="uucw_average_textfield">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uucw_average_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="uucw_complex_textfield">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uucw_complex_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -319,10 +325,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="uaw_simple_textfield">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uaw_simple_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="uaw_average_textfield">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uaw_average_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="uaw_complex_textfield">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="uaw_complex_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="uucw_total_textfield">
       <Properties>
@@ -451,7 +466,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="value_UUCP">
+    <Component class="javax.swing.JTextField" name="value_UUCP_textfield">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

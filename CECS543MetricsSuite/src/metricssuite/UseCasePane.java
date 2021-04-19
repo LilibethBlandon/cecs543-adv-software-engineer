@@ -5,19 +5,24 @@
  */
 package metricssuite;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author school
  */
 public class UseCasePane extends javax.swing.JPanel {
 
+    ///COMMENT
     private int UUCW_simple = 0;
     private int UUCW_average = 0;
     private int UUCW_complex = 0;
+    private int UUCW_total = 0;
     
     private int UAW_simple = 0;
     private int UAW_average = 0;
     private int UAW_complex = 0;
+    private int UAW_total = 0;
     
     private int UUCP;
     /**
@@ -71,7 +76,7 @@ public class UseCasePane extends javax.swing.JPanel {
         estimatedLOC_button = new javax.swing.JButton();
         estimatedPM_button = new javax.swing.JButton();
         ecf_total_textfield = new javax.swing.JTextField();
-        value_UUCP = new javax.swing.JTextField();
+        value_UUCP_textfield = new javax.swing.JTextField();
 
         tcf_Button.setText("Technical Complexity Factor");
 
@@ -92,6 +97,18 @@ public class UseCasePane extends javax.swing.JPanel {
             }
         });
 
+        uucw_average_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uucw_average_textfieldKeyReleased(evt);
+            }
+        });
+
+        uucw_complex_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uucw_complex_textfieldKeyReleased(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("UAW");
 
@@ -100,6 +117,24 @@ public class UseCasePane extends javax.swing.JPanel {
         jLabel7.setText("Average Actors");
 
         jLabel8.setText("Complex Actors");
+
+        uaw_simple_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uaw_simple_textfieldKeyReleased(evt);
+            }
+        });
+
+        uaw_average_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uaw_average_textfieldKeyReleased(evt);
+            }
+        });
+
+        uaw_complex_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uaw_complex_textfieldKeyReleased(evt);
+            }
+        });
 
         uucw_total_textfield.setEditable(false);
         uucw_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
@@ -151,8 +186,8 @@ public class UseCasePane extends javax.swing.JPanel {
         ecf_total_textfield.setEditable(false);
         ecf_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
-        value_UUCP.setEditable(false);
-        value_UUCP.setBackground(new java.awt.Color(238, 238, 238));
+        value_UUCP_textfield.setEditable(false);
+        value_UUCP_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -260,7 +295,7 @@ public class UseCasePane extends javax.swing.JPanel {
                     .addComponent(compute_UUCP, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(value_UUCP, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(value_UUCP_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -292,7 +327,7 @@ public class UseCasePane extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
-                        .addComponent(value_UUCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(value_UUCP_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(jLabel6)))
@@ -338,12 +373,24 @@ public class UseCasePane extends javax.swing.JPanel {
 
     private void compute_UUCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compute_UUCPActionPerformed
         //Compute UUCW
+        UUCW_total = (UUCW_simple * 5) + (UUCW_average * 10) + (UUCW_complex * 15);
+        System.out.println("UUCW simple = " + UUCW_simple);
+        System.out.println("UUCW average = " + UUCW_average);
+        System.out.println("UUCW complex = " + UUCW_complex);
+        uucw_total_textfield.setText(Integer.toString(UUCW_total));
         
         //Compute UAW
+        UAW_total = (UAW_simple * 1) + (UAW_average * 2) + (UAW_complex * 3);
+        System.out.println("UAW simple = " + UAW_simple);
+        System.out.println("UAW average = " + UAW_average);
+        System.out.println("UAW complex = " + UAW_complex);
+        uaw_total_textfield.setText(Integer.toString(UAW_total));
+        //Compute UUCP
+        UUCP = UUCW_total + UAW_total;
+        value_UUCP_textfield.setText(Integer.toString(UUCP));
     }//GEN-LAST:event_compute_UUCPActionPerformed
 
     private void uucw_simple_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uucw_simple_textfieldKeyReleased
-        // TODO add your handling code here:
         char character = evt.getKeyChar();
         int code = evt.getKeyCode();
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
@@ -356,6 +403,152 @@ public class UseCasePane extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_uucw_simple_textfieldKeyReleased
 
+    private void uucw_average_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uucw_average_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            UUCW_average = Integer.parseInt(uucw_average_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            uucw_average_textfield.setText(Integer.toString(UUCW_average));
+        }
+    }//GEN-LAST:event_uucw_average_textfieldKeyReleased
+
+    private void uucw_complex_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uucw_complex_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            UUCW_complex = Integer.parseInt(uucw_complex_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            uucw_complex_textfield.setText(Integer.toString(UUCW_complex));
+        }
+    }//GEN-LAST:event_uucw_complex_textfieldKeyReleased
+
+    private void uaw_simple_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uaw_simple_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            UAW_simple = Integer.parseInt(uaw_simple_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            uaw_simple_textfield.setText(Integer.toString(UAW_simple));
+        }
+    }//GEN-LAST:event_uaw_simple_textfieldKeyReleased
+
+    private void uaw_average_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uaw_average_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            UAW_average = Integer.parseInt(uaw_average_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            uaw_average_textfield.setText(Integer.toString(UAW_average));
+        }
+    }//GEN-LAST:event_uaw_average_textfieldKeyReleased
+
+    private void uaw_complex_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uaw_complex_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            UAW_complex = Integer.parseInt(uaw_complex_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            uaw_complex_textfield.setText(Integer.toString(UAW_complex));
+        }
+    }//GEN-LAST:event_uaw_complex_textfieldKeyReleased
+
+    public int getUUCW_simple() {
+        return UUCW_simple;
+    }
+
+    public void setUUCW_simple(int UUCW_simple) {
+        this.UUCW_simple = UUCW_simple;
+    }
+
+    public int getUUCW_average() {
+        return UUCW_average;
+    }
+
+    public void setUUCW_average(int UUCW_average) {
+        this.UUCW_average = UUCW_average;
+    }
+
+    public int getUUCW_complex() {
+        return UUCW_complex;
+    }
+
+    public void setUUCW_complex(int UUCW_complex) {
+        this.UUCW_complex = UUCW_complex;
+    }
+
+    public int getUUCW_total() {
+        return UUCW_total;
+    }
+
+    public void setUUCW_total(int UUCW_total) {
+        this.UUCW_total = UUCW_total;
+    }
+
+    public int getUAW_simple() {
+        return UAW_simple;
+    }
+
+    public void setUAW_simple(int UAW_simple) {
+        this.UAW_simple = UAW_simple;
+    }
+
+    public int getUAW_average() {
+        return UAW_average;
+    }
+
+    public void setUAW_average(int UAW_average) {
+        this.UAW_average = UAW_average;
+    }
+
+    public int getUAW_complex() {
+        return UAW_complex;
+    }
+
+    public void setUAW_complex(int UAW_complex) {
+        this.UAW_complex = UAW_complex;
+    }
+
+    public int getUAW_total() {
+        return UAW_total;
+    }
+
+    public void setUAW_total(int UAW_total) {
+        this.UAW_total = UAW_total;
+    }
+
+    public int getUUCP() {
+        return UUCP;
+    }
+
+    public void setUUCP(int UUCP) {
+        this.UUCP = UUCP;
+    }
+
+    public JButton getCompute_UUCP() {
+        return compute_UUCP;
+    }
+
+    public void setCompute_UUCP(JButton compute_UUCP) {
+        this.compute_UUCP = compute_UUCP;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton compute_UUCP;
@@ -393,6 +586,6 @@ public class UseCasePane extends javax.swing.JPanel {
     private javax.swing.JTextField uucw_complex_textfield;
     private javax.swing.JTextField uucw_simple_textfield;
     private javax.swing.JTextField uucw_total_textfield;
-    private javax.swing.JTextField value_UUCP;
+    private javax.swing.JTextField value_UUCP_textfield;
     // End of variables declaration//GEN-END:variables
 }
