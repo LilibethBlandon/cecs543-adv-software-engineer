@@ -63,7 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
         metrics_ucp = new javax.swing.JMenu();
         metrics_ucp_data = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
-        consoleHelp = new javax.swing.JMenuItem();
+        consoleFPHelp = new javax.swing.JMenuItem();
+        consoleUCPHelp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CECS 543 Metrics Suite - Function Points");
@@ -149,13 +150,21 @@ public class MainFrame extends javax.swing.JFrame {
 
         help.setText("Help");
 
-        consoleHelp.setText("Console Help");
-        consoleHelp.addActionListener(new java.awt.event.ActionListener() {
+        consoleFPHelp.setText("Console FP Help");
+        consoleFPHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consoleHelpActionPerformed(evt);
+                consoleFPHelpActionPerformed(evt);
             }
         });
-        help.add(consoleHelp);
+        help.add(consoleFPHelp);
+
+        consoleUCPHelp.setText("Console UCP Help");
+        consoleUCPHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consoleUCPHelpActionPerformed(evt);
+            }
+        });
+        help.add(consoleUCPHelp);
 
         jMenuBar1.add(help);
 
@@ -539,12 +548,12 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_fp_dataActionPerformed
 
-    private void consoleHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleHelpActionPerformed
+    private void consoleFPHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleFPHelpActionPerformed
         //Console Help
 //        String filePath = System.getProperty("user.dir");
 //        System.out.println(filePath + "/" + project.getProjectName() + ".ms");
-        compilerHelp();
-    }//GEN-LAST:event_consoleHelpActionPerformed
+        compilerFPHelp();
+    }//GEN-LAST:event_consoleFPHelpActionPerformed
 
     private void metrics_ucp_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metrics_ucp_dataActionPerformed
         // TODO add your handling code here:
@@ -552,7 +561,7 @@ public class MainFrame extends javax.swing.JFrame {
         if(project!= null) {
             String ucpName = JOptionPane.showInputDialog("Name of this UCP");
 
-            UseCasePane ucpContent = new UseCasePane();
+            UseCasePointsPane ucpContent = new UseCasePointsPane();
             if(ucpName.equals("")) {
                 jTabbedPane1.addTab("Untitled", ucpContent);
             }
@@ -568,7 +577,13 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_ucp_dataActionPerformed
 
-    public void compilerHelp() {
+    private void consoleUCPHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleUCPHelpActionPerformed
+        for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
+            System.out.println(project.getUseCasePointsPanes().get(i).toString());
+        }
+    }//GEN-LAST:event_consoleUCPHelpActionPerformed
+
+    public void compilerFPHelp() {
         System.out.println("Language = " + currentLanguage);
 
         System.out.println(project.toString());
@@ -577,6 +592,7 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println(project.getFunctionPointsPanes().get(i).toString());
         }
     }
+
     
     public String getLanguage(){
         return this.currentLanguage;
@@ -660,7 +676,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem consoleHelp;
+    private javax.swing.JMenuItem consoleFPHelp;
+    private javax.swing.JMenuItem consoleUCPHelp;
     private javax.swing.JMenu edit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem file_exit;

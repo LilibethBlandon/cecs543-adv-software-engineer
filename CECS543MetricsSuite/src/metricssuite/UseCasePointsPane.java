@@ -12,7 +12,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  *
  * @author school
  */
-public class UseCasePane extends javax.swing.JPanel {
+public class UseCasePointsPane extends javax.swing.JPanel {
 
     ///COMMENT
     private int UUCW_simple = 0;
@@ -29,8 +29,9 @@ public class UseCasePane extends javax.swing.JPanel {
     
     //tcf array
     private int [] tcfArray = new int[13];
+    private double tcfSum = 0;
     //ecf array
-    private int [] ecfArrat = new int[8];
+    private int [] ecfArray = new int[8];
 
     private int productivityFactor = 20;
     private int LOC_pm = 700;
@@ -39,7 +40,7 @@ public class UseCasePane extends javax.swing.JPanel {
     /**
      * Creates new form UseCasePane
      */
-    public UseCasePane() {
+    public UseCasePointsPane() {
         initComponents();
     }
 
@@ -624,7 +625,59 @@ public class UseCasePane extends javax.swing.JPanel {
         this.compute_UUCP = compute_UUCP;
     }
 
-    
+    public int[] getTcfArray() {
+        return tcfArray;
+    }
+
+    public void setTcfArray(int[] tcfArray) {
+        this.tcfArray = tcfArray;
+    }
+
+    public double getTcfSum() {
+        return tcfSum;
+    }
+
+    public void setTcfSum(double tcfSum) {
+        this.tcfSum = tcfSum;
+        tcf_total_textfield.setText(Double.toString(tcfSum));
+    }
+
+    public int[] getEcfArray() {
+        return ecfArray;
+    }
+
+    public void setEcfArray(int[] ecfArray) {
+        this.ecfArray = ecfArray;
+    }
+
+    public int getProductivityFactor() {
+        return productivityFactor;
+    }
+
+    public void setProductivityFactor(int productivityFactor) {
+        this.productivityFactor = productivityFactor;
+    }
+
+    public int getLOC_pm() {
+        return LOC_pm;
+    }
+
+    public void setLOC_pm(int LOC_pm) {
+        this.LOC_pm = LOC_pm;
+    }
+
+    public int getLOC_UCP() {
+        return LOC_UCP;
+    }
+
+    public void setLOC_UCP(int LOC_UCP) {
+        this.LOC_UCP = LOC_UCP;
+    }
+
+    @Override
+    public String toString() {
+        return "UseCasePointsPane{" + "UUCW_simple=" + UUCW_simple + ", UUCW_average=" + UUCW_average + ", UUCW_complex=" + UUCW_complex + ", UUCW_total=" + UUCW_total + ", UAW_simple=" + UAW_simple + ", UAW_average=" + UAW_average + ", UAW_complex=" + UAW_complex + ", UAW_total=" + UAW_total + ", UUCP=" + UUCP + ", tcfArray=" + tcfArray + ", tcfSum=" + tcfSum + ", ecfArray=" + ecfArray + ", productivityFactor=" + productivityFactor + ", LOC_pm=" + LOC_pm + ", LOC_UCP=" + LOC_UCP + '}';
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton compute_UUCP;

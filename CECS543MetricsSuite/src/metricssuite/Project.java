@@ -14,7 +14,7 @@ public class Project {
     private String language = "";
     private ArrayList<FunctionPointsPane> functionPointPanes = new ArrayList<>();
     
-    private ArrayList<UseCasePane> useCasePanes = new ArrayList<>();
+    private ArrayList<UseCasePointsPane> useCasePanes = new ArrayList<>();
     
     public Project(String projectName, String productName, String creator, String comments, String language){
         this.projectName = projectName;
@@ -69,15 +69,15 @@ public class Project {
     }
     
     //UCP
-    public ArrayList<UseCasePane> getUseCasePointsPanes() {
+    public ArrayList<UseCasePointsPane> getUseCasePointsPanes() {
         return useCasePanes;
     }
     
-    public void setUseCasePointPanes(ArrayList<UseCasePane> useCasePanes) {
+    public void setUseCasePointPanes(ArrayList<UseCasePointsPane> useCasePanes) {
         this.useCasePanes = useCasePanes;
     }
     
-    public void addUseCasePointPane(UseCasePane pane) {
+    public void addUseCasePointPane(UseCasePointsPane pane) {
         useCasePanes.add(pane);
     }
 

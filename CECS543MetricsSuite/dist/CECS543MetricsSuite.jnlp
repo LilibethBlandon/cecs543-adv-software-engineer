@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CECS543MetricsSuite.jar" size="83551" download="eager" />
+    <jar href="CECS543MetricsSuite.jar" size="86740" download="eager" />
   </resources>
   <application-desc main-class="metricssuite.MainFrame"  name="CECS543MetricsSuite" >
   </application-desc>

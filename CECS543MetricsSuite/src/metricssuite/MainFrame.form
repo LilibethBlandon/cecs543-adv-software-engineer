@@ -105,12 +105,20 @@
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="consoleHelp">
+            <MenuItem class="javax.swing.JMenuItem" name="consoleFPHelp">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Console Help"/>
+                <Property name="text" type="java.lang.String" value="Console FP Help"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consoleHelpActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consoleFPHelpActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="consoleUCPHelp">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Console UCP Help"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consoleUCPHelpActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
