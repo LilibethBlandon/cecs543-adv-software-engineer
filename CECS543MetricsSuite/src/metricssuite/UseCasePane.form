@@ -257,6 +257,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Technical Complexity Factor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tcf_ButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ecf_Button">
       <Properties>
@@ -383,6 +386,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="700"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="loc_pm_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
@@ -396,6 +402,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="20"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="productivityFactor_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
@@ -409,6 +418,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="100"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="loc_ucp_textfieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="ucp_textfield">
       <Properties>

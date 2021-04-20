@@ -11,11 +11,19 @@ package metricssuite;
  */
 public class TechnicalComplexityFactor extends javax.swing.JFrame {
 
+    private int [] tcfArray = new int [13];
+    private UseCasePane ucp;
     /**
      * Creates new form TechnicalComplexityFactor
      */
     public TechnicalComplexityFactor() {
         initComponents();
+    }
+    
+    public TechnicalComplexityFactor(UseCasePane ucp, int [] tcfArray) {
+        initComponents();
+        this.tcfArray = tcfArray;
+        this.ucp = ucp;
     }
 
     /**

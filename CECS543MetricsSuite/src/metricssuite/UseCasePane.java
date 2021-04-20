@@ -6,6 +6,7 @@
 package metricssuite;
 
 import javax.swing.JButton;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
@@ -25,6 +26,16 @@ public class UseCasePane extends javax.swing.JPanel {
     private int UAW_total = 0;
     
     private int UUCP;
+    
+    //tcf array
+    private int [] tcfArray = new int[13];
+    //ecf array
+    private int [] ecfArrat = new int[8];
+
+    private int productivityFactor = 20;
+    private int LOC_pm = 700;
+    private int LOC_UCP = 100;
+    
     /**
      * Creates new form UseCasePane
      */
@@ -79,6 +90,11 @@ public class UseCasePane extends javax.swing.JPanel {
         value_UUCP_textfield = new javax.swing.JTextField();
 
         tcf_Button.setText("Technical Complexity Factor");
+        tcf_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tcf_ButtonActionPerformed(evt);
+            }
+        });
 
         ecf_Button.setText("Environment Complexity Factor");
 
@@ -156,16 +172,31 @@ public class UseCasePane extends javax.swing.JPanel {
         uaw_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
         loc_pm_textfield.setText("700");
+        loc_pm_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loc_pm_textfieldKeyReleased(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel10.setText("LOC/pm");
 
         productivityFactor_textfield.setText("20");
+        productivityFactor_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                productivityFactor_textfieldKeyReleased(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel11.setText("LOC/UCP");
 
         loc_ucp_textfield.setText("100");
+        loc_ucp_textfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loc_ucp_textfieldKeyReleased(evt);
+            }
+        });
 
         ucp_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
@@ -467,6 +498,51 @@ public class UseCasePane extends javax.swing.JPanel {
             uaw_complex_textfield.setText(Integer.toString(UAW_complex));
         }
     }//GEN-LAST:event_uaw_complex_textfieldKeyReleased
+
+    private void tcf_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcf_ButtonActionPerformed
+        TechnicalComplexityFactor tcf = new TechnicalComplexityFactor(this, tcfArray);
+        tcf.setVisible(true);
+        tcf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_tcf_ButtonActionPerformed
+
+    private void productivityFactor_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productivityFactor_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            productivityFactor = Integer.parseInt(productivityFactor_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            productivityFactor_textfield.setText(Integer.toString(productivityFactor));
+        }
+    }//GEN-LAST:event_productivityFactor_textfieldKeyReleased
+
+    private void loc_pm_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loc_pm_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            LOC_pm = Integer.parseInt(loc_pm_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            loc_pm_textfield.setText(Integer.toString(LOC_pm));
+        }
+    }//GEN-LAST:event_loc_pm_textfieldKeyReleased
+
+    private void loc_ucp_textfieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loc_ucp_textfieldKeyReleased
+        char character = evt.getKeyChar();
+        int code = evt.getKeyCode();
+        if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
+            LOC_UCP = Integer.parseInt(loc_ucp_textfield.getText());
+            //System.out.println("External Input" + externalInput);
+        }
+        else{
+            //System.out.println("what character is this? " + character);
+            loc_ucp_textfield.setText(Integer.toString(LOC_UCP));
+        }
+    }//GEN-LAST:event_loc_ucp_textfieldKeyReleased
 
     public int getUUCW_simple() {
         return UUCW_simple;
