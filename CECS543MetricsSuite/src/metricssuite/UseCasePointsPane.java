@@ -25,17 +25,23 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     private int UAW_complex = 0;
     private int UAW_total = 0;
     
-    private int UUCP;
+    private int UUCP = 0;
     
     //tcf array
     private int [] tcfArray = new int[13];
     private double tcfSum = 0;
     //ecf array
     private int [] ecfArray = new int[8];
+    private double ecfSum = 0;
 
-    private int productivityFactor = 20;
+    private int PF = 20;
     private int LOC_pm = 700;
     private int LOC_UCP = 100;
+    
+    private double UCP_Total = 0;
+    private double estimatedHours = 0;
+    private double estimatedLOC = 0;
+    private double estimatedPM = 0;
     
     /**
      * Creates new form UseCasePane
@@ -82,7 +88,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         ucp_textfield = new javax.swing.JTextField();
         estimatedHours_textfield = new javax.swing.JTextField();
         estimatedLOC_textfield = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
+        estimatedPM_textfield = new javax.swing.JTextField();
         ucp_button = new javax.swing.JButton();
         estimatedHours_button = new javax.swing.JButton();
         estimatedLOC_button = new javax.swing.JButton();
@@ -98,6 +104,11 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         });
 
         ecf_Button.setText("Environment Complexity Factor");
+        ecf_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ecf_ButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("UUCW");
@@ -205,15 +216,35 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
         estimatedLOC_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
-        jTextField18.setBackground(new java.awt.Color(238, 238, 238));
+        estimatedPM_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
         ucp_button.setText("Total UCP");
+        ucp_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ucp_buttonActionPerformed(evt);
+            }
+        });
 
         estimatedHours_button.setText("Estimated Hours");
+        estimatedHours_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estimatedHours_buttonActionPerformed(evt);
+            }
+        });
 
         estimatedLOC_button.setText("Estimated LOC");
+        estimatedLOC_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estimatedLOC_buttonActionPerformed(evt);
+            }
+        });
 
         estimatedPM_button.setText("Estimated PM");
+        estimatedPM_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estimatedPM_buttonActionPerformed(evt);
+            }
+        });
 
         ecf_total_textfield.setEditable(false);
         ecf_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
@@ -274,7 +305,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
                             .addComponent(estimatedPM_button)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(estimatedPM_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +429,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
                         .addComponent(ucp_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(estimatedHours_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(estimatedLOC_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(estimatedPM_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -510,12 +541,12 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         char character = evt.getKeyChar();
         int code = evt.getKeyCode();
         if((code >= 48 && code <=57) || code == 8 || code == 127 || code == 37 || code == 38 || code == 39 || code == 40 ){
-            productivityFactor = Integer.parseInt(productivityFactor_textfield.getText());
+            PF = Integer.parseInt(productivityFactor_textfield.getText());
             //System.out.println("External Input" + externalInput);
         }
         else{
             //System.out.println("what character is this? " + character);
-            productivityFactor_textfield.setText(Integer.toString(productivityFactor));
+            productivityFactor_textfield.setText(Integer.toString(PF));
         }
     }//GEN-LAST:event_productivityFactor_textfieldKeyReleased
 
@@ -544,6 +575,33 @@ public class UseCasePointsPane extends javax.swing.JPanel {
             loc_ucp_textfield.setText(Integer.toString(LOC_UCP));
         }
     }//GEN-LAST:event_loc_ucp_textfieldKeyReleased
+
+    private void ecf_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecf_ButtonActionPerformed
+        //ecf button
+        EnvironmentComplexityFactor ecf = new EnvironmentComplexityFactor(this, ecfArray);
+        ecf.setVisible(true);
+        ecf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_ecf_ButtonActionPerformed
+
+    private void ucp_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ucp_buttonActionPerformed
+        UCP_Total = tcfSum * ecfSum * UUCP * PF;
+        ucp_textfield.setText(Double.toString(UCP_Total));
+    }//GEN-LAST:event_ucp_buttonActionPerformed
+
+    private void estimatedHours_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estimatedHours_buttonActionPerformed
+        estimatedHours = UCP_Total * PF;
+        estimatedHours_textfield.setText(Double.toString(estimatedHours));
+    }//GEN-LAST:event_estimatedHours_buttonActionPerformed
+
+    private void estimatedLOC_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estimatedLOC_buttonActionPerformed
+        estimatedLOC = LOC_UCP * UCP_Total;
+        estimatedLOC_textfield.setText(Double.toString(estimatedLOC));
+    }//GEN-LAST:event_estimatedLOC_buttonActionPerformed
+
+    private void estimatedPM_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estimatedPM_buttonActionPerformed
+        estimatedPM = LOC_pm * estimatedLOC;
+        estimatedPM_textfield.setText(Double.toString(estimatedPM));
+    }//GEN-LAST:event_estimatedPM_buttonActionPerformed
 
     public int getUUCW_simple() {
         return UUCW_simple;
@@ -650,12 +708,21 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         this.ecfArray = ecfArray;
     }
 
-    public int getProductivityFactor() {
-        return productivityFactor;
+    public double getEcfSum() {
+        return ecfSum;
     }
 
-    public void setProductivityFactor(int productivityFactor) {
-        this.productivityFactor = productivityFactor;
+    public void setEcfSum(double ecfSum) {
+        this.ecfSum = ecfSum;
+        ecf_total_textfield.setText(Double.toString(ecfSum));
+    }
+    
+    public int getPF() {
+        return PF;
+    }
+
+    public void setPF(int PF) {
+        this.PF = PF;
     }
 
     public int getLOC_pm() {
@@ -676,7 +743,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
     @Override
     public String toString() {
-        return "UseCasePointsPane{" + "UUCW_simple=" + UUCW_simple + ", UUCW_average=" + UUCW_average + ", UUCW_complex=" + UUCW_complex + ", UUCW_total=" + UUCW_total + ", UAW_simple=" + UAW_simple + ", UAW_average=" + UAW_average + ", UAW_complex=" + UAW_complex + ", UAW_total=" + UAW_total + ", UUCP=" + UUCP + ", tcfArray=" + tcfArray + ", tcfSum=" + tcfSum + ", ecfArray=" + ecfArray + ", productivityFactor=" + productivityFactor + ", LOC_pm=" + LOC_pm + ", LOC_UCP=" + LOC_UCP + '}';
+        return "UseCasePointsPane{" + "UUCW_simple=" + UUCW_simple + ", UUCW_average=" + UUCW_average + ", UUCW_complex=" + UUCW_complex + ", UUCW_total=" + UUCW_total + ", UAW_simple=" + UAW_simple + ", UAW_average=" + UAW_average + ", UAW_complex=" + UAW_complex + ", UAW_total=" + UAW_total + ", UUCP=" + UUCP + ", tcfArray=" + tcfArray + ", tcfSum=" + tcfSum + ", ecfArray=" + ecfArray + ", productivityFactor=" + PF + ", LOC_pm=" + LOC_pm + ", LOC_UCP=" + LOC_UCP + '}';
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -688,6 +755,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     private javax.swing.JButton estimatedLOC_button;
     private javax.swing.JTextField estimatedLOC_textfield;
     private javax.swing.JButton estimatedPM_button;
+    private javax.swing.JTextField estimatedPM_textfield;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -699,7 +767,6 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField loc_pm_textfield;
     private javax.swing.JTextField loc_ucp_textfield;
     private javax.swing.JTextField productivityFactor_textfield;

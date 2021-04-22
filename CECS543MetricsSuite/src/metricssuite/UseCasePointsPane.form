@@ -79,7 +79,7 @@
                           <Component id="estimatedPM_button" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="jTextField18" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="estimatedPM_textfield" min="-2" pref="116" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -245,7 +245,7 @@
                       <Component id="estimatedHours_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="estimatedLOC_textfield" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jTextField18" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="estimatedPM_textfield" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
@@ -265,6 +265,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Environment Complexity Factor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ecf_ButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -443,7 +446,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField18">
+    <Component class="javax.swing.JTextField" name="estimatedPM_textfield">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ee" red="ee" type="rgb"/>
@@ -454,21 +457,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Total UCP"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ucp_buttonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="estimatedHours_button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estimated Hours"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estimatedHours_buttonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="estimatedLOC_button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estimated LOC"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estimatedLOC_buttonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="estimatedPM_button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estimated PM"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estimatedPM_buttonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="ecf_total_textfield">
       <Properties>

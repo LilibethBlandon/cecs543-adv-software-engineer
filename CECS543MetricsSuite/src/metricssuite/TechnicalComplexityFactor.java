@@ -13,7 +13,7 @@ public class TechnicalComplexityFactor extends javax.swing.JFrame {
 
     private int [] tcfArray = new int [13];
     private UseCasePointsPane UCP_Panel;
-    private double sum = 0;
+    private double TF_Total = 0;
     private final double [] TCFWEIGHT = {2, 1, 1, 1, 1, 0.5, 0.5, 2, 1, 1, 1, 1, 1};
     /**
      * Creates new form TechnicalComplexityFactor
@@ -136,6 +136,11 @@ public class TechnicalComplexityFactor extends javax.swing.JFrame {
         });
 
         cancel_button.setText("Cancel");
+        cancel_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("2");
 
@@ -353,6 +358,8 @@ public class TechnicalComplexityFactor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void done_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_done_buttonActionPerformed
+        double tcf = 0;
+        
         tcfArray[0] = Integer.parseInt(t1_JComboBox.getSelectedItem().toString());
         tcfArray[1] = Integer.parseInt(t2_JComboBox.getSelectedItem().toString());
         tcfArray[2] = Integer.parseInt(t3_JComboBox.getSelectedItem().toString());
@@ -367,13 +374,20 @@ public class TechnicalComplexityFactor extends javax.swing.JFrame {
         tcfArray[11] = Integer.parseInt(t12_JComboBox.getSelectedItem().toString());
         tcfArray[12] = Integer.parseInt(t13_JComboBox.getSelectedItem().toString());
         for(int i=0; i<13; i++) {
-            sum = sum + (tcfArray[i] * TCFWEIGHT[i]);
+            TF_Total = TF_Total + (tcfArray[i] * TCFWEIGHT[i]);
         }
-        UCP_Panel.setTcfSum(sum);
+        
+        tcf = 0.6 + (.01 * TF_Total);
+        
+        UCP_Panel.setTcfSum(tcf);
         UCP_Panel.setTcfArray(tcfArray);
         
         this.dispose();
     }//GEN-LAST:event_done_buttonActionPerformed
+
+    private void cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_buttonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancel_buttonActionPerformed
 
     /**
      * @param args the command line arguments
