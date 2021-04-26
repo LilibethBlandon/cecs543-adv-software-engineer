@@ -15,7 +15,9 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  */
 public class UseCasePointsPane extends javax.swing.JPanel {
 
-    ///COMMENT
+    //Name of Pane
+    private String nameOfPane = "";
+    //UUCW
     private int UUCW_simple = 0;
     private int UUCW_average = 0;
     private int UUCW_complex = 0;
@@ -44,6 +46,8 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     private double estimatedLOC = 0;
     private double estimatedPM = 0;
     
+    private MainFrame mainframe;
+    
     private DecimalFormat df = new DecimalFormat("00.00");
     
     /**
@@ -52,7 +56,11 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public UseCasePointsPane() {
         initComponents();
     }
-
+    public UseCasePointsPane(String nameOfPane, MainFrame mainframe) {
+        initComponents();
+        this.nameOfPane = nameOfPane;
+        this.mainframe = mainframe;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -756,6 +764,46 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         this.LOC_UCP = LOC_UCP;
     }
 
+    public double getUCP_Total() {
+        return UCP_Total;
+    }
+
+    public void setUCP_Total(double UCP_Total) {
+        this.UCP_Total = UCP_Total;
+    }
+
+    public double getEstimatedHours() {
+        return estimatedHours;
+    }
+
+    public void setEstimatedHours(double estimatedHours) {
+        this.estimatedHours = estimatedHours;
+    }
+
+    public double getEstimatedLOC() {
+        return estimatedLOC;
+    }
+
+    public void setEstimatedLOC(double estimatedLOC) {
+        this.estimatedLOC = estimatedLOC;
+    }
+
+    public double getEstimatedPM() {
+        return estimatedPM;
+    }
+
+    public void setEstimatedPM(double estimatedPM) {
+        this.estimatedPM = estimatedPM;
+    }
+
+    public String getNameOfPane() {
+        return nameOfPane;
+    }
+
+    public void setNameOfPane(String nameOfPane) {
+        this.nameOfPane = nameOfPane;
+    }
+    
     @Override
     public String toString() {
         return "UseCasePointsPane{" + "UUCW_simple=" + UUCW_simple + ", UUCW_average=" + UUCW_average + ", UUCW_complex=" + UUCW_complex + ", UUCW_total=" + UUCW_total + ", UAW_simple=" + UAW_simple + ", UAW_average=" + UAW_average + ", UAW_complex=" + UAW_complex + ", UAW_total=" + UAW_total + ", UUCP=" + UUCP + ", tcfArray=" + tcfArray + ", tcfSum=" + tcfSum + ", ecfArray=" + ecfArray + ", ecfSum=" + ecfSum + ", PF=" + PF + ", LOC_pm=" + LOC_pm + ", LOC_UCP=" + LOC_UCP + ", UCP_Total=" + UCP_Total + ", estimatedHours=" + estimatedHours + ", estimatedLOC=" + estimatedLOC + ", estimatedPM=" + estimatedPM + '}';

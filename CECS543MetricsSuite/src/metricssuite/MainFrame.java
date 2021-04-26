@@ -197,7 +197,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_file_newActionPerformed
 
     private void file_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openActionPerformed
-        ArrayList<String> data = new ArrayList<>();
+
+    }//GEN-LAST:event_file_openActionPerformed
+
+    private void openMethod() {
+                ArrayList<String> data = new ArrayList<>();
         String projectName = "";
         String creator = "";
         int numberOfPanes;
@@ -421,8 +425,9 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println("Cancel");
         }
         System.out.println(fc.getSelectedFile().getAbsolutePath()); 
-    }//GEN-LAST:event_file_openActionPerformed
-
+    }
+    
+    
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
         int counter1 = 0;
         int counter2 = 0;
@@ -528,7 +533,105 @@ public class MainFrame extends javax.swing.JFrame {
                     counter1++;
                 }
                 else if(paneArrayList.get(i) == 2) {
-                    pWriter.print("UCP Pane\n");
+                    //pWriter.print("UCP Pane\n");
+                    //Read UCP Data
+                    //Name of the Pane
+                    String nameOfPane = project.getUseCasePointsPanes().get(counter2).getNameOfPane();
+                    //UUCW
+                    String UUCW_simple = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUUCW_simple());
+                    String UUCW_average = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUUCW_average());
+                    String UUCW_complex = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUUCW_complex());
+                    //UUCW total
+                    String UUCW_total = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUUCW_total());
+                    //UAW
+                    String UAW_simple = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUAW_simple());
+                    String UAW_average = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUAW_average());
+                    String UAW_complex = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUAW_complex());
+                    //UUAW Total
+                    String UAW_total = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUAW_total());
+                    //UUCP
+                    String UUCP_total = Integer.toString(project.getUseCasePointsPanes().get(counter2).getUUCP());
+                    //Productivity Factor
+                    String PF = Integer.toString(project.getUseCasePointsPanes().get(counter2).getPF());
+                    //LOC/pm
+                    String LOC_PM = Integer.toString(project.getUseCasePointsPanes().get(counter2).getLOC_pm());
+                    //LOC/UCP
+                    String LOC_UCP = Integer.toString(project.getUseCasePointsPanes().get(counter2).getLOC_UCP());
+                    //UCP
+                    String UCP_Total = Double.toString(project.getUseCasePointsPanes().get(counter2).getUCP_Total());
+                    //Estimated Hours
+                    String estimatedHours = Double.toString(project.getUseCasePointsPanes().get(counter2).getEstimatedHours());
+                    //Estimated LOC
+                    String estimatedLOC = Double.toString(project.getUseCasePointsPanes().get(counter2).getEstimatedLOC());
+                    //Estimated PM
+                    String estimatedPM = Double.toString(project.getUseCasePointsPanes().get(counter2).getEstimatedPM());
+                    //TCF
+                    int [] tcfArray = project.getUseCasePointsPanes().get(counter2).getTcfArray();
+                    //TCF Sum
+                    String tcfSum = Double.toString(project.getUseCasePointsPanes().get(counter2).getTcfSum());
+                    //ECF
+                    int [] ecfArray = project.getUseCasePointsPanes().get(counter2).getEcfArray();
+                    //ECF Sum
+                    String ecfSum = Double.toString(project.getUseCasePointsPanes().get(counter2).getEcfSum());
+                    
+                    /******Write Data******/
+                    //Name of Pane
+                    pWriter.print(nameOfPane + "/");
+                    //UUCW
+                    pWriter.print(UUCW_simple + "/");
+                    pWriter.print(UUCW_average + "/");
+                    pWriter.print(UUCW_complex + "/");
+                    //UUCW Total
+                    pWriter.print(UUCW_total + "/");
+                    //UAW
+                    pWriter.print(UAW_simple + "/");
+                    pWriter.print(UAW_average + "/");
+                    pWriter.print(UAW_complex + "/");
+                    //UAW Total
+                    pWriter.print(UAW_total + "/");
+                    //UUCP
+                    pWriter.print(UUCP_total + "/");
+                    //PF
+                    pWriter.print(PF + "/");
+                    //LOC_PM
+                    pWriter.print(LOC_PM + "/");
+                    //LOC_UCP
+                    pWriter.print(LOC_UCP + "/");
+                    //UCP Total
+                    pWriter.print(UCP_Total + "/");
+                    //Estimated Hours
+                    pWriter.print(estimatedHours + "/");
+                    //Estimated LOC
+                    pWriter.print(estimatedLOC + "/");
+                    //Estimated PM
+                    pWriter.print(estimatedPM + "/");
+                    //TCF Array
+                    pWriter.print(tcfArray[0] + ",");
+                    pWriter.print(tcfArray[1] + ",");
+                    pWriter.print(tcfArray[2] + ",");
+                    pWriter.print(tcfArray[3] + ",");
+                    pWriter.print(tcfArray[4] + ",");
+                    pWriter.print(tcfArray[5] + ",");
+                    pWriter.print(tcfArray[6] + ",");
+                    pWriter.print(tcfArray[7] + ",");
+                    pWriter.print(tcfArray[8] + ",");
+                    pWriter.print(tcfArray[9] + ",");
+                    pWriter.print(tcfArray[10] + ",");
+                    pWriter.print(tcfArray[11] + ",");
+                    pWriter.print(tcfArray[12] + "/");
+                    //TCF Sum
+                    pWriter.print(tcfSum + "/");
+                    //ECF Array
+                    pWriter.print(ecfArray[0] + ",");
+                    pWriter.print(ecfArray[1] + ",");
+                    pWriter.print(ecfArray[2] + ",");
+                    pWriter.print(ecfArray[3] + ",");
+                    pWriter.print(ecfArray[4] + ",");
+                    pWriter.print(ecfArray[5] + ",");
+                    pWriter.print(ecfArray[6] + ",");
+                    pWriter.print(ecfArray[7] + "/");
+                    //ECF Sum
+                    pWriter.print(ecfSum + "\n");
                     counter2++;
                 }
             }
@@ -675,7 +778,7 @@ public class MainFrame extends javax.swing.JFrame {
         if(project!= null) {
             String ucpName = JOptionPane.showInputDialog("Name of this UCP");
 
-            UseCasePointsPane ucpContent = new UseCasePointsPane();
+            UseCasePointsPane ucpContent = new UseCasePointsPane(ucpName, this);
             if(ucpName.equals("")) {
                 jTabbedPane1.addTab("Untitled", ucpContent);
             }
