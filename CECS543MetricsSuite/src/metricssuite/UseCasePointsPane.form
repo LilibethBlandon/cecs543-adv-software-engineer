@@ -427,6 +427,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="ucp_textfield">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>
@@ -434,6 +435,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="estimatedHours_textfield">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>
@@ -441,6 +443,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="estimatedLOC_textfield">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>
@@ -448,6 +451,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="estimatedPM_textfield">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>

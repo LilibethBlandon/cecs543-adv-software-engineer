@@ -5,6 +5,8 @@
  */
 package metricssuite;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author school
@@ -15,6 +17,7 @@ public class TechnicalComplexityFactor extends javax.swing.JFrame {
     private UseCasePointsPane UCP_Panel;
     private double TF_Total = 0;
     private final double [] TCFWEIGHT = {2, 1, 1, 1, 1, 0.5, 0.5, 2, 1, 1, 1, 1, 1};
+    private DecimalFormat df = new DecimalFormat("00.00");
     /**
      * Creates new form TechnicalComplexityFactor
      */
@@ -379,7 +382,10 @@ public class TechnicalComplexityFactor extends javax.swing.JFrame {
         
         tcf = 0.6 + (.01 * TF_Total);
         
-        UCP_Panel.setTcfSum(tcf);
+        String formattedFP = df.format(tcf);
+        UCP_Panel.setTcfSum(Double.parseDouble(formattedFP));
+        
+//        UCP_Panel.setTcfSum(tcf);
         UCP_Panel.setTcfArray(tcfArray);
         
         this.dispose();

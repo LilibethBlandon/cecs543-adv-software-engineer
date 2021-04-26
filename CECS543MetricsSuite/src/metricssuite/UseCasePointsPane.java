@@ -5,6 +5,7 @@
  */
 package metricssuite;
 
+import java.text.DecimalFormat;
 import javax.swing.JButton;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -29,10 +30,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     
     //tcf array
     private int [] tcfArray = new int[13];
-    private double tcfSum = 0;
+    private double tcfSum = 0.6;
     //ecf array
     private int [] ecfArray = new int[8];
-    private double ecfSum = 0;
+    private double ecfSum = 1.4;
 
     private int PF = 20;
     private int LOC_pm = 700;
@@ -42,6 +43,8 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     private double estimatedHours = 0;
     private double estimatedLOC = 0;
     private double estimatedPM = 0;
+    
+    private DecimalFormat df = new DecimalFormat("00.00");
     
     /**
      * Creates new form UseCasePane
@@ -210,12 +213,16 @@ public class UseCasePointsPane extends javax.swing.JPanel {
             }
         });
 
+        ucp_textfield.setEditable(false);
         ucp_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
+        estimatedHours_textfield.setEditable(false);
         estimatedHours_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
+        estimatedLOC_textfield.setEditable(false);
         estimatedLOC_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
+        estimatedPM_textfield.setEditable(false);
         estimatedPM_textfield.setBackground(new java.awt.Color(238, 238, 238));
 
         ucp_button.setText("Total UCP");
@@ -585,22 +592,30 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
     private void ucp_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ucp_buttonActionPerformed
         UCP_Total = tcfSum * ecfSum * UUCP * PF;
-        ucp_textfield.setText(Double.toString(UCP_Total));
+        String formattedFP = df.format(UCP_Total);
+        ucp_textfield.setText(formattedFP);
+//        ucp_textfield.setText(Double.toString(UCP_Total));
     }//GEN-LAST:event_ucp_buttonActionPerformed
 
     private void estimatedHours_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estimatedHours_buttonActionPerformed
         estimatedHours = UCP_Total * PF;
-        estimatedHours_textfield.setText(Double.toString(estimatedHours));
+        String formattedFP = df.format(estimatedHours);
+        estimatedHours_textfield.setText(formattedFP);
+//        estimatedHours_textfield.setText(Double.toString(estimatedHours));
     }//GEN-LAST:event_estimatedHours_buttonActionPerformed
 
     private void estimatedLOC_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estimatedLOC_buttonActionPerformed
         estimatedLOC = LOC_UCP * UCP_Total;
-        estimatedLOC_textfield.setText(Double.toString(estimatedLOC));
+        String formattedFP = df.format(estimatedLOC);
+        estimatedLOC_textfield.setText(formattedFP);
+//        estimatedLOC_textfield.setText(Double.toString(estimatedLOC));
     }//GEN-LAST:event_estimatedLOC_buttonActionPerformed
 
     private void estimatedPM_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estimatedPM_buttonActionPerformed
         estimatedPM = LOC_pm * estimatedLOC;
-        estimatedPM_textfield.setText(Double.toString(estimatedPM));
+        String formattedFP = df.format(estimatedPM);
+        estimatedPM_textfield.setText(formattedFP);
+//        estimatedPM_textfield.setText(Double.toString(estimatedPM));
     }//GEN-LAST:event_estimatedPM_buttonActionPerformed
 
     public int getUUCW_simple() {
@@ -743,8 +758,9 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
     @Override
     public String toString() {
-        return "UseCasePointsPane{" + "UUCW_simple=" + UUCW_simple + ", UUCW_average=" + UUCW_average + ", UUCW_complex=" + UUCW_complex + ", UUCW_total=" + UUCW_total + ", UAW_simple=" + UAW_simple + ", UAW_average=" + UAW_average + ", UAW_complex=" + UAW_complex + ", UAW_total=" + UAW_total + ", UUCP=" + UUCP + ", tcfArray=" + tcfArray + ", tcfSum=" + tcfSum + ", ecfArray=" + ecfArray + ", productivityFactor=" + PF + ", LOC_pm=" + LOC_pm + ", LOC_UCP=" + LOC_UCP + '}';
+        return "UseCasePointsPane{" + "UUCW_simple=" + UUCW_simple + ", UUCW_average=" + UUCW_average + ", UUCW_complex=" + UUCW_complex + ", UUCW_total=" + UUCW_total + ", UAW_simple=" + UAW_simple + ", UAW_average=" + UAW_average + ", UAW_complex=" + UAW_complex + ", UAW_total=" + UAW_total + ", UUCP=" + UUCP + ", tcfArray=" + tcfArray + ", tcfSum=" + tcfSum + ", ecfArray=" + ecfArray + ", ecfSum=" + ecfSum + ", PF=" + PF + ", LOC_pm=" + LOC_pm + ", LOC_UCP=" + LOC_UCP + ", UCP_Total=" + UCP_Total + ", estimatedHours=" + estimatedHours + ", estimatedLOC=" + estimatedLOC + ", estimatedPM=" + estimatedPM + '}';
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton compute_UUCP;

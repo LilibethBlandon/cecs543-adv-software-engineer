@@ -5,6 +5,8 @@
  */
 package metricssuite;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author school
@@ -18,6 +20,7 @@ public class EnvironmentComplexityFactor extends javax.swing.JFrame {
     private UseCasePointsPane UCP_Panel;
     private double EF_Total = 0;
     private final double [] ECFWEIGHT = {1.5, 0.5, 1, 0.5, 1, 2, 0, 2};
+    private DecimalFormat df = new DecimalFormat("00.00");
             
     public EnvironmentComplexityFactor() {
         initComponents();
@@ -278,7 +281,10 @@ public class EnvironmentComplexityFactor extends javax.swing.JFrame {
         
         ecf = 1.4 + (-0.03 * EF_Total);
         
-        UCP_Panel.setEcfSum(ecf);
+        String formattedFP = df.format(ecf);
+        UCP_Panel.setEcfSum(Double.parseDouble(formattedFP));
+        
+//        UCP_Panel.setEcfSum(ecf);
         UCP_Panel.setEcfArray(ecfArray);
         
         this.dispose();

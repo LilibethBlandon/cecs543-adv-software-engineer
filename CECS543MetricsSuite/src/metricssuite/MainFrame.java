@@ -31,6 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private static String currentLanguage = "None";
     private static Project project;
+    private ArrayList<Integer> paneArrayList = new ArrayList<>();
     //private ArrayList<Project> projects = new ArrayList<Project>();
     
     public MainFrame() {
@@ -423,7 +424,120 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_file_openActionPerformed
 
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
-       JFileChooser fileChooser = new JFileChooser();
+        int counter1 = 0;
+        int counter2 = 0;
+        
+        JFileChooser fileChooser = new JFileChooser();
+        int response = fileChooser.showSaveDialog(null);
+        
+        File file2 = null;
+        if(response == JFileChooser.APPROVE_OPTION) {
+            file2 = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                //System.out.println(file2);
+                //file2 = new File(fileChooser.getCurrentDirectory());
+
+
+            File outputFile = new File(file2 + ".ms");
+
+
+            FileWriter fWriter = null;
+            try {
+                fWriter = new FileWriter(outputFile);
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //http://stackoverflow.com/questions/4269302/how-do-you-append-to-a-text-file-instead-of-overwriting-it-in-java
+            PrintWriter pWriter = new PrintWriter(fWriter);
+            
+            
+            pWriter.print(project.getProjectName() + "\n");
+            pWriter.print(project.getCreator() + "\n");
+            pWriter.print(project.getFunctionPointsPanes().size() + "\n");
+            
+            for(int i=0; i<paneArrayList.size(); i++) {
+                if(i==(paneArrayList.size()-1)) {
+                    pWriter.print(paneArrayList.get(i));
+                }
+                else {
+                    pWriter.print(paneArrayList.get(i) + ",");
+                }
+            }
+            pWriter.print("\n");
+            
+            for(int i=0; i<paneArrayList.size(); i++) {
+            //for(int i=0; i<project.getFunctionPointsPanes().size(); i++) {
+                //pWriter.print("---------------------------------------" + "\n");
+                if(paneArrayList.get(i) == 1) {
+                    String nameOfPane = project.getFunctionPointsPanes().get(counter1).getNameOfPane();
+                    String currentLanguage = project.getFunctionPointsPanes().get(counter1).getLanguage();
+                    int [] valueAdjustment = project.getFunctionPointsPanes().get(counter1).getValueAdjustmentList();
+                    String valueAdjustmentSum = Integer.toString(project.getFunctionPointsPanes().get(counter1).getValueAdjustmentSum());
+                    String EI = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalInput());
+                    String EO = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalOutput());
+                    String EInq = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalInquiries());
+                    String ILF = Integer.toString(project.getFunctionPointsPanes().get(counter1).getInternalLogicalFiles());
+                    String EIF = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalInterfaceFiles());
+
+                    String EIResults = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalInputResults());
+                    String EOResults = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalOutputResults());
+                    String EInqResults = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalInquiriesResults());
+                    String ILFResults = Integer.toString(project.getFunctionPointsPanes().get(counter1).getInternalLogicalFilesResults());
+                    String EIFResults = Integer.toString(project.getFunctionPointsPanes().get(counter1).getExternalInterfaceFilesResults());
+
+                    String [] complexities = project.getFunctionPointsPanes().get(counter1).getComplexities();
+                    String fp = Double.toString(project.getFunctionPointsPanes().get(counter1).getComputeFP());
+                    String codeSize = Double.toString(project.getFunctionPointsPanes().get(counter1).getCodeSize());
+                    String totalCount = Integer.toString(project.getFunctionPointsPanes().get(counter1).getTotalCount());
+                    //Write
+                    pWriter.print(nameOfPane + "/");
+                    pWriter.print(currentLanguage + "/");
+        //            for(int value=0; value<valueAdjustment.length; value++) {
+        //                pWriter.print(valueAdjustment[value] + ",");
+        //            }
+                    pWriter.print(valueAdjustment[0] + ",");
+                    pWriter.print(valueAdjustment[1] + ",");
+                    pWriter.print(valueAdjustment[2] + ",");
+                    pWriter.print(valueAdjustment[3] + ",");
+                    pWriter.print(valueAdjustment[4] + ",");
+                    pWriter.print(valueAdjustment[5] + ",");
+                    pWriter.print(valueAdjustment[6] + ",");
+                    pWriter.print(valueAdjustment[7] + ",");
+                    pWriter.print(valueAdjustment[8] + ",");
+                    pWriter.print(valueAdjustment[9] + ",");
+                    pWriter.print(valueAdjustment[10] + ",");
+                    pWriter.print(valueAdjustment[11] + ",");
+                    pWriter.print(valueAdjustment[12] + ",");
+                    pWriter.print(valueAdjustment[13] + "/");
+
+                    pWriter.print(valueAdjustmentSum + "/");
+                    pWriter.print(EI + "," + EO + "," + EInq + "," + ILF + "," + EIF + "/"); //MAYBE MAKE A LIST?
+                    pWriter.print(EIResults + "," + EOResults + "," + EInqResults + "," + ILFResults + "," + EIFResults + "/");
+        //            for(int c = 0; c<complexities.length; c++) {
+        //                pWriter.print(complexitiesPerPane[c] + ",");
+        //            }
+                    pWriter.print(complexities[0] + ",");
+                    pWriter.print(complexities[1] + ",");
+                    pWriter.print(complexities[2] + ",");
+                    pWriter.print(complexities[3] + ",");
+                    pWriter.print(complexities[4] + "/");
+
+                    pWriter.print(fp + "/");
+                    pWriter.print(codeSize + "/");
+                    pWriter.print(totalCount + "\n");
+                    //pWriter.print("---------------------------------------");
+                    counter1++;
+                }
+                else if(paneArrayList.get(i) == 2) {
+                    pWriter.print("UCP Pane\n");
+                    counter2++;
+                }
+            }
+            pWriter.close();
+        }
+    }//GEN-LAST:event_file_saveActionPerformed
+
+    private void saveMethod() {
+        JFileChooser fileChooser = new JFileChooser();
         int response = fileChooser.showSaveDialog(null);
         
         File file2 = null;
@@ -513,10 +627,9 @@ public class MainFrame extends javax.swing.JFrame {
         }
         pWriter.close();
         }
+    }
     
-
-    }//GEN-LAST:event_file_saveActionPerformed
-
+    
     private void file_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_exitActionPerformed
         this.dispose();
         System.exit(0);
@@ -542,6 +655,7 @@ public class MainFrame extends javax.swing.JFrame {
             //contents.add(content);
             project.addFunctionPointPane(paneContent);
             paneContent.setVisible(true);
+            paneArrayList.add(1);
         }
         else {
             JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
@@ -571,6 +685,7 @@ public class MainFrame extends javax.swing.JFrame {
             //contents.add(content);
             project.addUseCasePointPane(ucpContent);
             ucpContent.setVisible(true);
+            paneArrayList.add(2);
         }
         else {
             JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
@@ -581,6 +696,8 @@ public class MainFrame extends javax.swing.JFrame {
         for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
             System.out.println(project.getUseCasePointsPanes().get(i).toString());
         }
+        
+        System.out.println("Number of Panes = " + paneArrayList.size());
     }//GEN-LAST:event_consoleUCPHelpActionPerformed
 
     public void compilerFPHelp() {
