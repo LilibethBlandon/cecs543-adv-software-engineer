@@ -197,11 +197,66 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_file_newActionPerformed
 
     private void file_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openActionPerformed
-
+        ArrayList<String> data = new ArrayList<>();
+        String projectName = "";
+        String creator = "";
+        int numberOfPanes;
+        String [] paneArrayList;
+        
+        JFileChooser fc = new JFileChooser();
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setDialogTitle("Open Project");
+        FileFilter filter = new FileNameExtensionFilter("*.ms", ".ms", "ms");
+        fc.setFileFilter(filter);
+        if(fc.showOpenDialog(file_open) == JFileChooser.APPROVE_OPTION) {
+            // read content
+            String filepath = fc.getSelectedFile().getAbsolutePath();
+            
+            jTabbedPane1.removeAll();
+            
+            try {
+                /*Help from: https://www.javatpoint.com/java-jfilechooser*/
+                BufferedReader br = new BufferedReader(new FileReader(filepath));
+                
+                projectName = br.readLine(); //Line 1
+                creator = br.readLine(); //Line2
+                numberOfPanes = Integer.parseInt(br.readLine()); //Line3
+                paneArrayList = br.readLine().split(","); //Line4
+//                System.out.println("ProjectName = " + projectName);
+//                System.out.println("Creator = " + creator);
+//                System.out.println("Number of Panes = " + numberOfPanes);
+                //Read Data
+                for (int i=0; i<paneArrayList.length; i++) {
+                    data.add(br.readLine());
+                }
+                for(int i=0; i<data.size(); i++) {
+                    //FP Pane
+                    if(paneArrayList[i].equals("1")) {
+                        //logic for FP Pane
+                        String nameOfPanes;
+                        String languagesPerPane;
+                        String vafPerPane;
+                        String sumOfVAFPerPane;
+                        String functionDataPerPane;
+                        String functionDataResultsPerPane;
+                        String complexitiesPerPane;
+                        String functionPointsPerPane;
+                        String codeSizePerPane;
+                        String totalCountPerPane;
+                        
+                        
+                    }
+                    //UCP Pane
+                    else if(paneArrayList[i].equals("2")) {
+                        //logic for UCP Pane
+                    }
+                }
+            } catch (Exception ex) {ex.printStackTrace();}
+        }
     }//GEN-LAST:event_file_openActionPerformed
 
-    private void openMethod() {
-                ArrayList<String> data = new ArrayList<>();
+    private void openFPMethod() {
+        ArrayList<String> data = new ArrayList<>();
         String projectName = "";
         String creator = "";
         int numberOfPanes;
@@ -426,8 +481,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         System.out.println(fc.getSelectedFile().getAbsolutePath()); 
     }
-    
-    
+
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
         int counter1 = 0;
         int counter2 = 0;
@@ -457,7 +511,8 @@ public class MainFrame extends javax.swing.JFrame {
             
             pWriter.print(project.getProjectName() + "\n");
             pWriter.print(project.getCreator() + "\n");
-            pWriter.print(project.getFunctionPointsPanes().size() + "\n");
+            pWriter.print(paneArrayList.size());
+            //pWriter.print(project.getFunctionPointsPanes().size() + "\n");
             
             for(int i=0; i<paneArrayList.size(); i++) {
                 if(i==(paneArrayList.size()-1)) {
@@ -639,7 +694,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_file_saveActionPerformed
 
-    private void saveMethod() {
+    private void saveFPMethod() {
         JFileChooser fileChooser = new JFileChooser();
         int response = fileChooser.showSaveDialog(null);
         
