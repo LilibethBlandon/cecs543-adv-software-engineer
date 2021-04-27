@@ -697,6 +697,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public void setUUCP(int UUCP) {
         this.UUCP = UUCP;
     }
+    
+    public void setUUCPTextfield(String s) {
+        value_UUCP_textfield.setText(s);
+    }
 
     public JButton getCompute_UUCP() {
         return compute_UUCP;
@@ -722,6 +726,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         this.tcfSum = tcfSum;
         tcf_total_textfield.setText(Double.toString(tcfSum));
     }
+    
+    public void setTcfSumTextfield(String s) {
+        tcf_total_textfield.setText(s);
+    }
 
     public int[] getEcfArray() {
         return ecfArray;
@@ -740,12 +748,20 @@ public class UseCasePointsPane extends javax.swing.JPanel {
         ecf_total_textfield.setText(Double.toString(ecfSum));
     }
     
+    public void setEcfSumTextfield(String s) {
+        ecf_total_textfield.setText(s);
+    }
+    
     public int getPF() {
         return PF;
     }
 
     public void setPF(int PF) {
         this.PF = PF;
+    }
+    
+    public void setPFTextfield(String s) {
+        productivityFactor_textfield.setText(s);
     }
 
     public int getLOC_pm() {
@@ -755,6 +771,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public void setLOC_pm(int LOC_pm) {
         this.LOC_pm = LOC_pm;
     }
+    
+    public void setLOC_PMTextfield(String s) {
+        loc_pm_textfield.setText(s);
+    }
 
     public int getLOC_UCP() {
         return LOC_UCP;
@@ -763,13 +783,21 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public void setLOC_UCP(int LOC_UCP) {
         this.LOC_UCP = LOC_UCP;
     }
-
+    
+    public void setLOC_UCPTextfield(String s){
+        loc_ucp_textfield.setText(s);
+    }
+    
     public double getUCP_Total() {
         return UCP_Total;
     }
 
     public void setUCP_Total(double UCP_Total) {
         this.UCP_Total = UCP_Total;
+    }
+    
+    public void setUCP_TotalTextfield(String s) {
+        ucp_textfield.setText(s);
     }
 
     public double getEstimatedHours() {
@@ -779,6 +807,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public void setEstimatedHours(double estimatedHours) {
         this.estimatedHours = estimatedHours;
     }
+    
+    public void setEstimatedHoursTextfield(String s) {
+        estimatedHours_textfield.setText(s);
+    }
 
     public double getEstimatedLOC() {
         return estimatedLOC;
@@ -786,6 +818,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
     public void setEstimatedLOC(double estimatedLOC) {
         this.estimatedLOC = estimatedLOC;
+    }
+    
+    public void setEstimatedLOCTextfield(String s) {
+        estimatedLOC_textfield.setText(s);
     }
 
     public double getEstimatedPM() {
@@ -795,6 +831,10 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public void setEstimatedPM(double estimatedPM) {
         this.estimatedPM = estimatedPM;
     }
+    
+    public void setEstimatedPMTextfield(String s) {
+        estimatedPM_textfield.setText(s);
+    }
 
     public String getNameOfPane() {
         return nameOfPane;
@@ -803,6 +843,23 @@ public class UseCasePointsPane extends javax.swing.JPanel {
     public void setNameOfPane(String nameOfPane) {
         this.nameOfPane = nameOfPane;
     }
+    
+    
+    //Set labels
+    public void setUUCW_Values(int val1, int val2, int val3, int val4) {
+        uucw_simple_textfield.setText(Integer.toString(val1));
+        uucw_average_textfield.setText(Integer.toString(val2));
+        uucw_complex_textfield.setText(Integer.toString(val3));
+        uucw_total_textfield.setText(Integer.toString(val4));
+    }
+    
+    public void setUAW_Values(int val1, int val2, int val3, int val4) {
+        uaw_simple_textfield.setText(Integer.toString(val1));
+        uaw_average_textfield.setText(Integer.toString(val2));
+        uaw_complex_textfield.setText(Integer.toString(val3));
+        uaw_total_textfield.setText(Integer.toString(val4));
+    }
+    
     
     @Override
     public String toString() {

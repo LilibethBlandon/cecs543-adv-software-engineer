@@ -5,6 +5,7 @@
  */
 package metricssuite;
 
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -64,8 +65,6 @@ public class MainFrame extends javax.swing.JFrame {
         metrics_ucp = new javax.swing.JMenu();
         metrics_ucp_data = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
-        consoleFPHelp = new javax.swing.JMenuItem();
-        consoleUCPHelp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CECS 543 Metrics Suite - Function Points");
@@ -150,23 +149,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(metrics);
 
         help.setText("Help");
-
-        consoleFPHelp.setText("Console FP Help");
-        consoleFPHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consoleFPHelpActionPerformed(evt);
-            }
-        });
-        help.add(consoleFPHelp);
-
-        consoleUCPHelp.setText("Console UCP Help");
-        consoleUCPHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consoleUCPHelpActionPerformed(evt);
-            }
-        });
-        help.add(consoleUCPHelp);
-
         jMenuBar1.add(help);
 
         setJMenuBar(jMenuBar1);
@@ -177,13 +159,13 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -202,6 +184,8 @@ public class MainFrame extends javax.swing.JFrame {
         String creator = "";
         int numberOfPanes;
         String [] paneArrayList;
+        int counter1 = 0;
+        int counter2 = 0;
         
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(new java.io.File("."));
@@ -222,6 +206,45 @@ public class MainFrame extends javax.swing.JFrame {
                 creator = br.readLine(); //Line2
                 numberOfPanes = Integer.parseInt(br.readLine()); //Line3
                 paneArrayList = br.readLine().split(","); //Line4
+                
+                createProject(projectName, "", creator, "");
+                
+                //FP Pane Variables
+                String nameOfFPPane;
+                String languageOfPane;
+                String [] VAF ;
+                String sumOfVAF;
+                String [] functionData;
+                String [] functionDataResults;
+                String [] complexities;
+                String functionPoints;
+                String codeSize;
+                String totalCount;
+                
+                //UCP Pane Variable
+                String nameOfUCPPane;
+                String UUCW_simple;
+                String UUCW_average;
+                String UUCW_complex;
+                String UUCW_total;
+                String UAW_simple;
+                String UAW_average;
+                String UAW_complex;
+                String UAW_total;
+                String UUCP_total;
+                String PF;
+                String LOC_PM;
+                String LOC_UCP;
+                String UCP_Total;
+                String estimatedHours;
+                String estimatedLOC;
+                String estimatedPM;
+                String [] tcfArray;
+                String tcfSum;
+                String [] ecfArray;
+                String ecfSum;
+                
+                
 //                System.out.println("ProjectName = " + projectName);
 //                System.out.println("Creator = " + creator);
 //                System.out.println("Number of Panes = " + numberOfPanes);
@@ -229,28 +252,292 @@ public class MainFrame extends javax.swing.JFrame {
                 for (int i=0; i<paneArrayList.length; i++) {
                     data.add(br.readLine());
                 }
+                br.close();
+                
+//                for(int i=0; i<data.size(); i++) {
+//                    System.out.println(data.get(i));
+//                }
+//                
+//                FunctionPointsPane p1 = new FunctionPointsPane("testing1", "", this);
+//                p1.setVisible(true);
+//                jTabbedPane1.addTab("testing1", p1);
+//                project.addFunctionPointPane(p1);
+//                //p1.setVisible(true);
+//                
+//                FunctionPointsPane p2 = new FunctionPointsPane("testing2", "", this);
+//                p2.setVisible(true);
+//                jTabbedPane1.addTab("testing2", p2);
+//                project.addFunctionPointPane(p2);
+//                //p2.setVisible(true);
+//                
+//                UseCasePointsPane u1 = new UseCasePointsPane("testing3", this);
+//                u1.setVisible(true);
+//                jTabbedPane1.addTab("testing3", u1);
+//                project.addUseCasePointPane(u1);
+                //u1.setVisible(true);
+                
+                //jTabbedPane1.setSelectedIndex(0);
+                
+//                System.out.println("How many tabs?");
+                
+                        //jTabbedPane1.getTabComponentAt(i).setVisible(true);///////************
+                
                 for(int i=0; i<data.size(); i++) {
                     //FP Pane
                     if(paneArrayList[i].equals("1")) {
                         //logic for FP Pane
-                        String nameOfPanes;
-                        String languagesPerPane;
-                        String vafPerPane;
-                        String sumOfVAFPerPane;
-                        String functionDataPerPane;
-                        String functionDataResultsPerPane;
-                        String complexitiesPerPane;
-                        String functionPointsPerPane;
-                        String codeSizePerPane;
-                        String totalCountPerPane;
+                        String [] splitData = data.get(i).split("/");
+                        nameOfFPPane = splitData[0];
+                        languageOfPane = splitData[1];
+                        VAF = splitData[2].split(",");
+                        sumOfVAF = splitData[3];
+                        functionData = splitData[4].split(",");
+                        functionDataResults = splitData[5].split(",");
+                        complexities = (splitData[6].split(","));
+                        functionPoints = splitData[7];
+                        codeSize = splitData[8];
+                        totalCount = splitData[9];
+                        
+                        //Name of Pane
+                        String s = nameOfFPPane;
+                        FunctionPointsPane p = new FunctionPointsPane(s, "", this);
+                        p.setVisible(true);
+                        jTabbedPane1.addTab(s, p);
+                        project.addFunctionPointPane(p);
+                       // p.setVisible(true);
+                        //jTabbedPane1.getTabComponentAt(i).setVisible(true);///////************
                         
                         
+                        //Language
+                        String language = languageOfPane;
+                        project.getFunctionPointsPanes().get(counter1).setLanguage(language);
+                        project.getFunctionPointsPanes().get(counter1).setLanguageData(language);
+                        //VAF
+                        int [] vafArray = new int[14];
+                        for (int j=0; j<14; j++) {
+                            vafArray[j] = Integer.parseInt(VAF[j]);
+                        }
+                        project.getFunctionPointsPanes().get(counter1).setValueAdjustmentList(vafArray);
+                        //Sum of VAF
+                        int sum = Integer.parseInt(sumOfVAF);
+                        project.getFunctionPointsPanes().get(counter1).setValueAdjustmentSum(sum);
+                        project.getFunctionPointsPanes().get(counter1).setValueAdjustmentData(Integer.toString(sum));
+                        
+                        //functionData
+                        int value = 0;
+                        
+                        value = Integer.parseInt(functionData[0]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalInput(value);
+                        project.getFunctionPointsPanes().get(counter1).setEIsEdit(Integer.toString(value));
+                        
+                        value = Integer.parseInt(functionData[1]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalOutput(value);
+                        project.getFunctionPointsPanes().get(counter1).setEOsEdit(Integer.toString(value));
+                        
+                        value = Integer.parseInt(functionData[2]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalInquiries(value);
+                        project.getFunctionPointsPanes().get(counter1).setEInqsEdit(Integer.toString(value));
+                        
+                        value = Integer.parseInt(functionData[3]);
+                        project.getFunctionPointsPanes().get(counter1).setInternalLogicalFiles(value);
+                        project.getFunctionPointsPanes().get(counter1).setILFsEdit(Integer.toString(value));
+                        
+                        value = Integer.parseInt(functionData[4]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalInterfaceFiles(value);
+                        project.getFunctionPointsPanes().get(counter1).setEIFsEdit(Integer.toString(value));
+                        
+                        //functionDataResults
+                        int value2 = 0;
+                        value2 = Integer.parseInt(functionDataResults[0]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalInputResults(value2);
+                        project.getFunctionPointsPanes().get(counter1).setEIData(Integer.toString(value2));
+                        
+                        value2 = Integer.parseInt(functionDataResults[1]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalOutputResults(value2);
+                        project.getFunctionPointsPanes().get(counter1).setEOData(Integer.toString(value2));
+                        
+                        value2 = Integer.parseInt(functionDataResults[2]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalInquiriesResults(value2);
+                        project.getFunctionPointsPanes().get(counter1).setEInqData(Integer.toString(value2));
+                        
+                        value2 = Integer.parseInt(functionDataResults[3]);
+                        project.getFunctionPointsPanes().get(counter1).setInternalLogicalFilesResults(value2);
+                        project.getFunctionPointsPanes().get(counter1).setILFData(Integer.toString(value2));
+                        
+                        value2 = Integer.parseInt(functionDataResults[4]);
+                        project.getFunctionPointsPanes().get(counter1).setExternalInterfaceFilesResults(value2);
+                        project.getFunctionPointsPanes().get(counter1).setEIFData(Integer.toString(value2));
+                        
+                        //Check here
+                        //complexity
+                        project.getFunctionPointsPanes().get(counter1).complexities(complexities);
+                        
+                        DecimalFormat df = new DecimalFormat("###,###,###.##");
+                        
+                        double sumOfFP = Double.parseDouble(functionPoints);
+                        project.getFunctionPointsPanes().get(counter1).setComputeFP(sumOfFP);
+                        String formattedFP = df.format(sumOfFP);
+                        project.getFunctionPointsPanes().get(counter1).setComputeFPData(formattedFP);
+                        
+                        //codeSize
+                        double sumOfCodeSize = Double.parseDouble(codeSize);
+                        project.getFunctionPointsPanes().get(counter1).setCodeSize(sum);
+                        formattedFP = df.format(sumOfCodeSize);
+                        project.getFunctionPointsPanes().get(counter1).setComputeCodeSizeData(formattedFP);
+                        
+                        //totalCount
+                        int sumOfTotalCount = Integer.parseInt(totalCount);
+                        project.getFunctionPointsPanes().get(counter1).setTotalCount(sumOfTotalCount);
+                        //String formattedFP = df.format(sum);
+                        project.getFunctionPointsPanes().get(counter1).setTotalCountData(Integer.toString(sumOfTotalCount));
+                        
+                        counter1++;
                     }
                     //UCP Pane
                     else if(paneArrayList[i].equals("2")) {
                         //logic for UCP Pane
+//                        UseCasePointsPane u = new UseCasePointsPane("testing", this);
+//                        u.setVisible(true);
+//                        jTabbedPane1.addTab("testing", u);
+//                        project.addUseCasePointPane(u);
+                        String [] splitData = data.get(i).split("/");
+                        nameOfUCPPane = splitData[0];
+                        UUCW_simple = splitData[1];
+                        UUCW_average = splitData[2];
+                        UUCW_complex = splitData[3];
+                        UUCW_total = splitData[4];
+                        UAW_simple = splitData[5];
+                        UAW_average = splitData[6];
+                        UAW_complex = splitData[7];
+                        UAW_total = splitData[8];
+                        UUCP_total = splitData[9];
+                        PF = splitData[10];
+                        LOC_PM = splitData[11];
+                        LOC_UCP = splitData[12];
+                        UCP_Total = splitData[13];
+                        estimatedHours = splitData[14];
+                        estimatedLOC = splitData[15];
+                        estimatedPM = splitData[16];
+                        tcfArray = splitData[17].split(",");
+                        tcfSum = splitData[18];
+                        ecfArray = splitData[19].split(",");
+                        ecfSum = splitData[20];
+                        
+                        //Name of Pane
+                        String s = nameOfUCPPane;
+                        UseCasePointsPane u = new UseCasePointsPane(s, this);
+                        u.setVisible(true);
+                        jTabbedPane1.add(s, u);
+                        project.addUseCasePointPane(u);
+                        
+                        //UUCW (simple, average, complex and total)
+                        int value1 = 0;
+                        value1 = Integer.parseInt(UUCW_simple);
+                        project.getUseCasePointsPanes().get(counter2).setUUCW_simple(value1);
+                        
+                        int value2 = 0;
+                        value2 = Integer.parseInt(UUCW_average);
+                        project.getUseCasePointsPanes().get(counter2).setUUCW_average(value2);
+                        
+                        int value3 = 0;
+                        value3 = Integer.parseInt(UUCW_complex);
+                        project.getUseCasePointsPanes().get(counter2).setUUCW_complex(value3);
+                        
+                        int value4 = 0;
+                        value4 = Integer.parseInt(UUCW_total);
+                        project.getUseCasePointsPanes().get(counter2).setUUCW_total(value4);
+                        
+                        //set the values
+                        project.getUseCasePointsPanes().get(counter2).setUUCW_Values(value1, value2, value3, value4);
+                        
+                        //UAW (simple, average, complex, total)
+                        value1 = Integer.parseInt(UAW_simple);
+                        project.getUseCasePointsPanes().get(counter2).setUAW_simple(value1);
+                        
+                        value2 = Integer.parseInt(UAW_average);
+                        project.getUseCasePointsPanes().get(counter2).setUAW_average(value2);
+                        
+                        value3 = Integer.parseInt(UAW_complex);
+                        project.getUseCasePointsPanes().get(counter2).setUAW_complex(value3);
+                        
+                        value4 = Integer.parseInt(UAW_total);
+                        project.getUseCasePointsPanes().get(counter2).setUAW_total(value4);
+                        
+                        //set the values
+                        project.getUseCasePointsPanes().get(counter2).setUAW_Values(value1, value2, value3, value4);
+                        
+                        //UUCP
+                        value1 = Integer.parseInt(UUCP_total);
+                        project.getUseCasePointsPanes().get(counter2).setUUCP(value1);
+                        project.getUseCasePointsPanes().get(counter2).setUUCPTextfield(Integer.toString(value1));
+                        
+                        //PF
+                        value1 = Integer.parseInt(PF);
+                        project.getUseCasePointsPanes().get(counter2).setPF(value1);
+                        project.getUseCasePointsPanes().get(counter2).setPFTextfield(Integer.toString(value1));
+                        
+                        //LOC_PM
+                        value1 = Integer.parseInt(LOC_PM);
+                        project.getUseCasePointsPanes().get(counter2).setLOC_pm(value1);
+                        project.getUseCasePointsPanes().get(counter2).setLOC_PMTextfield(Integer.toString(value1));
+                        
+                        //LOC_UCP
+                        value1 = Integer.parseInt(LOC_UCP);
+                        project.getUseCasePointsPanes().get(counter2).setLOC_UCP(value1);
+                        project.getUseCasePointsPanes().get(counter2).setLOC_UCPTextfield(Integer.toString(value1));
+                        
+                        //UCP_Total
+                        double value5 = Double.parseDouble(UCP_Total);
+                        project.getUseCasePointsPanes().get(counter2).setUCP_Total(value5);
+                        project.getUseCasePointsPanes().get(counter2).setUCP_TotalTextfield(Double.toString(value5));
+                        
+                        //Estimated Hours
+                        value5 = Double.parseDouble(estimatedHours);
+                        project.getUseCasePointsPanes().get(counter2).setEstimatedHours(value5);
+                        project.getUseCasePointsPanes().get(counter2).setEstimatedHoursTextfield(Double.toString(value5));
+                        
+                        //Estimated LOC
+                        value5 = Double.parseDouble(estimatedLOC);
+                        project.getUseCasePointsPanes().get(counter2).setEstimatedLOC(value5);
+                        project.getUseCasePointsPanes().get(counter2).setEstimatedLOCTextfield(Double.toString(value5));
+                        
+                        //Estimated PM
+                        value5 = Double.parseDouble(estimatedPM);
+                        project.getUseCasePointsPanes().get(counter2).setEstimatedPM(value5);
+                        project.getUseCasePointsPanes().get(counter2).setEstimatedPMTextfield(Double.toString(value5));
+                        
+                        //tcf Array
+                        int [] arr1 = new int[tcfArray.length];
+                        for(int j=0; j<arr1.length; j++) {
+                            arr1[j] = Integer.parseInt(tcfArray[j]);
+                        }
+                        project.getUseCasePointsPanes().get(counter2).setTcfArray(arr1);
+                        
+                        //tcf sum
+                        value5 = Double.parseDouble(tcfSum);
+                        project.getUseCasePointsPanes().get(counter2).setTcfSum(value5);
+                        project.getUseCasePointsPanes().get(counter2).setTcfSumTextfield(Double.toString(value5));
+                        
+                        //ecf Array
+                        int [] arr2 = new int[ecfArray.length];
+                        for(int j=0; j<arr2.length; j++) {
+                            arr2[j] = Integer.parseInt(ecfArray[j]);
+                        }
+                        project.getUseCasePointsPanes().get(counter2).setEcfArray(arr2);
+                        
+                        //ecf sum
+                        value5 = Double.parseDouble(ecfSum);
+                        project.getUseCasePointsPanes().get(counter2).setEcfSum(value5);
+                        project.getUseCasePointsPanes().get(counter2).setEcfSumTextfield(Double.toString(value5));
+                        
+                        counter2++;
                     }
                 }
+                    //Component c;
+//                for (int i=0; i<numberOfPanes; i++) {
+//                    c = jTabbedPane1.getComponentAt(i);
+//                    c.setVisible(true);
+//                }
             } catch (Exception ex) {ex.printStackTrace();}
         }
     }//GEN-LAST:event_file_openActionPerformed
@@ -385,7 +672,7 @@ public class MainFrame extends javax.swing.JFrame {
                 }
                 //VAF Per FunctionPointsPane
                 for(int i=0; i<numberOfPanes; i++) {
-                    //System.out.print(vafPerPane.get(1)[i] + ",");
+                    //System.out.print(VAF.get(1)[i] + ",");
                     int [] vafArray = new int[14];
                     for(int j=0; j<14; j++) {
                         vafArray[j] = Integer.parseInt(vafPerPane.get(i)[j]);
@@ -511,7 +798,7 @@ public class MainFrame extends javax.swing.JFrame {
             
             pWriter.print(project.getProjectName() + "\n");
             pWriter.print(project.getCreator() + "\n");
-            pWriter.print(paneArrayList.size());
+            pWriter.print(paneArrayList.size() + "\n");
             //pWriter.print(project.getFunctionPointsPanes().size() + "\n");
             
             for(int i=0; i<paneArrayList.size(); i++) {
@@ -573,7 +860,7 @@ public class MainFrame extends javax.swing.JFrame {
                     pWriter.print(EI + "," + EO + "," + EInq + "," + ILF + "," + EIF + "/"); //MAYBE MAKE A LIST?
                     pWriter.print(EIResults + "," + EOResults + "," + EInqResults + "," + ILFResults + "," + EIFResults + "/");
         //            for(int c = 0; c<complexities.length; c++) {
-        //                pWriter.print(complexitiesPerPane[c] + ",");
+        //                pWriter.print(complexities[c] + ",");
         //            }
                     pWriter.print(complexities[0] + ",");
                     pWriter.print(complexities[1] + ",");
@@ -770,7 +1057,7 @@ public class MainFrame extends javax.swing.JFrame {
             pWriter.print(EI + "," + EO + "," + EInq + "," + ILF + "," + EIF + "/"); //MAYBE MAKE A LIST?
             pWriter.print(EIResults + "," + EOResults + "," + EInqResults + "," + ILFResults + "," + EIFResults + "/");
 //            for(int c = 0; c<complexities.length; c++) {
-//                pWriter.print(complexitiesPerPane[c] + ",");
+//                pWriter.print(complexities[c] + ",");
 //            }
             pWriter.print(complexities[0] + ",");
             pWriter.print(complexities[1] + ",");
@@ -820,13 +1107,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_fp_dataActionPerformed
 
-    private void consoleFPHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleFPHelpActionPerformed
-        //Console Help
-//        String filePath = System.getProperty("user.dir");
-//        System.out.println(filePath + "/" + project.getProjectName() + ".ms");
-        compilerFPHelp();
-    }//GEN-LAST:event_consoleFPHelpActionPerformed
-
     private void metrics_ucp_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metrics_ucp_dataActionPerformed
         // TODO add your handling code here:
         
@@ -850,14 +1130,13 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_ucp_dataActionPerformed
 
-    private void consoleUCPHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consoleUCPHelpActionPerformed
+    public void compilerUCPHelp() {
         for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
             System.out.println(project.getUseCasePointsPanes().get(i).toString());
         }
         
         System.out.println("Number of Panes = " + paneArrayList.size());
-    }//GEN-LAST:event_consoleUCPHelpActionPerformed
-
+    }
     public void compilerFPHelp() {
         System.out.println("Language = " + currentLanguage);
 
@@ -951,8 +1230,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem consoleFPHelp;
-    private javax.swing.JMenuItem consoleUCPHelp;
     private javax.swing.JMenu edit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem file_exit;
