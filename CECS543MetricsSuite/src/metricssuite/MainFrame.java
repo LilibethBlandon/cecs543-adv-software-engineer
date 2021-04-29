@@ -21,10 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author school
- */
+//Fix new method so it resets the data
 public class MainFrame extends javax.swing.JFrame {
 
     /**
@@ -33,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
     private static String currentLanguage = "None";
     private static Project project;
     private ArrayList<Integer> paneArrayList = new ArrayList<>();
+    private boolean smiPanel = false;
     //private ArrayList<Project> projects = new ArrayList<Project>();
     
     public MainFrame() {
@@ -64,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
         metrics_fp_data = new javax.swing.JMenuItem();
         metrics_ucp = new javax.swing.JMenu();
         metrics_ucp_data = new javax.swing.JMenuItem();
+        metrics_smi = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,6 +145,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         metrics.add(metrics_ucp);
 
+        metrics_smi.setText("SMI");
+        metrics_smi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                metrics_smiActionPerformed(evt);
+            }
+        });
+        metrics.add(metrics_smi);
+
         jMenuBar1.add(metrics);
 
         help.setText("Help");
@@ -173,9 +180,15 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void file_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_newActionPerformed
+        
+        //paneArrayList = new ArrayList<>();
+        //project = null;
+        //smiPanel = false;
         NewWindow newWindow = new NewWindow(this, project);
         newWindow.setVisible(true);
         newWindow.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//        System.out.println("Pane array list size: " + paneArrayList.size());
+//        System.out.println("Project name: " + project.getProjectName());
     }//GEN-LAST:event_file_newActionPerformed
 
     private void file_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openActionPerformed
@@ -1130,6 +1143,27 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_ucp_dataActionPerformed
 
+    private void metrics_smiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metrics_smiActionPerformed
+        if(smiPanel == true) {
+                JOptionPane.showMessageDialog(null, "There can be only one SMI Panel per project", "", JOptionPane.INFORMATION_MESSAGE);
+                return;
+        }
+        if(project!= null) {
+            //String ucpName = JOptionPane.showInputDialog("Name of this UCP");
+            SoftwareMaturityIndexPane smiContent = new SoftwareMaturityIndexPane();
+                jTabbedPane1.addTab("SMI", smiContent);
+            //contents.add(content);
+            //ADD TO PROJECT CLASS
+            //project.addUseCasePointPane(ucpContent);
+            smiContent.setVisible(true);
+            paneArrayList.add(3);
+            smiPanel = true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_metrics_smiActionPerformed
+
     public void compilerUCPHelp() {
         for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
             System.out.println(project.getUseCasePointsPanes().get(i).toString());
@@ -1243,6 +1277,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu metrics;
     private javax.swing.JMenu metrics_fp;
     private javax.swing.JMenuItem metrics_fp_data;
+    private javax.swing.JMenuItem metrics_smi;
     private javax.swing.JMenu metrics_ucp;
     private javax.swing.JMenuItem metrics_ucp_data;
     private javax.swing.JMenuItem preferences_language;
