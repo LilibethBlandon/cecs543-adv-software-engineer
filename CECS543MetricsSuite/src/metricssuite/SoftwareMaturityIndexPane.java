@@ -16,6 +16,8 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     /**
      * Creates new form SoftwareMaturityIndexPane
      */
+    private DefaultTableModel model;
+    
     public SoftwareMaturityIndexPane() {
         initComponents();
     }
@@ -30,7 +32,7 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     private void initComponents() {
 
         addRowjButton = new javax.swing.JButton();
-        computerIndexjButton = new javax.swing.JButton();
+        computeIndexjButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -42,10 +44,10 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             }
         });
 
-        computerIndexjButton.setText("Compute Index");
-        computerIndexjButton.addActionListener(new java.awt.event.ActionListener() {
+        computeIndexjButton.setText("Compute Index");
+        computeIndexjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                computerIndexjButtonActionPerformed(evt);
+                computeIndexjButtonActionPerformed(evt);
             }
         });
 
@@ -59,7 +61,15 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             new String [] {
                 "SMI", "Modules Added", "Modules Changed", "Modules Deleted", "Total Modules"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -71,7 +81,7 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addRowjButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(computerIndexjButton)
+                .addComponent(computeIndexjButton)
                 .addGap(72, 72, 72))
             .addGroup(layout.createSequentialGroup()
                 .addGap(77, 77, 77)
@@ -92,24 +102,42 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addRowjButton)
-                    .addComponent(computerIndexjButton))
+                    .addComponent(computeIndexjButton))
                 .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void computerIndexjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computerIndexjButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_computerIndexjButtonActionPerformed
+    private void computeIndexjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeIndexjButtonActionPerformed
+        if (jTable1.isEditing())
+            jTable1.getCellEditor().stopCellEditing();
+        
+        
+        int row = jTable1.getSelectedRow();
+        int column = jTable1.getSelectedColumn();
+        System.out.println("ROW AND COLUMN VALUE: "+jTable1.getValueAt(row, column));
+//        System.out.println("Current Row = " + row);
+//        System.out.println("Current Column = " + column);
+//        String value = jTable1.getModel().getValueAt(row, column).toString();
+//        System.out.println("Value = " + value);
+//        jTable1.setValueAt((Object)"Hello", 1, 1);
+        String value1 = jTable1.getValueAt(row, 0).toString();
+        String value2 = jTable1.getValueAt(row, 1).toString();
+        String value3 = jTable1.getValueAt(row, 2).toString();
+        String value4 = jTable1.getValueAt(row, 3).toString();
+        String value5 = jTable1.getValueAt(row, 4).toString();
+        System.out.println("Column 1 = " + value1 + " Column 2 = " + value2 + " Column 3 = " + value3 + " Column 4 = " + value4 + " Column 5 = " + value5);
+    }//GEN-LAST:event_computeIndexjButtonActionPerformed
 
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{"Column 1", "Column 2", "Column 3", "Column 4", "Column 5"});
+        model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(new Object[]{"", "", "", "", ""});
+        
     }//GEN-LAST:event_addRowjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addRowjButton;
-    private javax.swing.JButton computerIndexjButton;
+    private javax.swing.JButton computeIndexjButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
