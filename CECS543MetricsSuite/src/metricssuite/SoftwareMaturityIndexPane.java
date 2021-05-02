@@ -108,24 +108,50 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void computeIndexjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeIndexjButtonActionPerformed
-        if (jTable1.isEditing())
-            jTable1.getCellEditor().stopCellEditing();
-        
-        
         int row = jTable1.getSelectedRow();
-        int column = jTable1.getSelectedColumn();
-        System.out.println("ROW AND COLUMN VALUE: "+jTable1.getValueAt(row, column));
-//        System.out.println("Current Row = " + row);
-//        System.out.println("Current Column = " + column);
-//        String value = jTable1.getModel().getValueAt(row, column).toString();
-//        System.out.println("Value = " + value);
-//        jTable1.setValueAt((Object)"Hello", 1, 1);
-        String value1 = jTable1.getValueAt(row, 0).toString();
-        String value2 = jTable1.getValueAt(row, 1).toString();
-        String value3 = jTable1.getValueAt(row, 2).toString();
-        String value4 = jTable1.getValueAt(row, 3).toString();
-        String value5 = jTable1.getValueAt(row, 4).toString();
-        System.out.println("Column 1 = " + value1 + " Column 2 = " + value2 + " Column 3 = " + value3 + " Column 4 = " + value4 + " Column 5 = " + value5);
+        System.out.println("Row = " + row);
+        if(row == 0) {
+            if (jTable1.isEditing())
+                jTable1.getCellEditor().stopCellEditing();
+            
+            String currentModulesAdded = jTable1.getValueAt(row, 1).toString();
+            double SMI = (0-(Integer.parseInt(currentModulesAdded+0+0)))/Integer.parseInt(currentModulesAdded);
+            jTable1.setValueAt((Object)Double.toString(SMI), 0, 0);
+            jTable1.setValueAt((Object)"0.0", 0, 2);
+            jTable1.setValueAt((Object)"0.0", 0, 3);
+            jTable1.setValueAt((Object)currentModulesAdded, 0, 4);
+            //Calculate
+        }
+        /*else {
+            if (jTable1.isEditing())
+                jTable1.getCellEditor().stopCellEditing();
+
+            //int row = jTable1.getSelectedRow();
+            int lastRow = row-1;
+            int column = jTable1.getSelectedColumn();
+            System.out.println("ROW AND COLUMN VALUE: "+jTable1.getValueAt(row, column));
+    //        System.out.println("Current Row = " + row);
+    //        System.out.println("Current Column = " + column);
+    //        String value = jTable1.getModel().getValueAt(row, column).toString();
+    //        System.out.println("Value = " + value);
+    //        jTable1.setValueAt((Object)"Hello", 1, 1);
+            //current row values
+            String currentValue1 = jTable1.getValueAt(row, 0).toString();
+            String currentValue2 = jTable1.getValueAt(row, 1).toString();
+            String currentValue3 = jTable1.getValueAt(row, 2).toString();
+            String currentValue4 = jTable1.getValueAt(row, 3).toString();
+            String currentValue5 = jTable1.getValueAt(row, 4).toString();
+            //last row values
+            String lastValue1 = jTable1.getValueAt(lastRow, 0).toString();
+            String lastValue2 = jTable1.getValueAt(lastRow, 1).toString();
+            String lastValue3 = jTable1.getValueAt(lastRow, 2).toString();
+            String lastValue4 = jTable1.getValueAt(lastRow, 3).toString();
+            String lastValue5 = jTable1.getValueAt(lastRow, 4).toString();
+            //Calculate
+
+            System.out.println("Column 1 = " + currentValue1 + " Column 2 = " + currentValue2 + " Column 3 = " + currentValue3 + " Column 4 = " + currentValue4 + " Column 5 = " + currentValue5);
+        }
+*/
     }//GEN-LAST:event_computeIndexjButtonActionPerformed
 
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
