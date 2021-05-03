@@ -115,18 +115,28 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
                 jTable1.getCellEditor().stopCellEditing();
             
             String currentModulesAdded = jTable1.getValueAt(row, 1).toString();
-            double SMI = (0-(Integer.parseInt(currentModulesAdded+0+0)))/Integer.parseInt(currentModulesAdded);
+            double SMI = (Integer.parseInt(currentModulesAdded)-(Integer.parseInt(currentModulesAdded+0+0)))/Integer.parseInt(currentModulesAdded);
             jTable1.setValueAt((Object)Double.toString(SMI), 0, 0);
             jTable1.setValueAt((Object)"0.0", 0, 2);
             jTable1.setValueAt((Object)"0.0", 0, 3);
             jTable1.setValueAt((Object)currentModulesAdded, 0, 4);
             //Calculate
         }
-        /*else {
+        else {
             if (jTable1.isEditing())
                 jTable1.getCellEditor().stopCellEditing();
-
-            //int row = jTable1.getSelectedRow();
+            String previousTotalModules = jTable1.getValueAt(row-1,4).toString();
+            String currentModulesAdded = jTable1.getValueAt(row, 1).toString();
+            String currentModulesChanged = jTable1.getValueAt(row, 2).toString();
+            String currentModulesDeleted = jTable1.getValueAt(row, 3).toString();
+            int currentTotalModules = Integer.parseInt(previousTotalModules) + Integer.parseInt(currentModulesAdded) - Integer.parseInt(currentModulesDeleted);
+            double SMI = (currentTotalModules-(Integer.parseInt(currentModulesAdded+currentModulesChanged+currentModulesDeleted)))/currentTotalModules;
+            
+            jTable1.setValueAt((Object)Double.toString(SMI), row, 1);
+            jTable1.setValueAt((Object)Integer.toString(currentTotalModules), row, 4);
+            
+            
+        /*    //int row = jTable1.getSelectedRow();
             int lastRow = row-1;
             int column = jTable1.getSelectedColumn();
             System.out.println("ROW AND COLUMN VALUE: "+jTable1.getValueAt(row, column));
@@ -150,8 +160,8 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             //Calculate
 
             System.out.println("Column 1 = " + currentValue1 + " Column 2 = " + currentValue2 + " Column 3 = " + currentValue3 + " Column 4 = " + currentValue4 + " Column 5 = " + currentValue5);
+*/        
         }
-*/
     }//GEN-LAST:event_computeIndexjButtonActionPerformed
 
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
