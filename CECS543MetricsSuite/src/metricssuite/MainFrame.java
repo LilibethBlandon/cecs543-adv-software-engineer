@@ -64,6 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
         metrics_ucp_data = new javax.swing.JMenuItem();
         metrics_smi = new javax.swing.JMenuItem();
         help = new javax.swing.JMenu();
+        debug = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CECS 543 Metrics Suite - Function Points");
@@ -156,6 +157,15 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(metrics);
 
         help.setText("Help");
+
+        debug.setText("Debug");
+        debug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                debugActionPerformed(evt);
+            }
+        });
+        help.add(debug);
+
         jMenuBar1.add(help);
 
         setJMenuBar(jMenuBar1);
@@ -1269,6 +1279,17 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_metrics_smiActionPerformed
 
+    private void debugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debugActionPerformed
+        //FP Information
+        for(int i=0; i<project.getFunctionPointsPanes().size(); i++) {
+            System.out.println(project.getFunctionPointsPanes().get(i).toString());
+        }
+        for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
+            System.out.println(project.getUseCasePointsPanes().get(i).toString());
+        }
+        project.getSmi().printData();
+    }//GEN-LAST:event_debugActionPerformed
+
     public void compilerUCPHelp() {
         for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
             System.out.println(project.getUseCasePointsPanes().get(i).toString());
@@ -1369,6 +1390,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem debug;
     private javax.swing.JMenu edit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem file_exit;

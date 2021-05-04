@@ -220,6 +220,29 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
         jTable1.setValueAt((Object)value, row, column);
     }
     
+    public void printData() {
+        for(int i=0; i<smi.size(); i++) {
+            System.out.print(smi.get(i) + ", ");
+        }
+        System.out.println("");
+        for(int i=0; i<modulesAdded.size(); i++) {
+            System.out.print(modulesAdded.get(i) + ", ");
+        }
+        System.out.println("");
+        for(int i=0; i<modulesChanged.size(); i++) {
+            System.out.print(modulesChanged.get(i) + ", ");
+        }
+        System.out.println("");
+        for(int i=0; i<modulesDeleted.size(); i++) {
+            System.out.print(modulesDeleted.get(i) + ", ");
+        }
+        System.out.println("");
+        for(int i=0; i<totalModules.size(); i++) {
+            System.out.print(totalModules.get(i) + ", ");
+        }
+        System.out.println("");
+    }
+    
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
         model = (DefaultTableModel) jTable1.getModel();
         model.addRow(new Object[]{"", "", "", "", ""});
