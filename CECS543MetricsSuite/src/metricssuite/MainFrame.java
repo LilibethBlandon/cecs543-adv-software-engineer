@@ -568,16 +568,34 @@ public class MainFrame extends javax.swing.JFrame {
                         totalModules = splitData[4].split(",");
                         
                         //Add empty rows which is equal to the size of the arrays ^^
+                        for(int j=0; j<smiData.length; j++) {
+                            smi.addRow();
+                        }
                         
                         //smiData for loop
+                        for(int j=0; j<modulesAdded.length; j++) {
+                            smi.modifyRowColumn(smiData[j], j, 0);
+                        }
                         
                         //modulesAdded for loop
+                        for(int j=0; j<modulesAdded.length; j++) {
+                            smi.modifyRowColumn(modulesAdded[j], j, 1);
+                        }
                         
                         //modulesChanged for loop
+                        for(int j=0; j<modulesChanged.length; j++) {
+                            smi.modifyRowColumn(modulesChanged[j], j, 2);
+                        }
                         
                         //modulesDeleted for loop
+                        for(int j=0; j<modulesDeleted.length; j++) {
+                            smi.modifyRowColumn(modulesDeleted[j], j, 3);
+                        }
                         
                         //totalModules for loop
+                        for(int j=0; j<totalModules.length; j++) {
+                            smi.modifyRowColumn(totalModules[j], j, 4);
+                        }
                     }
                 }
                     //Component c;

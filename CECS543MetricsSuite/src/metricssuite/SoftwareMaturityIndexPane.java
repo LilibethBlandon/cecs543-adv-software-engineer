@@ -210,8 +210,14 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     }
     
     public void addRow() {
+        //System.out.println("DOES THIS OCCUR?");
         model = (DefaultTableModel) jTable1.getModel();
         model.addRow(new Object[]{"", "", "", "", ""});
+    }
+    
+    public void modifyRowColumn(String value, int row, int column) {
+        System.out.println("HELLO");
+        jTable1.setValueAt((Object)value, row, column);
     }
     
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
