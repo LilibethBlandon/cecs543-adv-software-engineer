@@ -5,6 +5,7 @@
  */
 package metricssuite;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,9 +17,20 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     /**
      * Creates new form SoftwareMaturityIndexPane
      */
+    private String panelName = "";
+    private ArrayList<Double> smi = new ArrayList<>();
+    private ArrayList<Integer> modulesAdded = new ArrayList<>();
+    private ArrayList<Integer> modulesChanged = new ArrayList<>();
+    private ArrayList<Integer> modulesDeleted = new ArrayList<>();
+    private ArrayList<Integer> totalModules = new ArrayList<>();
     private DefaultTableModel model;
     
     public SoftwareMaturityIndexPane() {
+        initComponents();
+    }
+
+    public SoftwareMaturityIndexPane(String s) {
+        this.panelName = s;
         initComponents();
     }
 
@@ -115,12 +127,18 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
                 jTable1.getCellEditor().stopCellEditing();
             
             String currentModulesAdded = jTable1.getValueAt(row, 1).toString();
-            double SMI = (Integer.parseInt(currentModulesAdded)-(Integer.parseInt(currentModulesAdded+0+0)))/Integer.parseInt(currentModulesAdded);
+            System.out.println("Current modules added = " + currentModulesAdded);
+            double SMI = (Double.parseDouble(currentModulesAdded)-(Double.parseDouble(currentModulesAdded)+0+0))/Double.parseDouble(currentModulesAdded);
             jTable1.setValueAt((Object)Double.toString(SMI), 0, 0);
             jTable1.setValueAt((Object)"0.0", 0, 2);
             jTable1.setValueAt((Object)"0.0", 0, 3);
             jTable1.setValueAt((Object)currentModulesAdded, 0, 4);
-            //Calculate
+            //Add to arraylist
+            smi.add(SMI);
+            modulesAdded.add(Integer.parseInt(currentModulesAdded));
+            modulesChanged.add(0);
+            modulesDeleted.add(0);
+            totalModules.add(Integer.parseInt(currentModulesAdded));
         }
         else {
             if (jTable1.isEditing())
@@ -130,40 +148,72 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             String currentModulesChanged = jTable1.getValueAt(row, 2).toString();
             String currentModulesDeleted = jTable1.getValueAt(row, 3).toString();
             int currentTotalModules = Integer.parseInt(previousTotalModules) + Integer.parseInt(currentModulesAdded) - Integer.parseInt(currentModulesDeleted);
-            double SMI = (currentTotalModules-(Integer.parseInt(currentModulesAdded+currentModulesChanged+currentModulesDeleted)))/currentTotalModules;
+            double SMI = (currentTotalModules-(Double.parseDouble(currentModulesAdded)+Double.parseDouble(currentModulesChanged)+Double.parseDouble(currentModulesDeleted)))/currentTotalModules;
             
-            jTable1.setValueAt((Object)Double.toString(SMI), row, 1);
+            jTable1.setValueAt((Object)Double.toString(SMI), row, 0);
             jTable1.setValueAt((Object)Integer.toString(currentTotalModules), row, 4);
             
-            
-        /*    //int row = jTable1.getSelectedRow();
-            int lastRow = row-1;
-            int column = jTable1.getSelectedColumn();
-            System.out.println("ROW AND COLUMN VALUE: "+jTable1.getValueAt(row, column));
-    //        System.out.println("Current Row = " + row);
-    //        System.out.println("Current Column = " + column);
-    //        String value = jTable1.getModel().getValueAt(row, column).toString();
-    //        System.out.println("Value = " + value);
-    //        jTable1.setValueAt((Object)"Hello", 1, 1);
-            //current row values
-            String currentValue1 = jTable1.getValueAt(row, 0).toString();
-            String currentValue2 = jTable1.getValueAt(row, 1).toString();
-            String currentValue3 = jTable1.getValueAt(row, 2).toString();
-            String currentValue4 = jTable1.getValueAt(row, 3).toString();
-            String currentValue5 = jTable1.getValueAt(row, 4).toString();
-            //last row values
-            String lastValue1 = jTable1.getValueAt(lastRow, 0).toString();
-            String lastValue2 = jTable1.getValueAt(lastRow, 1).toString();
-            String lastValue3 = jTable1.getValueAt(lastRow, 2).toString();
-            String lastValue4 = jTable1.getValueAt(lastRow, 3).toString();
-            String lastValue5 = jTable1.getValueAt(lastRow, 4).toString();
-            //Calculate
-
-            System.out.println("Column 1 = " + currentValue1 + " Column 2 = " + currentValue2 + " Column 3 = " + currentValue3 + " Column 4 = " + currentValue4 + " Column 5 = " + currentValue5);
-*/        
+            smi.add(SMI);
+            modulesAdded.add(Integer.parseInt(currentModulesAdded));
+            modulesChanged.add(Integer.parseInt(currentModulesChanged));
+            modulesDeleted.add(Integer.parseInt(currentModulesDeleted));
+            totalModules.add(currentTotalModules);
         }
     }//GEN-LAST:event_computeIndexjButtonActionPerformed
 
+    public String getPanelName() {
+        return panelName;
+    }
+
+    public void setPanelName(String panelName) {
+        this.panelName = panelName;
+    }
+
+    public ArrayList<Double> getSmi() {
+        return smi;
+    }
+
+    public void setSmi(ArrayList<Double> smi) {
+        this.smi = smi;
+    }
+
+    public ArrayList<Integer> getModulesAdded() {
+        return modulesAdded;
+    }
+
+    public void setModulesAdded(ArrayList<Integer> modulesAdded) {
+        this.modulesAdded = modulesAdded;
+    }
+
+    public ArrayList<Integer> getModulesChanged() {
+        return modulesChanged;
+    }
+
+    public void setModulesChanged(ArrayList<Integer> modulesChanged) {
+        this.modulesChanged = modulesChanged;
+    }
+
+    public ArrayList<Integer> getModulesDeleted() {
+        return modulesDeleted;
+    }
+
+    public void setModulesDeleted(ArrayList<Integer> modulesDeleted) {
+        this.modulesDeleted = modulesDeleted;
+    }
+
+    public ArrayList<Integer> getTotalModules() {
+        return totalModules;
+    }
+
+    public void setTotalModules(ArrayList<Integer> totalModules) {
+        this.totalModules = totalModules;
+    }
+    
+    public void addRow() {
+        model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(new Object[]{"", "", "", "", ""});
+    }
+    
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
         model = (DefaultTableModel) jTable1.getModel();
         model.addRow(new Object[]{"", "", "", "", ""});

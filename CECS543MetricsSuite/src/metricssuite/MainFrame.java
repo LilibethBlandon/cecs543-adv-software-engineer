@@ -257,13 +257,21 @@ public class MainFrame extends javax.swing.JFrame {
                 String [] ecfArray;
                 String ecfSum;
                 
+                //SMI Pane Variables
+                String [] smiData;
+                String [] modulesAdded;
+                String [] modulesChanged;
+                String [] modulesDeleted;
+                String [] totalModules;
                 
 //                System.out.println("ProjectName = " + projectName);
 //                System.out.println("Creator = " + creator);
 //                System.out.println("Number of Panes = " + numberOfPanes);
                 //Read Data
                 for (int i=0; i<paneArrayList.length; i++) {
-                    data.add(br.readLine());
+                    String temp = br.readLine();
+                    data.add(temp);
+                    System.out.println("Line: " + temp);
                 }
                 br.close();
                 
@@ -544,6 +552,32 @@ public class MainFrame extends javax.swing.JFrame {
                         project.getUseCasePointsPanes().get(counter2).setEcfSumTextfield(Double.toString(value5));
                         
                         counter2++;
+                    }
+                    else if(paneArrayList[i].equals("3")) {
+                        String s = "SMI";
+                        SoftwareMaturityIndexPane smi = new SoftwareMaturityIndexPane(s);
+                        smi.setVisible(true);
+                        jTabbedPane1.add(s, smi);
+                        project.addSMIPane(smi);
+                        
+                        String [] splitData = data.get(i).split("/");
+                        smiData = splitData[0].split(",");
+                        modulesAdded = splitData[1].split(",");
+                        modulesChanged = splitData[2].split(",");
+                        modulesDeleted = splitData[3].split(",");
+                        totalModules = splitData[4].split(",");
+                        
+                        //Add empty rows which is equal to the size of the arrays ^^
+                        
+                        //smiData for loop
+                        
+                        //modulesAdded for loop
+                        
+                        //modulesChanged for loop
+                        
+                        //modulesDeleted for loop
+                        
+                        //totalModules for loop
                     }
                 }
                     //Component c;
@@ -990,6 +1024,58 @@ public class MainFrame extends javax.swing.JFrame {
                     counter2++;
                 }
             }
+            
+            //SMI Last 5 Rows
+            //SMI
+            for(int i=0; i<project.getSMI_ArrayList().size(); i++) {
+                if(i==project.getSMI_ArrayList().size()-1) {
+                    pWriter.print(project.getSMI_ArrayList().get(i));
+                }
+                else {
+                    pWriter.print(project.getSMI_ArrayList().get(i) + ",");
+                }
+            }
+            pWriter.print("/");
+            //Modules Added
+            for(int i=0; i<project.getModulesAdded().size(); i++) {
+                if(i==project.getModulesAdded().size()-1){
+                    pWriter.print(project.getModulesAdded().get(i));
+                }
+                else {
+                    pWriter.print(project.getModulesAdded().get(i) + ",");
+                }
+            }
+            pWriter.print("/");
+            //Modules Changed
+            for(int i=0; i<project.getModulesChanged().size(); i++) {
+                if(i==project.getModulesChanged().size()-1) {
+                    pWriter.print(project.getModulesChanged().get(i));
+                }
+                else {
+                    pWriter.print(project.getModulesChanged().get(i) + ",");
+                }
+            }
+            pWriter.print("/");
+            //Modules Deleted
+            for(int i=0; i<project.getModulesDeleted().size(); i++) {
+                if(i==project.getModulesDeleted().size()-1) {
+                    pWriter.print(project.getModulesDeleted().get(i));
+                }
+                else {
+                    pWriter.print(project.getModulesDeleted().get(i) + ",");
+                }
+            }
+            pWriter.print("/");
+            //Total Modules
+            for(int i=0; i<project.getTotalModules().size(); i++) {
+                if(i==project.getTotalModules().size()-1) {
+                    pWriter.print(project.getTotalModules().get(i));
+                }
+                else {
+                    pWriter.print(project.getTotalModules().get(i) + ",");
+                }
+            }
+            
             pWriter.close();
         }
     }//GEN-LAST:event_file_saveActionPerformed
@@ -1150,11 +1236,12 @@ public class MainFrame extends javax.swing.JFrame {
         }
         if(project!= null) {
             //String ucpName = JOptionPane.showInputDialog("Name of this UCP");
-            SoftwareMaturityIndexPane smiContent = new SoftwareMaturityIndexPane();
+            SoftwareMaturityIndexPane smiContent = new SoftwareMaturityIndexPane("SMI");
                 jTabbedPane1.addTab("SMI", smiContent);
             //contents.add(content);
             //ADD TO PROJECT CLASS
             //project.addUseCasePointPane(ucpContent);
+            project.addSMIPane(smiContent);
             smiContent.setVisible(true);
             paneArrayList.add(3);
             smiPanel = true;

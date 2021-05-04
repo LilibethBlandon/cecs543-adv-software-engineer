@@ -13,8 +13,9 @@ public class Project {
     private String projectName, productName, creator, comments;
     private String language = "";
     private ArrayList<FunctionPointsPane> functionPointPanes = new ArrayList<>();
-    
     private ArrayList<UseCasePointsPane> useCasePanes = new ArrayList<>();
+    
+    private SoftwareMaturityIndexPane smi;
     
     public Project(String projectName, String productName, String creator, String comments, String language){
         this.projectName = projectName;
@@ -54,7 +55,7 @@ public class Project {
     public void setComments(String comments) {
         this.comments = comments;
     }
-
+    //-------------------------------------------------
     //FP
     public ArrayList<FunctionPointsPane> getFunctionPointsPanes() {
         return functionPointPanes;
@@ -67,7 +68,7 @@ public class Project {
     public void addFunctionPointPane(FunctionPointsPane pane) {
         functionPointPanes.add(pane);
     }
-    
+    //-------------------------------------------------
     //UCP
     public ArrayList<UseCasePointsPane> getUseCasePointsPanes() {
         return useCasePanes;
@@ -80,7 +81,63 @@ public class Project {
     public void addUseCasePointPane(UseCasePointsPane pane) {
         useCasePanes.add(pane);
     }
+    
+    //-------------------------------------------------
+    //SMI
+    public SoftwareMaturityIndexPane getSmi() {
+        return smi;
+    }
 
+    public void setSmi(SoftwareMaturityIndexPane smi) {
+        this.smi = smi;
+    }
+    
+    public void addSMIPane(SoftwareMaturityIndexPane pane) {
+        smi = pane;
+    }
+    
+    //Get
+    public ArrayList<Double> getSMI_ArrayList() {
+        return smi.getSmi();
+    }
+    
+    public ArrayList<Integer> getModulesAdded() {
+        return smi.getModulesAdded();
+    }
+    
+    public ArrayList<Integer> getModulesChanged() {
+        return smi.getModulesChanged();
+    }
+    
+    public ArrayList<Integer> getModulesDeleted() {
+        return smi.getModulesDeleted();
+    }
+    
+    public ArrayList<Integer> getTotalModules() {
+        return smi.getTotalModules();
+    }
+    
+    //Set
+     public void setSMI_ArrayList(ArrayList<Double> s) {
+        this.smi.setSmi(s);
+    }
+    
+    public void getModulesAdded(ArrayList<Integer> s) {
+        this.smi.setModulesAdded(s);
+    }
+    
+    public void getModulesChanged(ArrayList<Integer> s) {
+        this.smi.setModulesChanged(s);
+    }
+    
+    public void getModulesDeleted(ArrayList<Integer> s) {
+        this.smi.setModulesDeleted(s);
+    }
+    
+    public void getTotalModules(ArrayList<Integer> s) {
+        this.smi.setTotalModules(s);
+    }
+    //-------------------------------------------------
     public String getLanguage() {
         return language;
     }
