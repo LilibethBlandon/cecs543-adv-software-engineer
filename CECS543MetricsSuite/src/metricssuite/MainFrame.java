@@ -1234,6 +1234,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_metrics_smiActionPerformed
 
     private void debugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debugActionPerformed
+
+    }//GEN-LAST:event_debugActionPerformed
+
+    private void debugAction() {
         //FP Information
         for(int i=0; i<project.getFunctionPointsPanes().size(); i++) {
             System.out.println(project.getFunctionPointsPanes().get(i).toString());
@@ -1247,7 +1251,7 @@ public class MainFrame extends javax.swing.JFrame {
             //project.getSmi()
             project.getSmi().printData();
         }
-    }//GEN-LAST:event_debugActionPerformed
+    }
 
     public void compilerUCPHelp() {
         for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
@@ -1301,12 +1305,12 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             br = new BufferedReader(new FileReader(homeDirectory + "/language.txt"));
             
-            System.out.println("What is br?" + br);
+            //System.out.println("What is br?" + br);
             line = br.readLine();
             br.close();
         } catch (Exception ex) { ex.printStackTrace();}
           
-        System.out.println("What is the programming language from text file? " + line);
+        //System.out.println("What is the programming language from text file? " + line);
         currentLanguage = line;
         if (!new File(homeDirectory+"/language.txt").exists())
         {
