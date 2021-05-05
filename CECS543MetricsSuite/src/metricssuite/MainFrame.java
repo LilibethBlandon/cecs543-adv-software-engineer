@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -1081,60 +1082,64 @@ public class MainFrame extends javax.swing.JFrame {
                     pWriter.print(ecfSum + "\n");
                     counter2++;
                 }
+                else if(paneArrayList.get(i) == 3) {
+                    //SMI Last 5 Rows
+                    //SMI
+                    //if(project.getSmi()!=null) {
+                        for(int j=0; j<project.getSMI_ArrayList().size(); j++) {
+                            if(j==project.getSMI_ArrayList().size()-1) {
+                                pWriter.print(project.getSMI_ArrayList().get(j));
+                            }
+                            else {
+                                pWriter.print(project.getSMI_ArrayList().get(j) + ",");
+                            }
+                        }
+                        pWriter.print("/");
+                        //Modules Added
+                        for(int j=0; j<project.getModulesAdded().size(); j++) {
+                            if(j==project.getModulesAdded().size()-1){
+                                pWriter.print(project.getModulesAdded().get(j));
+                            }
+                            else {
+                                pWriter.print(project.getModulesAdded().get(j) + ",");
+                            }
+                        }
+                        pWriter.print("/");
+                        //Modules Changed
+                        for(int j=0; j<project.getModulesChanged().size(); j++) {
+                            if(j==project.getModulesChanged().size()-1) {
+                                pWriter.print(project.getModulesChanged().get(j));
+                            }
+                            else {
+                                pWriter.print(project.getModulesChanged().get(j) + ",");
+                            }
+                        }
+                        pWriter.print("/");
+                        //Modules Deleted
+                        for(int j=0; j<project.getModulesDeleted().size(); j++) {
+                            if(j==project.getModulesDeleted().size()-1) {
+                                pWriter.print(project.getModulesDeleted().get(j));
+                            }
+                            else {
+                                pWriter.print(project.getModulesDeleted().get(j) + ",");
+                            }
+                        }
+                        pWriter.print("/");
+                        //Total Modules
+                        for(int j=0; j<project.getTotalModules().size(); j++) {
+                            if(j==project.getTotalModules().size()-1) {
+                                pWriter.print(project.getTotalModules().get(j));
+                            }
+                            else {
+                                pWriter.print(project.getTotalModules().get(j) + ",");
+                            }
+                        }
+                        pWriter.print("\n");
+                    //}
+                }
             }
             
-            //SMI Last 5 Rows
-            //SMI
-            if(project.getSmi()!=null) {
-                for(int i=0; i<project.getSMI_ArrayList().size(); i++) {
-                    if(i==project.getSMI_ArrayList().size()-1) {
-                        pWriter.print(project.getSMI_ArrayList().get(i));
-                    }
-                    else {
-                        pWriter.print(project.getSMI_ArrayList().get(i) + ",");
-                    }
-                }
-                pWriter.print("/");
-                //Modules Added
-                for(int i=0; i<project.getModulesAdded().size(); i++) {
-                    if(i==project.getModulesAdded().size()-1){
-                        pWriter.print(project.getModulesAdded().get(i));
-                    }
-                    else {
-                        pWriter.print(project.getModulesAdded().get(i) + ",");
-                    }
-                }
-                pWriter.print("/");
-                //Modules Changed
-                for(int i=0; i<project.getModulesChanged().size(); i++) {
-                    if(i==project.getModulesChanged().size()-1) {
-                        pWriter.print(project.getModulesChanged().get(i));
-                    }
-                    else {
-                        pWriter.print(project.getModulesChanged().get(i) + ",");
-                    }
-                }
-                pWriter.print("/");
-                //Modules Deleted
-                for(int i=0; i<project.getModulesDeleted().size(); i++) {
-                    if(i==project.getModulesDeleted().size()-1) {
-                        pWriter.print(project.getModulesDeleted().get(i));
-                    }
-                    else {
-                        pWriter.print(project.getModulesDeleted().get(i) + ",");
-                    }
-                }
-                pWriter.print("/");
-                //Total Modules
-                for(int i=0; i<project.getTotalModules().size(); i++) {
-                    if(i==project.getTotalModules().size()-1) {
-                        pWriter.print(project.getTotalModules().get(i));
-                    }
-                    else {
-                        pWriter.print(project.getTotalModules().get(i) + ",");
-                    }
-                }
-            }
+
             pWriter.close();
         }
     }//GEN-LAST:event_file_saveActionPerformed
@@ -1259,6 +1264,7 @@ public class MainFrame extends javax.swing.JFrame {
             project.addFunctionPointPane(paneContent);
             paneContent.setVisible(true);
             paneArrayList.add(1);
+            jTabbedPane1.setSelectedIndex(paneArrayList.size()-1);
         }
         else {
             JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
@@ -1282,6 +1288,7 @@ public class MainFrame extends javax.swing.JFrame {
             project.addUseCasePointPane(ucpContent);
             ucpContent.setVisible(true);
             paneArrayList.add(2);
+            jTabbedPane1.setSelectedIndex(paneArrayList.size()-1);
         }
         else {
             JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
@@ -1304,6 +1311,7 @@ public class MainFrame extends javax.swing.JFrame {
             smiContent.setVisible(true);
             paneArrayList.add(3);
             smiPanel = true;
+            jTabbedPane1.setSelectedIndex(paneArrayList.size()-1);
         }
         else {
             JOptionPane.showMessageDialog(null, "Please create a new project first", "", JOptionPane.INFORMATION_MESSAGE);
@@ -1365,6 +1373,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void createProject(String projectName, String productName, String creator, String comments){
         jTabbedPane1.removeAll();
         project = new Project(projectName, productName, creator, comments, currentLanguage);
+        inputPreviousLanguage();
         //projects.add(project);
     }
     
@@ -1389,6 +1398,13 @@ public class MainFrame extends javax.swing.JFrame {
             currentLanguage = "None";
         }
     }
+
+    //new function
+    public void wipeEverything() {
+        paneArrayList = new ArrayList<>();
+        smiPanel = false;
+    }
+
     
     public static void main(String args[]) {
         

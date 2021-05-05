@@ -6,6 +6,7 @@
 package metricssuite;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,10 +20,10 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
      */
     private String panelName = "";
     private ArrayList<Double> smi = new ArrayList<>();
-    private ArrayList<Integer> modulesAdded = new ArrayList<>();
-    private ArrayList<Integer> modulesChanged = new ArrayList<>();
-    private ArrayList<Integer> modulesDeleted = new ArrayList<>();
-    private ArrayList<Integer> totalModules = new ArrayList<>();
+    private ArrayList<Integer> modulesAdded = new ArrayList<Integer>();
+    private ArrayList<Integer> modulesChanged = new ArrayList<Integer>();
+    private ArrayList<Integer> modulesDeleted = new ArrayList<Integer>();
+    private ArrayList<Integer> totalModules = new ArrayList<Integer>();
     private DefaultTableModel model;
     
     public SoftwareMaturityIndexPane() {
@@ -136,11 +137,28 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             jTable1.setValueAt((Object)"0.0", 0, 3);
             jTable1.setValueAt((Object)currentModulesAdded, 0, 4);
             //Add to arraylist
-            smi.set(row, SMI);
-            modulesAdded.set(row, Integer.parseInt(currentModulesAdded));
-            modulesChanged.set(row, 0);
-            modulesDeleted.set(row, 0);
-            totalModules.set(row, Integer.parseInt(currentModulesAdded));
+            
+            if(smi.size() > row)
+                smi.set(row, SMI);
+            else
+                smi.add(row, SMI);
+            if(modulesAdded.size() > row)
+                modulesAdded.set(row, Integer.parseInt(currentModulesAdded));
+            else
+                modulesAdded.add(row, Integer.parseInt(currentModulesAdded));
+            if(modulesChanged.size() > row)
+                modulesChanged.set(row, 0);
+            else
+                modulesChanged.add(row, 0);
+            if(modulesDeleted.size() > row)
+                modulesDeleted.set(row, 0);
+            else
+                modulesDeleted.add(row, 0);
+            if(totalModules.size() > row)
+                totalModules.set(row, Integer.parseInt(currentModulesAdded));
+            else
+                totalModules.add(row, Integer.parseInt(currentModulesAdded));
+            
         }
         else {
             if (jTable1.isEditing())
@@ -155,11 +173,26 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             jTable1.setValueAt((Object)Double.toString(SMI), row, 0);
             jTable1.setValueAt((Object)Integer.toString(currentTotalModules), row, 4);
             
-            smi.set(row, SMI);
-            modulesAdded.set(row, Integer.parseInt(currentModulesAdded));
-            modulesChanged.set(row, Integer.parseInt(currentModulesChanged));
-            modulesDeleted.set(row, Integer.parseInt(currentModulesDeleted));
-            totalModules.set(row, currentTotalModules);
+            if(smi.size() > row)
+                smi.set(row, SMI);
+            else
+                smi.add(row, SMI);
+            if(modulesAdded.size() > row)
+                modulesAdded.set(row, Integer.parseInt(currentModulesAdded));
+            else
+                modulesAdded.add(row, Integer.parseInt(currentModulesAdded));
+            if(modulesChanged.size() > row)
+                modulesChanged.set(row, Integer.parseInt(currentModulesChanged));
+            else
+                modulesChanged.add(row, Integer.parseInt(currentModulesChanged));
+            if(modulesDeleted.size() > row)
+                modulesDeleted.set(row, Integer.parseInt(currentModulesDeleted));
+            else
+                modulesDeleted.add(row, Integer.parseInt(currentModulesDeleted));
+            if(totalModules.size() > row)
+                totalModules.set(row, currentTotalModules);
+            else
+                totalModules.add(row, currentTotalModules);
         }
     }//GEN-LAST:event_computeIndexjButtonActionPerformed
 
@@ -247,7 +280,7 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     
     private void addRowjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowjButtonActionPerformed
         model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{"", "", "", "", ""});
+        model.addRow(new Object[]{"0", "0", "0", "0", "0"});
         
     }//GEN-LAST:event_addRowjButtonActionPerformed
 

@@ -144,6 +144,8 @@ public class NewWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        mainFrame.wipeEverything();
+        
         String projName = projectName_JTextFile.getText();
         String prodName = productName_JTextFile.getText();
         String creator = creator_JTextFile.getText();
