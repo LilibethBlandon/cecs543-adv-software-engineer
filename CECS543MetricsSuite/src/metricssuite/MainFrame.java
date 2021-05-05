@@ -6,6 +6,7 @@
 package metricssuite;
 
 import java.awt.Component;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -68,7 +69,7 @@ public class MainFrame extends javax.swing.JFrame {
         help = new javax.swing.JMenu();
         debug = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CECS 543 Metrics Suite - Function Points");
 
         file.setText("File");
@@ -870,12 +871,19 @@ public class MainFrame extends javax.swing.JFrame {
             } catch (Exception ex) {ex.printStackTrace();}
         }
         else {
-            System.out.println("Cancel");
+            //System.out.println("Cancel");
         }
-        System.out.println(fc.getSelectedFile().getAbsolutePath()); 
+        //System.out.println(fc.getSelectedFile().getAbsolutePath()); 
     }
 
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
+        saveFPMethod();
+    }//GEN-LAST:event_file_saveActionPerformed
+
+    public void saveNewMethod() {
+        return;
+    }
+    public void saveFPMethod() {
         int counter1 = 0;
         int counter2 = 0;
         
@@ -1142,99 +1150,6 @@ public class MainFrame extends javax.swing.JFrame {
 
             pWriter.close();
         }
-    }//GEN-LAST:event_file_saveActionPerformed
-
-    private void saveFPMethod() {
-        JFileChooser fileChooser = new JFileChooser();
-        int response = fileChooser.showSaveDialog(null);
-        
-        File file2 = null;
-        if(response == JFileChooser.APPROVE_OPTION) {
-            file2 = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            //System.out.println(file2);
-            //file2 = new File(fileChooser.getCurrentDirectory());
-            
-            
-            File outputFile = new File(file2 + ".ms");
-        
-
-        FileWriter fWriter = null;
-        try {
-            fWriter = new FileWriter(outputFile);
-        } catch (IOException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //http://stackoverflow.com/questions/4269302/how-do-you-append-to-a-text-file-instead-of-overwriting-it-in-java
-        
-      
-      
-        
-        PrintWriter pWriter = new PrintWriter(fWriter);
-        pWriter.print(project.getProjectName() + "\n");
-        pWriter.print(project.getCreator() + "\n");
-        pWriter.print(project.getFunctionPointsPanes().size() + "\n");
-        for(int i=0; i<project.getFunctionPointsPanes().size(); i++) {
-            //pWriter.print("---------------------------------------" + "\n");
-            String nameOfPane = project.getFunctionPointsPanes().get(i).getNameOfPane();
-            String currentLanguage = project.getFunctionPointsPanes().get(i).getLanguage();
-            int [] valueAdjustment = project.getFunctionPointsPanes().get(i).getValueAdjustmentList();
-            String valueAdjustmentSum = Integer.toString(project.getFunctionPointsPanes().get(i).getValueAdjustmentSum());
-            String EI = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInput());
-            String EO = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalOutput());
-            String EInq = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInquiries());
-            String ILF = Integer.toString(project.getFunctionPointsPanes().get(i).getInternalLogicalFiles());
-            String EIF = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInterfaceFiles());
-            
-            String EIResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInputResults());
-            String EOResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalOutputResults());
-            String EInqResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInquiriesResults());
-            String ILFResults = Integer.toString(project.getFunctionPointsPanes().get(i).getInternalLogicalFilesResults());
-            String EIFResults = Integer.toString(project.getFunctionPointsPanes().get(i).getExternalInterfaceFilesResults());
-            
-            String [] complexities = project.getFunctionPointsPanes().get(i).getComplexities();
-            String fp = Double.toString(project.getFunctionPointsPanes().get(i).getComputeFP());
-            String codeSize = Double.toString(project.getFunctionPointsPanes().get(i).getCodeSize());
-            String totalCount = Integer.toString(project.getFunctionPointsPanes().get(i).getTotalCount());
-            //Write
-            pWriter.print(nameOfPane + "/");
-            pWriter.print(currentLanguage + "/");
-//            for(int value=0; value<valueAdjustment.length; value++) {
-//                pWriter.print(valueAdjustment[value] + ",");
-//            }
-            pWriter.print(valueAdjustment[0] + ",");
-            pWriter.print(valueAdjustment[1] + ",");
-            pWriter.print(valueAdjustment[2] + ",");
-            pWriter.print(valueAdjustment[3] + ",");
-            pWriter.print(valueAdjustment[4] + ",");
-            pWriter.print(valueAdjustment[5] + ",");
-            pWriter.print(valueAdjustment[6] + ",");
-            pWriter.print(valueAdjustment[7] + ",");
-            pWriter.print(valueAdjustment[8] + ",");
-            pWriter.print(valueAdjustment[9] + ",");
-            pWriter.print(valueAdjustment[10] + ",");
-            pWriter.print(valueAdjustment[11] + ",");
-            pWriter.print(valueAdjustment[12] + ",");
-            pWriter.print(valueAdjustment[13] + "/");
-            
-            pWriter.print(valueAdjustmentSum + "/");
-            pWriter.print(EI + "," + EO + "," + EInq + "," + ILF + "," + EIF + "/"); //MAYBE MAKE A LIST?
-            pWriter.print(EIResults + "," + EOResults + "," + EInqResults + "," + ILFResults + "," + EIFResults + "/");
-//            for(int c = 0; c<complexities.length; c++) {
-//                pWriter.print(complexities[c] + ",");
-//            }
-            pWriter.print(complexities[0] + ",");
-            pWriter.print(complexities[1] + ",");
-            pWriter.print(complexities[2] + ",");
-            pWriter.print(complexities[3] + ",");
-            pWriter.print(complexities[4] + "/");
-            
-            pWriter.print(fp + "/");
-            pWriter.print(codeSize + "/");
-            pWriter.print(totalCount + "\n");
-            //pWriter.print("---------------------------------------");
-        }
-        pWriter.close();
-        }
     }
     
     
@@ -1404,6 +1319,19 @@ public class MainFrame extends javax.swing.JFrame {
         paneArrayList = new ArrayList<>();
         smiPanel = false;
     }
+
+    @Override
+    protected void processWindowEvent(WindowEvent e) {
+        //super.processWindowEvent(e); //To change body of generated methods, choose Tools | Templates.
+        if(e.getID() == WindowEvent.WINDOW_CLOSING){
+            SaveDiscardChanges s = new SaveDiscardChanges(this);
+            s.setVisible(true);
+            s.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        }
+        super.processWindowEvent(e);
+    }
+    
+    
 
     
     public static void main(String args[]) {

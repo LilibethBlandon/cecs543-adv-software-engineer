@@ -124,13 +124,13 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
 
     private void computeIndexjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeIndexjButtonActionPerformed
         int row = jTable1.getSelectedRow();
-        System.out.println("Row = " + row);
+        //System.out.println("Row = " + row);
         if(row == 0) {
             if (jTable1.isEditing())
                 jTable1.getCellEditor().stopCellEditing();
             
             String currentModulesAdded = jTable1.getValueAt(row, 1).toString();
-            System.out.println("Current modules added = " + currentModulesAdded);
+            //System.out.println("Current modules added = " + currentModulesAdded);
             double SMI = (Double.parseDouble(currentModulesAdded)-(Double.parseDouble(currentModulesAdded)+0+0))/Double.parseDouble(currentModulesAdded);
             jTable1.setValueAt((Object)Double.toString(SMI), 0, 0);
             jTable1.setValueAt((Object)"0.0", 0, 2);
