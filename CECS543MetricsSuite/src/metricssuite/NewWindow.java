@@ -155,6 +155,7 @@ public class NewWindow extends javax.swing.JFrame {
         }
         else {
             mainFrame.createProject(projName, prodName, creator, comments);
+            mainFrame.setProjectName(projName);
             this.dispose();
         }
     }//GEN-LAST:event_okButtonActionPerformed

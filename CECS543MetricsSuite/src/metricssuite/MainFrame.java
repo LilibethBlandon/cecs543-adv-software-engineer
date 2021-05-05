@@ -34,6 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
     private static Project project;
     private ArrayList<Integer> paneArrayList = new ArrayList<>();
     private boolean smiPanel = false;
+    private String projectName;
     //private ArrayList<Project> projects = new ArrayList<Project>();
     
     public MainFrame() {
@@ -204,7 +205,10 @@ public class MainFrame extends javax.swing.JFrame {
         int counter2 = 0;
         
         JFileChooser fc = new JFileChooser();
-        fc.setCurrentDirectory(new java.io.File("."));
+        //fc.setCurrentDirectory(new java.io.File("."));
+        //String documentPath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
+        File workingDirectory = new File(System.getProperty("user.home"));
+        fc.setCurrentDirectory(workingDirectory);
         fc.setDialogTitle("Open Project");
         FileFilter filter = new FileNameExtensionFilter("*.ms", ".ms", "ms");
         fc.setFileFilter(filter);
@@ -867,6 +871,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_saveActionPerformed
+        String documentsPath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
+        System.out.println("Document Path: " + documentsPath);
         saveFPMethod();
     }//GEN-LAST:event_file_saveActionPerformed
 
@@ -877,17 +883,17 @@ public class MainFrame extends javax.swing.JFrame {
         int counter1 = 0;
         int counter2 = 0;
         
-        JFileChooser fileChooser = new JFileChooser();
-        int response = fileChooser.showSaveDialog(null);
+//        JFileChooser fileChooser = new JFileChooser();
+//        int response = fileChooser.showSaveDialog(null);
         
-        File file2 = null;
-        if(response == JFileChooser.APPROVE_OPTION) {
-            file2 = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                //System.out.println(file2);
+        //File file2 = null;
+        //if(response == JFileChooser.APPROVE_OPTION) {
+//            file2 = new File(fileChooser.getSelectedFile().getAbsolutePath());
+//                System.out.println(file2);
                 //file2 = new File(fileChooser.getCurrentDirectory());
+                String documentsPath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
 
-
-            File outputFile = new File(file2 + ".ms");
+            File outputFile = new File(documentsPath + File.separator + projectName + ".ms");
 
 
             FileWriter fWriter = null;
@@ -1139,7 +1145,7 @@ public class MainFrame extends javax.swing.JFrame {
             
 
             pWriter.close();
-        }
+        //}
     }
     
     
@@ -1320,8 +1326,14 @@ public class MainFrame extends javax.swing.JFrame {
         }
         super.processWindowEvent(e);
     }
-    
-    
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
     
     public static void main(String args[]) {
