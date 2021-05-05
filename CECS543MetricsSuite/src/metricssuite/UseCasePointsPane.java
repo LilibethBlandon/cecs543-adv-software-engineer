@@ -190,6 +190,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
         tcf_total_textfield.setEditable(false);
         tcf_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
+        tcf_total_textfield.setText("0.6");
 
         uaw_total_textfield.setEditable(false);
         uaw_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
@@ -263,6 +264,7 @@ public class UseCasePointsPane extends javax.swing.JPanel {
 
         ecf_total_textfield.setEditable(false);
         ecf_total_textfield.setBackground(new java.awt.Color(238, 238, 238));
+        ecf_total_textfield.setText("1.4");
 
         value_UUCP_textfield.setEditable(false);
         value_UUCP_textfield.setBackground(new java.awt.Color(238, 238, 238));

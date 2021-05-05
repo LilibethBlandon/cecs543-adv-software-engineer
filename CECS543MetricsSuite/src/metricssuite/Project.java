@@ -122,19 +122,19 @@ public class Project {
         this.smi.setSmi(s);
     }
     
-    public void getModulesAdded(ArrayList<Integer> s) {
+    public void setModulesAdded(ArrayList<Integer> s) {
         this.smi.setModulesAdded(s);
     }
     
-    public void getModulesChanged(ArrayList<Integer> s) {
+    public void setModulesChanged(ArrayList<Integer> s) {
         this.smi.setModulesChanged(s);
     }
     
-    public void getModulesDeleted(ArrayList<Integer> s) {
+    public void setModulesDeleted(ArrayList<Integer> s) {
         this.smi.setModulesDeleted(s);
     }
     
-    public void getTotalModules(ArrayList<Integer> s) {
+    public void setTotalModules(ArrayList<Integer> s) {
         this.smi.setTotalModules(s);
     }
     //-------------------------------------------------

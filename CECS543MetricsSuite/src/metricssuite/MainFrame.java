@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -606,8 +607,37 @@ public class MainFrame extends javax.swing.JFrame {
                         for(int j=0; j<totalModules.length; j++) {
                             smi.modifyRowColumn(totalModules[j], j, 4);
                         }
+                        
+                        //Add ArrayList data
+                         ArrayList<Double> dList1 = new ArrayList<>();
+                         for(int j=0;j<smiData.length;j++) {
+                             dList1.add(Double.parseDouble(smiData[j]));
+                         }
+                         ArrayList<Integer> dList2 = new ArrayList<>();
+                         for(int j=0;j<modulesAdded.length;j++) {
+                             dList2.add(Integer.parseInt(modulesAdded[j]));
+                         }
+                         ArrayList<Integer> dList3 = new ArrayList<>();
+                         for(int j=0;j<modulesChanged.length;j++) {
+                             dList3.add(Integer.parseInt(modulesChanged[j]));
+                         }
+                         ArrayList<Integer> dList4 = new ArrayList<>();
+                         for(int j=0;j<modulesDeleted.length;j++) {
+                             dList4.add(Integer.parseInt(modulesDeleted[j]));
+                         }
+                         ArrayList<Integer> dList5 = new ArrayList<>();
+                         for(int j=0;j<totalModules.length;j++) {
+                             dList5.add(Integer.parseInt(totalModules[j]));
+                         }
+                         
+                         project.setSMI_ArrayList(dList1);
+                         project.setModulesAdded(dList2);
+                         project.setModulesChanged(dList3);
+                         project.setModulesDeleted(dList4);
+                         project.setTotalModules(dList5);
                     }
                 }
+                
                     //Component c;
 //                for (int i=0; i<numberOfPanes; i++) {
 //                    c = jTabbedPane1.getComponentAt(i);
@@ -863,14 +893,14 @@ public class MainFrame extends javax.swing.JFrame {
 
             FileWriter fWriter = null;
             try {
-                fWriter = new FileWriter(outputFile);
+                fWriter = new FileWriter(outputFile, false);
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
             //http://stackoverflow.com/questions/4269302/how-do-you-append-to-a-text-file-instead-of-overwriting-it-in-java
             PrintWriter pWriter = new PrintWriter(fWriter);
-            
-            
+            //Add this to delete content
+
             pWriter.print(project.getProjectName() + "\n");
             pWriter.print(project.getCreator() + "\n");
             pWriter.print(paneArrayList.size() + "\n");
@@ -1055,55 +1085,56 @@ public class MainFrame extends javax.swing.JFrame {
             
             //SMI Last 5 Rows
             //SMI
-            for(int i=0; i<project.getSMI_ArrayList().size(); i++) {
-                if(i==project.getSMI_ArrayList().size()-1) {
-                    pWriter.print(project.getSMI_ArrayList().get(i));
+            if(project.getSmi()!=null) {
+                for(int i=0; i<project.getSMI_ArrayList().size(); i++) {
+                    if(i==project.getSMI_ArrayList().size()-1) {
+                        pWriter.print(project.getSMI_ArrayList().get(i));
+                    }
+                    else {
+                        pWriter.print(project.getSMI_ArrayList().get(i) + ",");
+                    }
                 }
-                else {
-                    pWriter.print(project.getSMI_ArrayList().get(i) + ",");
+                pWriter.print("/");
+                //Modules Added
+                for(int i=0; i<project.getModulesAdded().size(); i++) {
+                    if(i==project.getModulesAdded().size()-1){
+                        pWriter.print(project.getModulesAdded().get(i));
+                    }
+                    else {
+                        pWriter.print(project.getModulesAdded().get(i) + ",");
+                    }
+                }
+                pWriter.print("/");
+                //Modules Changed
+                for(int i=0; i<project.getModulesChanged().size(); i++) {
+                    if(i==project.getModulesChanged().size()-1) {
+                        pWriter.print(project.getModulesChanged().get(i));
+                    }
+                    else {
+                        pWriter.print(project.getModulesChanged().get(i) + ",");
+                    }
+                }
+                pWriter.print("/");
+                //Modules Deleted
+                for(int i=0; i<project.getModulesDeleted().size(); i++) {
+                    if(i==project.getModulesDeleted().size()-1) {
+                        pWriter.print(project.getModulesDeleted().get(i));
+                    }
+                    else {
+                        pWriter.print(project.getModulesDeleted().get(i) + ",");
+                    }
+                }
+                pWriter.print("/");
+                //Total Modules
+                for(int i=0; i<project.getTotalModules().size(); i++) {
+                    if(i==project.getTotalModules().size()-1) {
+                        pWriter.print(project.getTotalModules().get(i));
+                    }
+                    else {
+                        pWriter.print(project.getTotalModules().get(i) + ",");
+                    }
                 }
             }
-            pWriter.print("/");
-            //Modules Added
-            for(int i=0; i<project.getModulesAdded().size(); i++) {
-                if(i==project.getModulesAdded().size()-1){
-                    pWriter.print(project.getModulesAdded().get(i));
-                }
-                else {
-                    pWriter.print(project.getModulesAdded().get(i) + ",");
-                }
-            }
-            pWriter.print("/");
-            //Modules Changed
-            for(int i=0; i<project.getModulesChanged().size(); i++) {
-                if(i==project.getModulesChanged().size()-1) {
-                    pWriter.print(project.getModulesChanged().get(i));
-                }
-                else {
-                    pWriter.print(project.getModulesChanged().get(i) + ",");
-                }
-            }
-            pWriter.print("/");
-            //Modules Deleted
-            for(int i=0; i<project.getModulesDeleted().size(); i++) {
-                if(i==project.getModulesDeleted().size()-1) {
-                    pWriter.print(project.getModulesDeleted().get(i));
-                }
-                else {
-                    pWriter.print(project.getModulesDeleted().get(i) + ",");
-                }
-            }
-            pWriter.print("/");
-            //Total Modules
-            for(int i=0; i<project.getTotalModules().size(); i++) {
-                if(i==project.getTotalModules().size()-1) {
-                    pWriter.print(project.getTotalModules().get(i));
-                }
-                else {
-                    pWriter.print(project.getTotalModules().get(i) + ",");
-                }
-            }
-            
             pWriter.close();
         }
     }//GEN-LAST:event_file_saveActionPerformed
@@ -1287,7 +1318,12 @@ public class MainFrame extends javax.swing.JFrame {
         for(int i=0; i<project.getUseCasePointsPanes().size(); i++) {
             System.out.println(project.getUseCasePointsPanes().get(i).toString());
         }
-        project.getSmi().printData();
+        System.out.println("Is SMI null? " + project.getSmi() == null);
+        if(project.getSmi() != null) {
+            System.out.println("PRINT SMI DATA");
+            //project.getSmi()
+            project.getSmi().printData();
+        }
     }//GEN-LAST:event_debugActionPerformed
 
     public void compilerUCPHelp() {

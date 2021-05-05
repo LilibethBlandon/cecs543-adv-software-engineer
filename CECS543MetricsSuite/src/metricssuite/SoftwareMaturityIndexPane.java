@@ -31,6 +31,8 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
 
     public SoftwareMaturityIndexPane(String s) {
         this.panelName = s;
+        //populate arrays
+        
         initComponents();
     }
 
@@ -134,11 +136,11 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             jTable1.setValueAt((Object)"0.0", 0, 3);
             jTable1.setValueAt((Object)currentModulesAdded, 0, 4);
             //Add to arraylist
-            smi.add(SMI);
-            modulesAdded.add(Integer.parseInt(currentModulesAdded));
-            modulesChanged.add(0);
-            modulesDeleted.add(0);
-            totalModules.add(Integer.parseInt(currentModulesAdded));
+            smi.set(row, SMI);
+            modulesAdded.set(row, Integer.parseInt(currentModulesAdded));
+            modulesChanged.set(row, 0);
+            modulesDeleted.set(row, 0);
+            totalModules.set(row, Integer.parseInt(currentModulesAdded));
         }
         else {
             if (jTable1.isEditing())
@@ -153,11 +155,11 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
             jTable1.setValueAt((Object)Double.toString(SMI), row, 0);
             jTable1.setValueAt((Object)Integer.toString(currentTotalModules), row, 4);
             
-            smi.add(SMI);
-            modulesAdded.add(Integer.parseInt(currentModulesAdded));
-            modulesChanged.add(Integer.parseInt(currentModulesChanged));
-            modulesDeleted.add(Integer.parseInt(currentModulesDeleted));
-            totalModules.add(currentTotalModules);
+            smi.set(row, SMI);
+            modulesAdded.set(row, Integer.parseInt(currentModulesAdded));
+            modulesChanged.set(row, Integer.parseInt(currentModulesChanged));
+            modulesDeleted.set(row, Integer.parseInt(currentModulesDeleted));
+            totalModules.set(row, currentTotalModules);
         }
     }//GEN-LAST:event_computeIndexjButtonActionPerformed
 
@@ -216,7 +218,7 @@ public class SoftwareMaturityIndexPane extends javax.swing.JPanel {
     }
     
     public void modifyRowColumn(String value, int row, int column) {
-        System.out.println("HELLO");
+        //System.out.println("HELLO");
         jTable1.setValueAt((Object)value, row, column);
     }
     
