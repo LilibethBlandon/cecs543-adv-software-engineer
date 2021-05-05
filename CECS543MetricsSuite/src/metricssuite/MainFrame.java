@@ -209,6 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
         //String documentPath = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
         File workingDirectory = new File(System.getProperty("user.home"));
         fc.setCurrentDirectory(workingDirectory);
+        
         fc.setDialogTitle("Open Project");
         FileFilter filter = new FileNameExtensionFilter("*.ms", ".ms", "ms");
         fc.setFileFilter(filter);
